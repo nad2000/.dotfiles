@@ -1,0 +1,27 @@
+[submodule "ctrlp.vim"]
+	path = .vim/bundle/ctrlp.vim
+	url = git@github.com:nad2000/dotfiles.git
+[submodule "nerdtree"]
+	path = .vim/bundle/nerdtree
+	url = git@github.com:nad2000/dotfiles.git/.vim/bundle/nerdtree
+[submodule "powerline"]
+	path = .vim/bundle/powerline
+	url = git@github.com:nad2000/dotfiles.git
+[submodule "python-mode"]
+	path = .vim/bundle/python-mode
+	url = git@github.com:nad2000/dotfiles.git
+[submodule "snipmate.vim"]
+	path = .vim/bundle/snipmate.vim
+	url = git@github.com:nad2000/dotfiles.git
+[submodule "tabline.vim"]
+	path = .vim/bundle/tabline.vim
+	url = git@github.com:nad2000/dotfiles.git
+[submodule "vim-markdown"]
+	path = .vim/bundle/vim-markdown
+	url = git@github.com:nad2000/dotfiles.git
+[submodule "vim-markdown-folding"]
+	path = .vim/bundle/vim-markdown-folding
+	url = git@github.com:nad2000/dotfiles.git
+[submodule "vim-powerline"]
+	path = .vim/bundle/vim-powerline
+	url = git@github.com:nad2000/dotfiles.git
