@@ -33,3 +33,15 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+######
+*.sublime-*
+test/repos
+test/home
+patched-src
+local-patch
+updated.*
+.safe-targets
+*~
+*.DS_Store
+.netrwhist

@@ -4,7 +4,7 @@ if &cp | set nocp | endif
 let s:cpo_save=&cpo
 set cpo&vim
 nmap gx <Plug>NetrwBrowseX
-nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowseX(expand("<cWORD>"),0)
+nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowseX(expand("<cWORD>"),0)
 let &cpo=s:cpo_save
 
 unlet s:cpo_save
@@ -14,6 +14,7 @@ let mapleader=","
 set backspace=2
 set clipboard=unnamed
 set history=50
+
 "set nomodeline
 " }}}
 
@@ -22,6 +23,9 @@ set hidden
 
 "Show command in bottom right portion of the screen
 set showcmd
+
+"Always show tabline with
+set showtabline=2
 
 "Ever notice a slight lag after typing the leader key + command? This lowers
 ""the timeout.
@@ -54,13 +58,6 @@ set rtp+=$GOROOT/misc/vim
 " Bind nohl
 " Removes highlight of your last search
 noremap <C-n> :nohl<CR>
-vnoremap <C-n> :nohl<CR>
-inoremap <C-n> :nohl<CR>
-
-" Quicksave command
-noremap <C-Z> :update<CR>
-vnoremap <C-Z> :update<CR>
-inoremap <C-Z> :update<CR>
 
 map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
@@ -125,6 +122,8 @@ set autowrite
 "" call pathogen#incubate()
 "" call pathogen#helptags()
 
+" To disable a plugin, add it's bundle name to the following list
+let g:pathogen_disabled = []
 if has("win32")
 	call add(g:pathogen_disabled, 'powerline')
 else
@@ -140,8 +139,6 @@ autocmd Filetype go set ts=4 sts=4 sw=4 shiftround noexpandtab
 " ============================================================================
 " Python IDE Setup
 " =========================================================================== {{{
-
-
 " Settings for vim-powerline
 " cd ~/.vim/bundle
 " git clone git://github.com/Lokaltog/vim-powerline.git
@@ -249,4 +246,17 @@ function! MyFoldText() " {{{
 endfunction " }}}
 set foldtext=MyFoldText()
 
+" }}}
+" Tabline settings {{{
+if exists("+showtabline")
+	map ,1 1gt
+	map ,2 2gt
+	map ,3 3gt
+	map ,4 4gt
+	map ,5 5gt
+	map ,6 6gt
+	map ,7 7gt
+	map ,8 8gt
+	map ,9 9gt
+endif
 " }}}
