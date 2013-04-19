@@ -35,6 +35,8 @@ nosetests.xml
 .pydevproject
 
 ######
+tags
+*/tags
 *.sublime-*
 test/repos
 test/home
