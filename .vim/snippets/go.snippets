@@ -1,0 +1,161 @@
+# documentation: if the snippet is prefixed by lines that start "## ", those can be used by
+# a pre-processor script to create a quickref. the idea is that you can print such a file
+# out and have it for quick reference while learning how to use the snippets for that
+# particular language.
+
+# Go, http://www.golang.org
+# Maintainers: Kuo, ChaoYi (Kuo.ChaoYi@gmail.com), 郭朝益, Taiwan
+# Last Change: 2012 Mar 1
+
+## /* */
+snippet /*
+	/* ${1:Print something} */
+snippet "
+	"${1}"
+snippet '
+	'${1}'
+snippet main
+	package main
+
+	func main () {
+		${1:/* code */}
+	}
+snippet pf
+	fmt.Printf("${1:%c%d%s\n}", ${2})
+snippet pl
+	println(${1})
+snippet pr
+	print(${1})
+# Types ======================
+snippet :
+	${1:name} := ${2}
+snippet byte
+	var ${1} byte ${2:= 's'}
+snippet int
+	var ${1} int ${2:= 0}
+snippet bool
+	var ${1} bool ${2:= false}
+snippet str
+	var ${1} string ${2:= ""}
+snippet vars
+	var (
+		${1}
+		${2}
+	)
+snippet er
+	Error
+## constant
+snippet const
+	const ${1} = ${2}
+snippet consts
+	const (
+			${1} = ${2}
+			${3} = ${4}
+	)
+# Controll-Loop ==============
+snippet if
+	if ${1:k := v; }${2:express} {
+		return ${2}
+	} 
+snippet ifel
+	if ${1:k := v; }${2:express} {
+		return ${2}
+	} else {
+		return ${3}
+	}
+snippet br
+	break ${1}
+snippet con
+	continue
+snippet goto
+	goto ${1:tag}
+snippet for
+	for {
+		${1}
+	}
+snippet forc
+	for ${1:init}; ${2:condition}; ${3:post} {
+		${4}
+	}
+snippet fore
+	for ${1:k}, ${2:v} := range ${3:coll} {
+		${4}
+	}
+snippet forw
+	for ${1:condition} {
+		${2}
+	}
+snippet sw
+	switch ${1} {
+		case ${2}:
+			${3}
+		case ${4}:
+			${5}
+		${6:default:} 
+	}
+# Collections ==============
+snippet arr
+	var ${1:arr} [${2:number}]${3:type}
+snippet [2
+	${1:name} := []${2:type}{${3}, ${4}}
+snippet [3
+	${1:name} := []${2:type}{${3}, ${4}, ${5}}
+snippet [by
+	[]byte(${1}, ${2}, ${3})
+snippet [str
+	[]string{"${1}", "${2}", "${3}"}
+snippet [int
+	var ${1} [${2}]int
+## Map
+snippet map
+	map[${1:<from type>}]${2:<to type>} {
+		${3}
+	}
+snippet kv
+	"${1:Key}": ${2:Value},
+snippet mkmap
+	${1:name} := make(map[${2:type}]${2:int})
+	${3}
+snippet me
+	${1:mapName}["${2}"]
+snippet del
+	delete ${1}["${2}"] 
+snippet m+
+	${1:mapName}["${2}"]		= ${3}
+# Functions ==================
+snippet func
+	func ${1:funcName}(${2}) ${3:r_type} {
+		${4:return  }
+	}
+# Package ====================
+snippet pg
+	package ${1:`Filename()`}
+snippet im
+	// Package implementing formatted I/O.
+	import ${1:alias} "${2:fmt}"
+snippet im(
+	import (
+			"${1:fmt}"
+			"${2}"
+		   )
+# OOP ========================
+snippet type
+	type ${1:TypeName} ${2:struct} {
+			${3:elm1 string}
+	}
+snippet interface
+	type ${1:Name} interface {
+		${2: Get() int}
+	}
+## Libraries ===================
+snippet web
+	web "github.com/hoisie/web.go"
+## ===========================
+snippet j.u
+	java.util
+snippet cs
+	case ${1}:
+		${2}
+	${3}
+snippet cl
+	class ${1:`Filename("", "untitled")`} ${2}
