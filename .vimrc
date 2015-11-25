@@ -132,7 +132,8 @@ endif
 call pathogen#infect()
 
 " Tab settings:
-autocmd Filetype python ts=4 sts=4 sw=4 shiftround expandtab
+" tabstop=8 expandtab shiftwidth=4 softtabstop=4
+autocmd Filetype python set ts=8 sts=4 sw=4 shiftround expandtab
 autocmd Filetype go set ts=4 sts=4 sw=4 shiftround noexpandtab
 
 
@@ -149,7 +150,7 @@ set laststatus=2
 " Settings for ctrlp
 " cd ~/.vim/bundle
 " git clone https://github.com/kien/ctrlp.vim.git
-let g:ctrlp_max_height = 30
+let g:ctrlp_max_height=30
 set wildignore+=*.pyc
 set wildignore+=*_build/*
 set wildignore+=*/coverage/*
@@ -260,3 +261,8 @@ if exists("+showtabline")
 	map ,9 9gt
 endif
 " }}}
+
+" turn on "vim: ...."
+set modeline
+set modelines=5
+
