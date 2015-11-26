@@ -124,11 +124,6 @@ set autowrite
 
 " To disable a plugin, add it's bundle name to the following list
 let g:pathogen_disabled = []
-if has("win32")
-	call add(g:pathogen_disabled, 'powerline')
-else
-	call add(g:pathogen_disabled, 'vim-powerline')
-endif
 call pathogen#infect()
 
 " Tab settings:
@@ -143,9 +138,13 @@ autocmd Filetype go set ts=4 sts=4 sw=4 shiftround noexpandtab
 " Settings for vim-powerline
 " cd ~/.vim/bundle
 " git clone git://github.com/Lokaltog/vim-powerline.git
-set rtp+=$HOME/.vim/bundle/powerline/powerline/bindings/vim
+" set rtp+=$HOME/.vim/bundle/powerline/powerline/bindings/vim
+" Following http://askubuntu.com/questions/283908/how-can-i-install-and-use-powerline-plugin
+"set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+" Always show statusline
 set laststatus=2
-
+" Use 256 colours (Use this setting only if your terminal supports 256 colours)
+set t_Co=256
 
 " Settings for ctrlp
 " cd ~/.vim/bundle
