@@ -20,20 +20,24 @@ Plugin 'klen/python-mode'
 Plugin 'bling/vim-airline'
 "Plugin 'L9'
 "Plugin 'git://git.wincent.com/command-t.git'
+Plugin 'Zenburn'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 "filetype plugin on
 
+" Turn on powerline fonts:
+let g:airline_powerline_fonts = 1
+
 """ Disable arrow keys
-"nomap <Up> <NOP>
-"nomap <Down> <NOP>
-"nomap <Left> <NOP>
-"nomap <Right> <NOP>
-"inomap <Up> <NOP>
-"inomap <Down> <NOP>
-"inomap <Left> <NOP>
-"inomap <Right> <NOP>
+" nomap <Up> <NOP>
+" nomap <Down> <NOP>
+" nomap <Left> <NOP>
+" nomap <Right> <NOP>
+" inomap <Up> <NOP>
+" inomap <Down> <NOP>
+" inomap <Left> <NOP>
+" inomap <Right> <NOP>
 
 if &cp | set nocp | endif
 let s:cpo_save=&cpo
@@ -113,7 +117,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 " wget -O wombat256mod.vim  http://www.vim.org/scripts/download_script.php?src_id=13400
 set t_Co=256
 "color wombat256mod
-color zenburn
+colorscheme zenburn
 filetype on
 filetype plugin indent on
 syntax on
@@ -153,8 +157,8 @@ filetype off                  " required
 
 " Tab settings:
 " tabstop=8 expandtab shiftwidth=4 softtabstop=4
-""""autocmd Filetype python set ts=8 sts=4 sw=4 shiftround expandtab
-""""autocmd Filetype go set ts=4 sts=4 sw=4 shiftround noexpandtab
+autocmd Filetype python set ts=8 sts=4 sw=4 shiftround expandtab
+autocmd Filetype go set ts=4 sts=4 sw=4 shiftround noexpandtab
 
 
 " ============================================================================
