@@ -1,5 +1,40 @@
 ﻿" vim: foldmethod=marker
 
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" Vundle: https://github.com/VundleVim/Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'klen/python-mode'
+"Plugin 'msanders/snipmate.vim'
+"Plugin 'mkitt/tabline.vim'
+"Plugin 'airblade/vim-gitgutter'
+"Plugin 'tpope/vim-markdown'
+"Plugin 'nelstrom/vim-markdown-folding'
+Plugin 'bling/vim-airline'
+"Plugin 'L9'
+"Plugin 'git://git.wincent.com/command-t.git'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+"filetype plugin on
+
+""" Disable arrow keys
+"nomap <Up> <NOP>
+"nomap <Down> <NOP>
+"nomap <Left> <NOP>
+"nomap <Right> <NOP>
+"inomap <Up> <NOP>
+"inomap <Down> <NOP>
+"inomap <Left> <NOP>
+"inomap <Right> <NOP>
+
 if &cp | set nocp | endif
 let s:cpo_save=&cpo
 set cpo&vim
@@ -35,11 +70,11 @@ set timeoutlen=500
 nmap <leader>l :set list!<CR>
 " Use the same symbols as TextMate for tabstops and EOLs
 if has("win32")
-	set listchars=tab:»\ ,eol:¬
+    set listchars=tab:»\ ,eol:¬
 else
-	set showbreak=↪
-	set fillchars=diff:⣿,vert:│
-	set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
+    set showbreak=↪
+    set fillchars=diff:⣿,vert:│
+    set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 endif
 "Invisible character colors
 "" highlight NonText guifg=#4a4a59
@@ -113,23 +148,13 @@ set noswapfile
 " Write the old file out when switching between files.
 set autowrite
 
-" Setup Pathogen to manage your plugins
-" mkdir -p ~/.vim/autoload ~/.vim/bundle
-" curl -so ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/HEAD/autoload/pathogen.vim
-" Now you can install any plugin into a .vim/bundle/plugin-name/ folder
-"" set runtimepath+=$HOME/.vim/bundle/vim-pathogen/
-"" runtime autoload/pathogen.vim
-"" call pathogen#incubate()
-"" call pathogen#helptags()
-
-" To disable a plugin, add it's bundle name to the following list
-let g:pathogen_disabled = []
-call pathogen#infect()
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
 " Tab settings:
 " tabstop=8 expandtab shiftwidth=4 softtabstop=4
-autocmd Filetype python set ts=8 sts=4 sw=4 shiftround expandtab
-autocmd Filetype go set ts=4 sts=4 sw=4 shiftround noexpandtab
+""""autocmd Filetype python set ts=8 sts=4 sw=4 shiftround expandtab
+""""autocmd Filetype go set ts=4 sts=4 sw=4 shiftround noexpandtab
 
 
 " ============================================================================
