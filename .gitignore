@@ -18,6 +18,9 @@ develop-eggs
 lib
 lib64
 
+# automatically added modules via Vundle
+.vim/bundle/Zenburn/
+
 # Installer logs
 pip-log.txt
 
