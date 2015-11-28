@@ -50,3 +50,7 @@ updated.*
 *~
 *.DS_Store
 .netrwhist
+
+###
+.emacs.d/elpa
+

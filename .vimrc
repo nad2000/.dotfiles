@@ -14,13 +14,14 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'klen/python-mode'
 "Plugin 'msanders/snipmate.vim'
 "Plugin 'mkitt/tabline.vim'
-"Plugin 'airblade/vim-gitgutter'
+Plugin 'airblade/vim-gitgutter'
 "Plugin 'tpope/vim-markdown'
 "Plugin 'nelstrom/vim-markdown-folding'
 Plugin 'bling/vim-airline'
 "Plugin 'L9'
 "Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'Zenburn'
+Plugin 'scrooloose/syntastic'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
