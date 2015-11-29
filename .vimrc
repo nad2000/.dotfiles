@@ -20,7 +20,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'bling/vim-airline'
 "Plugin 'L9'
 "Plugin 'git://git.wincent.com/command-t.git'
-Plugin 'Zenburn'
+Plugin 'jnurmine/Zenburn'
 Plugin 'scrooloose/syntastic'
 
 call vundle#end()            " required
