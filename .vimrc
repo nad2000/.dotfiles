@@ -1,31 +1,35 @@
 ﻿" vim: foldmethod=marker
 
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" https://github.com/junegunn/vim-plug
+call plug#begin()
 
-" Vundle: https://github.com/VundleVim/Vundle.vim
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+Plug 'VundleVim/Vundle.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'kien/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'davidhalter/jedi-vim'
+"Plug 'msanders/snipmate.vim'
+"Plug 'mkitt/tabline.vim'
+Plug 'airblade/vim-gitgutter'
+"Plug 'tpope/vim-markdown'
+"Plug 'nelstrom/vim-markdown-folding'
+Plug 'bling/vim-airline'
+"Plug 'L9'
+"Plug 'git://git.wincent.com/command-t.git'
+Plug 'jnurmine/Zenburn'
+Plug 'scrooloose/syntastic'
+" vimcmdline: Send lines to interpreter
+Plug 'jalvesaq/vimcmdline'
 
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'klen/python-mode'
-"Plugin 'msanders/snipmate.vim'
-"Plugin 'mkitt/tabline.vim'
-Plugin 'airblade/vim-gitgutter'
-"Plugin 'tpope/vim-markdown'
-"Plugin 'nelstrom/vim-markdown-folding'
-Plugin 'bling/vim-airline'
-"Plugin 'L9'
-"Plugin 'git://git.wincent.com/command-t.git'
-Plugin 'jnurmine/Zenburn'
-Plugin 'scrooloose/syntastic'
+" TMUX:
+"Plug 'benmills/vimux'
+"Plug 'julienr/vimux-pyutils'
+"Plug 'julienr/vim-cellmode'
+Plug 'christoomey/vim-tmux-runner'
 
-call vundle#end()            " required
-filetype plugin indent on    " required
-"filetype plugin on
+call plug#end()            " required
+filetype plugin indent on  " required
+filetype plugin on
 
 " Turn on powerline fonts:
 let g:airline_powerline_fonts = 1
@@ -39,6 +43,14 @@ let g:airline_powerline_fonts = 1
 " inomap <Down> <NOP>
 " inomap <Left> <NOP>
 " inomap <Right> <NOP>
+
+" Style:
+colorscheme zenburn
+set nosmd " short for 'showmode'
+syntax enable
+set number
+set cursorline
+set showmatch   " show mattching part of the pair for [] {} and ()
 
 if &cp | set nocp | endif
 let s:cpo_save=&cpo
@@ -160,66 +172,6 @@ filetype off                  " required
 " tabstop=8 expandtab shiftwidth=4 softtabstop=4
 autocmd Filetype python set ts=8 sts=4 sw=4 shiftround expandtab
 autocmd Filetype go set ts=4 sts=4 sw=4 shiftround noexpandtab
-
-
-" ============================================================================
-" Python IDE Setup
-" =========================================================================== {{{
-" Settings for vim-powerline
-" cd ~/.vim/bundle
-" git clone git://github.com/Lokaltog/vim-powerline.git
-" set rtp+=$HOME/.vim/bundle/powerline/powerline/bindings/vim
-" Following http://askubuntu.com/questions/283908/how-can-i-install-and-use-powerline-plugin
-"set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
-" Always show statusline
-set laststatus=2
-" Use 256 colours (Use this setting only if your terminal supports 256 colours)
-set t_Co=256
-
-" Settings for ctrlp
-" cd ~/.vim/bundle
-" git clone https://github.com/kien/ctrlp.vim.git
-let g:ctrlp_max_height=30
-set wildignore+=*.pyc
-set wildignore+=*_build/*
-set wildignore+=*/coverage/*
-
-
-" Settings for python-mode
-" cd ~/.vim/bundle
-" git clone https://github.com/klen/python-mode
-map <Leader>g :call RopeGotoDefinition()<CR>
-let ropevim_enable_shortcuts = 1
-let g:pymode_rope_goto_def_newwin = "vnew"
-let g:pymode_rope_extended_complete = 1
-let g:pymode_breakpoint = 0
-let g:pymode_syntax = 1
-let g:pymode_syntax_builtin_objs = 0
-let g:pymode_syntax_builtin_funcs = 0
-map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
-
-" Better navigating through omnicomplete option list
-" See http://stackoverflow.com/questions/2170023/how-to-map-keys-for-popup-menu-in-vim
-set completeopt=longest,menuone
-function! OmniPopup(action)
-     if pumvisible()
-         if a:action == 'j'
-             return "\<C-N>"
-         elseif a:action == 'k'
-             return "\<C-P>"
-         endif
-     endif
-     return a:action
-endfunction
-
-inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
-inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
-
-" Python folding
-" mkdir -p ~/.vim/ftplugin
-" wget -O ~/.vim/ftplugin/python_editing.vim http://www.vim.org/scripts/download_script.php?src_id=5492
-set foldenable
-" }}}
 
 set encoding=utf8
 
