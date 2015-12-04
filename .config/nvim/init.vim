@@ -1,4 +1,16 @@
 " vim: foldmethod=marker
+set encoding=utf-8
+
+"python with virtualenv support
+py << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+  project_base_dir = os.environ['VIRTUAL_ENV']
+  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  execfile(activate_this, dict(__file__=activate_this))
+EOF
+
 
 " https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
@@ -29,6 +41,8 @@ Plug 'jalvesaq/vimcmdline'
 call plug#end()            " required
 filetype plugin indent on  " required
 filetype plugin on
+
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
 " Turn on powerline fonts:
 let g:airline_powerline_fonts = 1
@@ -65,9 +79,10 @@ let NERDTreeShowHidden=1
 " autoindent - indent when moving to the next line while writing code
 " expandtab - expand tabs into spaces
 " shiftwidth=n - when using the >> or << commands, shift lines by n spaces
-autocmd Filetype python set ts=8 sts=4 sw=4 sr et ai
-autocmd Filetype go set ts=4 sts=4 sw=4 sr noet
-autocmd FileType javascript setlocal sw=2
+au Filetype python set ts=8 sts=4 sw=4 sr et ai
+au Filetype go set ts=4 sts=4 sw=4 sr noet
+au FileType javascript setlocal sw=2
+au Filetype sh set ts=8 sts=2 sw=2 sr et ai nowrap
 
 " Leaders:
 let mapleader = ","
@@ -90,3 +105,15 @@ command! REPLSendSelectedLines call REPLSend(getline("'<", "'>" ))
 nnoremap <silent> <f6> :REPLSendLine<cr>
 vnoremap <selent> <f5> :REPLSendSelectedLines<cr>
 
+
+nnoremap <leader>- ddp
+nnoremap <leader>_ ddkP
+inoremap <leader><c-u> <esc>viwUi 
+nnoremap <leader><c-u> viwU 
+
+iabbrev adn and
+iabbrev waht what
+iabbrev tehn then
+iabbrev @@  nad2000@gmail.com
+iabbrev ccopy Copyright 2015 Rad Cirskis, all rights reserved.
+iabbrev ssig -- <cr>Rad Cirskis<cr>nad2000@gmail.com

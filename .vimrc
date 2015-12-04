@@ -18,6 +18,7 @@ Plug 'bling/vim-airline'
 "Plug 'git://git.wincent.com/command-t.git'
 Plug 'jnurmine/Zenburn'
 Plug 'scrooloose/syntastic'
+Plug 'tomtom/tcomment_vim'
 " vimcmdline: Send lines to interpreter
 Plug 'jalvesaq/vimcmdline'
 
@@ -25,7 +26,7 @@ Plug 'jalvesaq/vimcmdline'
 "Plug 'benmills/vimux'
 "Plug 'julienr/vimux-pyutils'
 "Plug 'julienr/vim-cellmode'
-Plug 'christoomey/vim-tmux-runner'
+"""Plug 'christoomey/vim-tmux-runner'
 
 call plug#end()            " required
 filetype plugin indent on  " required
@@ -172,6 +173,7 @@ filetype off                  " required
 " tabstop=8 expandtab shiftwidth=4 softtabstop=4
 autocmd Filetype python set ts=8 sts=4 sw=4 shiftround expandtab
 autocmd Filetype go set ts=4 sts=4 sw=4 shiftround noexpandtab
+autocmd Filetype sh set ts=8 sts=2 sw=2 shiftround expandtab nowrap
 
 set encoding=utf8
 
