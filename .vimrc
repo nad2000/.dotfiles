@@ -33,7 +33,8 @@ filetype plugin indent on  " required
 filetype plugin on
 
 " Turn on powerline fonts:
-let g:airline_powerline_fonts = 1
+"let g:airline_powerline_fonts = 1
+set laststatus=2 " show status line even if there is only a single window
 
 """ Disable arrow keys
 " nomap <Up> <NOP>
