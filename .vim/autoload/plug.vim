@@ -748,6 +748,7 @@ function! s:prepare(...)
     enew
   else
     call s:new_window()
+<<<<<<< HEAD
   endif
 
   nnoremap <silent> <buffer> q  :if b:plug_preview==1<bar>pc<bar>endif<bar>bd<cr>
@@ -763,6 +764,26 @@ function! s:prepare(...)
     execute 'silent! unmap <buffer>' k
   endfor
   setlocal buftype=nofile bufhidden=wipe nobuflisted nolist noswapfile nowrap cursorline modifiable nospell
+=======
+    nnoremap <silent> <buffer> q  :if b:plug_preview==1<bar>pc<bar>endif<bar>bd<cr>
+    nnoremap <silent> <buffer> R  :silent! call <SID>retry()<cr>
+    nnoremap <silent> <buffer> D  :PlugDiff<cr>
+    nnoremap <silent> <buffer> S  :PlugStatus<cr>
+    nnoremap <silent> <buffer> U  :call <SID>status_update()<cr>
+    xnoremap <silent> <buffer> U  :call <SID>status_update()<cr>
+    nnoremap <silent> <buffer> ]] :silent! call <SID>section('')<cr>
+    nnoremap <silent> <buffer> [[ :silent! call <SID>section('b')<cr>
+    let b:plug_preview = -1
+    let s:plug_tab = tabpagenr()
+    let s:plug_buf = winbufnr(0)
+    call s:assign_name()
+  endif
+  silent! unmap <buffer> <cr>
+  silent! unmap <buffer> L
+  silent! unmap <buffer> o
+  silent! unmap <buffer> X
+  setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap cursorline modifiable
+>>>>>>> 4bfc838... support with ubuntu 15.x
   setf vim-plug
   if exists('g:syntax_on')
     call s:syntax()
