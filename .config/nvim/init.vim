@@ -18,11 +18,12 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'pangloss/vim-javascript'
 Plug 'bling/vim-bufferline' " airline has buffer list feature
 "Plug 'davidhalter/jedi-vim' " replaced with 'Valloric/YouCompleteMe'
 "Plug 'msanders/snipmate.vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 "Plug 'mkitt/tabline.vim'
 Plug 'airblade/vim-gitgutter'
 "Plug 'tpope/vim-markdown'
@@ -34,6 +35,7 @@ Plug 'jnurmine/Zenburn'
 Plug 'benekastah/neomake'
 " vimcmdline: Send lines to interpreter
 Plug 'jalvesaq/vimcmdline'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 
 "Plug 'bfredl/nvim-ipy' """ :( doesn't support 4.x
 "Plug 'ivanov/vim-ipython' """ :( doesn't support 4.x
@@ -49,15 +51,18 @@ let g:airline_powerline_fonts = 1
 " Enable the list of buffers
 "let g:airline#extensions#tabline#enabled = 1
 
+"Switch between buffers without saving
+set hidden
+
 """ Disable arrow keys
-" nomap <Up> <NOP>
-" nomap <Down> <NOP>
-" nomap <Left> <NOP>
-" nomap <Right> <NOP>
-" inomap <Up> <NOP>
-" inomap <Down> <NOP>
-" inomap <Left> <NOP>
-" inomap <Right> <NOP>
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
 " Style:
 colorscheme zenburn
 set nosmd " short for 'showmode'
@@ -75,14 +80,65 @@ map <F2> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 " }}}
 
+" Folding ----------------------------------------------------------------- {{{
+" from: https://bitbucket.org/sjl/dotfiles
+"
+set foldcolumn=3	" increases gutter width for folding indicator
+set foldlevelstart=0
+
+" Space to toggle folds.
+nnoremap <Space> za
+vnoremap <Space> za
+
+" Make zO recursively open whatever top level fold we're in, no matter where the
+" cursor happens to be.
+nnoremap zO zCzO
+
+" "Focus" the current line.  Basically:
+"
+" 1. Close all folds.
+" 2. Open just the folds containing the current line.
+" 3. Move the line to a little bit (15 lines) above the center of the screen.
+" 4. Pulse the cursor line.  My eyes are bad.
+"
+" This mapping wipes out the z mark, which I never use.
+"
+" I use :sus for the rare times I want to actually background Vim.
+nnoremap <c-z> mzzMzvzz15<c-e>`z:Pulse<cr>
+
+function! MyFoldText() " {{{
+    let line = getline(v:foldstart)
+
+    let nucolwidth = &fdc + &number * &numberwidth
+    let windowwidth = winwidth(0) - nucolwidth - 3
+    let foldedlinecount = v:foldend - v:foldstart
+
+    " expand tabs into spaces
+    let onetab = strpart('          ', 0, &tabstop)
+    let line = substitute(line, '\t', onetab, 'g')
+
+    let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
+    let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
+    return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
+endfunction " }}}
+set foldtext=MyFoldText()
+
+" }}}
+
+
+
 " Tab settings:
 " autoindent - indent when moving to the next line while writing code
 " expandtab - expand tabs into spaces
 " shiftwidth=n - when using the >> or << commands, shift lines by n spaces
-au Filetype python set ts=8 sts=4 sw=4 sr et ai
-au Filetype go set ts=4 sts=4 sw=4 sr noet
-au FileType javascript setlocal sw=2
-au Filetype sh set ts=8 sts=2 sw=2 sr et ai nowrap
+augroup FileTypes
+  au!
+  au Filetype python set ts=8 sts=4 sw=4 sr et ai | iabbrev <buffer> iff if:<esc>i
+  au Filetype go set ts=4 sts=4 sw=4 sr noet
+  au FileType javascript setlocal sw=2 | iabbrev <buffer> iff if ()<esc>i
+  au Filetype sh set ts=8 sts=2 sw=2 sr et ai nowrap
+  au Filetype vim set ts=8 sts=2 sw=2 sr et ai nowrap
+augroup END
 
 " Leaders:
 let mapleader = ","
@@ -108,8 +164,8 @@ vnoremap <selent> <f5> :REPLSendSelectedLines<cr>
 
 nnoremap <leader>- ddp
 nnoremap <leader>_ ddkP
-inoremap <leader><c-u> <esc>viwUi 
-nnoremap <leader><c-u> viwU 
+inoremap <leader><c-u> <esc>viwUi
+nnoremap <leader><c-u> viwU
 
 iabbrev adn and
 iabbrev waht what
