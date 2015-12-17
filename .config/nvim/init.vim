@@ -14,7 +14,7 @@ EOF
 
 " https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
-
+Plug 'fatih/vim-go'
 Plug 'tpope/vim-fugitive'
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree'

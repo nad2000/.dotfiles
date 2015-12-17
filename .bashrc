@@ -5,7 +5,7 @@
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
-      *) return;;
+    *) return;;
 esac
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -124,3 +124,11 @@ fi
 #    POWERLINE_BASH_CONTINUATION=1
 #    POWERLINE_BASH_SELECT=1
 #fi
+
+## export sudo apt-get install most
+hash most 2>/dev/null || export PAGER="most"
+
+## GO:
+export GOPATH=$HOME/Dropbox/work
+export GOROOT=$HOME/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
