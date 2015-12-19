@@ -36,6 +36,7 @@ Plug 'benekastah/neomake'
 " vimcmdline: Send lines to interpreter
 Plug 'jalvesaq/vimcmdline'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'vivien/vim-linux-coding-style'
 
 "Plug 'bfredl/nvim-ipy' """ :( doesn't support 4.x
 "Plug 'ivanov/vim-ipython' """ :( doesn't support 4.x
