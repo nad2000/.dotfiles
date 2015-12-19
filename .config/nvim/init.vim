@@ -22,7 +22,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'bling/vim-bufferline' " airline has buffer list feature
 "Plug 'davidhalter/jedi-vim' " replaced with 'Valloric/YouCompleteMe'
 "Plug 'msanders/snipmate.vim'
-Plug 'SirVer/ultisnips'
+"Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 "Plug 'mkitt/tabline.vim'
 Plug 'airblade/vim-gitgutter'
@@ -47,7 +47,7 @@ filetype plugin on
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
 " Turn on powerline fonts:
-let g:airline_powerline_fonts = 1
+"""let g:airline_powerline_fonts = 1
 " Enable the list of buffers
 "let g:airline#extensions#tabline#enabled = 1
 
