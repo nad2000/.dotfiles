@@ -16,7 +16,6 @@ filetype plugin on
 
 " https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
-
 Plug 'fatih/vim-go'
 Plug 'tpope/vim-fugitive'
 Plug 'kien/ctrlp.vim'
@@ -25,7 +24,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'bling/vim-bufferline' " airline has buffer list feature
 "Plug 'davidhalter/jedi-vim' " replaced with 'Valloric/YouCompleteMe'
 "Plug 'msanders/snipmate.vim'
-Plug 'SirVer/ultisnips'
+"Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 "Plug 'mkitt/tabline.vim'
 Plug 'airblade/vim-gitgutter'
@@ -39,6 +38,7 @@ Plug 'benekastah/neomake'
 " vimcmdline: Send lines to interpreter
 Plug 'jalvesaq/vimcmdline'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'vivien/vim-linux-coding-style'
 
 "Plug 'bfredl/nvim-ipy' """ :( doesn't support 4.x
 "Plug 'ivanov/vim-ipython' """ :( doesn't support 4.x
@@ -48,7 +48,7 @@ call plug#end()            " required
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
 " Turn on powerline fonts:
-let g:airline_powerline_fonts = 1
+"""let g:airline_powerline_fonts = 1
 " Enable the list of buffers
 "let g:airline#extensions#tabline#enabled = 1
 
