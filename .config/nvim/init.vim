@@ -14,6 +14,7 @@ EOF
 
 " https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'fatih/vim-go'
 Plug 'tpope/vim-fugitive'
 Plug 'kien/ctrlp.vim'
