@@ -11,6 +11,8 @@ if 'VIRTUAL_ENV' in os.environ:
   execfile(activate_this, dict(__file__=activate_this))
 EOF
 
+filetype plugin indent on  " required
+filetype plugin on
 
 " https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
@@ -43,8 +45,6 @@ Plug 'vivien/vim-linux-coding-style'
 "Plug 'ivanov/vim-ipython' """ :( doesn't support 4.x
 
 call plug#end()            " required
-filetype plugin indent on  " required
-filetype plugin on
 
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
