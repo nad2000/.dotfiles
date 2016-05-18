@@ -53,4 +53,5 @@ updated.*
 
 ###
 .emacs.d/elpa
-
+.vim/colors/zenburn.vim
+.vim/plugged/
