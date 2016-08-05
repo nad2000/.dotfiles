@@ -1,9 +1,9 @@
-﻿" vim: foldmethod=marker
+" with MS: create a hard link as the admin, eg, mklink /J ".vim"  "C:\Users\nad2000\dotfiles\.vim"
+" and create $HOME/.vimrc with "source $HOME/dotfiles/.vimrc"
+" vim: foldmethod=marker
 
 " https://github.com/junegunn/vim-plug
 call plug#begin()
-
-Plug 'VundleVim/Vundle.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
@@ -47,7 +47,16 @@ set laststatus=2 " show status line even if there is only a single window
 " inomap <Right> <NOP>
 
 " Style:
-colorscheme zenburn
+" Color scheme
+" mkdir -p ~/.vim/colors && cd ~/.vim/colors
+" wget -O wombat256mod.vim  http://www.vim.org/scripts/download_script.php?src_id=13400
+set t_Co=256
+if has("win32")||has("win32unix")
+    "color wombat256mod
+    source $HOME/.vim/plugged/Zenburn/colors/zenburn.vim
+else
+    colorscheme zenburn
+endif
 set nosmd " short for 'showmode'
 syntax enable
 set number
@@ -127,12 +136,6 @@ map <Leader>m <esc>:tabnext<CR>
 ""autocmd FileType go,python,c,cpp,java,php autocmd BufWritePre <buffer> :%s/\s\+$//e
 autocmd BufWritePre * :%s/\s\+$//e
 
-" Color scheme
-" mkdir -p ~/.vim/colors && cd ~/.vim/colors
-" wget -O wombat256mod.vim  http://www.vim.org/scripts/download_script.php?src_id=13400
-set t_Co=256
-"color wombat256mod
-colorscheme zenburn
 filetype on
 filetype plugin indent on
 syntax on
