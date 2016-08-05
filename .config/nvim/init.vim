@@ -16,8 +16,8 @@ filetype plugin on
 
 " https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'fatih/vim-go'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-fugitive'
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
@@ -175,3 +175,15 @@ iabbrev tehn then
 iabbrev @@  nad2000@gmail.com
 iabbrev ccopy Copyright 2015 Rad Cirskis, all rights reserved.
 iabbrev ssig -- <cr>Rad Cirskis<cr>nad2000@gmail.com
+
+" Golang support (vim-go):
+let g:go_fmt_command = "goimports"
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+"let g:go_fmt_fail_silently = 1
+"let g:go_fmt_autosave = 0
+
