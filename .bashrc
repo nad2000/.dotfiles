@@ -126,6 +126,7 @@ fi
 #    POWERLINE_BASH_CONTINUATION=1
 #    POWERLINE_BASH_SELECT=1
 #fi
+[ -d $HOME/.local ] && PATH=$HOME/.local/bin:$PATH
 
 ## export sudo apt-get install most
 hash most 2>/dev/null || export PAGER="most"
