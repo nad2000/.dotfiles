@@ -1,5 +1,7 @@
 " vim: foldmethod=marker
 set encoding=utf-8
+set ignorecase
+set smartcase
 
 "python with virtualenv support
 py << EOF
@@ -22,16 +24,16 @@ Plug 'tpope/vim-fugitive'
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'pangloss/vim-javascript'
-Plug 'bling/vim-bufferline' " airline has buffer list feature
 "Plug 'davidhalter/jedi-vim' " replaced with 'Valloric/YouCompleteMe'
 "Plug 'msanders/snipmate.vim'
 "Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+"Plug 'honza/vim-snippets'
 "Plug 'mkitt/tabline.vim'
 Plug 'airblade/vim-gitgutter'
 "Plug 'tpope/vim-markdown'
 "Plug 'nelstrom/vim-markdown-folding'
 Plug 'bling/vim-airline'
+Plug 'bling/vim-bufferline' " airline has buffer list feature
 "Plug 'L9'
 "Plug 'git://git.wincent.com/command-t.git'
 Plug 'jnurmine/Zenburn'
@@ -173,7 +175,7 @@ iabbrev adn and
 iabbrev waht what
 iabbrev tehn then
 iabbrev @@  nad2000@gmail.com
-iabbrev ccopy Copyright 2015 Rad Cirskis, all rights reserved.
+iabbrev ccopy Copyright 2016 Rad Cirskis, all rights reserved.
 iabbrev ssig -- <cr>Rad Cirskis<cr>nad2000@gmail.com
 
 " Golang support (vim-go):
@@ -183,6 +185,7 @@ let g:go_highlight_methods = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
 "let g:go_fmt_fail_silently = 1
 "let g:go_fmt_autosave = 0
