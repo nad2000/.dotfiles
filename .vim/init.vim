@@ -21,7 +21,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'fatih/vim-go'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-fugitive'
-Plug 'kien/ctrlp.vim'
+Plug 'tpope/vim-commentary' " gc - toggle, gcap - comments out paragraph
+Plug 'ctrlpvim/ctrlp.vim' " active fork of 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'pangloss/vim-javascript'
 "Plug 'davidhalter/jedi-vim' " replaced with 'Valloric/YouCompleteMe'
