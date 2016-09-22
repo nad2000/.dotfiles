@@ -34,7 +34,7 @@ Plug 'airblade/vim-gitgutter'
 "Plug 'tpope/vim-markdown'
 "Plug 'nelstrom/vim-markdown-folding'
 Plug 'bling/vim-airline'
-Plug 'bling/vim-bufferline' " airline has buffer list feature
+"""Plug 'bling/vim-bufferline' " airline has buffer list feature
 "Plug 'L9'
 "Plug 'git://git.wincent.com/command-t.git'
 Plug 'jnurmine/Zenburn'
@@ -139,10 +139,17 @@ set foldtext=MyFoldText()
 augroup FileTypes
   au!
   au Filetype python set ts=8 sts=4 sw=4 sr et ai | iabbrev <buffer> iff if:<esc>i
-  au Filetype go set ts=4 sts=4 sw=4 sr noet
   au FileType javascript setlocal sw=2 | iabbrev <buffer> iff if ()<esc>i
   au Filetype sh set ts=8 sts=2 sw=2 sr et ai nowrap
   au Filetype vim set ts=8 sts=2 sw=2 sr et ai nowrap
+  au Filetype go set ts=4 sts=4 sw=4 sr noet
+  au FileType go nmap <leader>r <Plug>(go-run)
+  au FileType go nmap <leader>b <Plug>(go-build)
+  au FileType go nmap <leader>t <Plug>(go-test)
+  au FileType go nmap <leader>c <Plug>(go-coverage)
+  au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
+  au FileType go nmap <Leader>s <Plug>(go-implements)
+  au FileType go nmap <Leader>i <Plug>(go-info)
 augroup END
 
 " Leaders:
@@ -189,5 +196,5 @@ let g:go_highlight_operators = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
 "let g:go_fmt_fail_silently = 1
-"let g:go_fmt_autosave = 0
+let g:go_fmt_autosave = 1
 
