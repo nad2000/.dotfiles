@@ -1,5 +1,7 @@
 " vim: foldmethod=marker
 set encoding=utf-8
+set ignorecase
+set smartcase
 
 "python with virtualenv support
 py << EOF
@@ -21,19 +23,20 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'SirVer/ultisnips'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-fugitive'
-Plug 'kien/ctrlp.vim'
+Plug 'tpope/vim-commentary' " gc - toggle, gcap - comments out paragraph
+Plug 'ctrlpvim/ctrlp.vim' " active fork of 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'pangloss/vim-javascript'
-Plug 'bling/vim-bufferline' " airline has buffer list feature
 "Plug 'davidhalter/jedi-vim' " replaced with 'Valloric/YouCompleteMe'
 "Plug 'msanders/snipmate.vim'
 "Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+"Plug 'honza/vim-snippets'
 "Plug 'mkitt/tabline.vim'
 Plug 'airblade/vim-gitgutter'
 "Plug 'tpope/vim-markdown'
 "Plug 'nelstrom/vim-markdown-folding'
 Plug 'bling/vim-airline'
+"""Plug 'bling/vim-bufferline' " airline has buffer list feature
 "Plug 'L9'
 "Plug 'git://git.wincent.com/command-t.git'
 Plug 'jnurmine/Zenburn'
@@ -138,10 +141,17 @@ set foldtext=MyFoldText()
 augroup FileTypes
   au!
   au Filetype python set ts=8 sts=4 sw=4 sr et ai | iabbrev <buffer> iff if:<esc>i
-  au Filetype go set ts=4 sts=4 sw=4 sr noet
   au FileType javascript setlocal sw=2 | iabbrev <buffer> iff if ()<esc>i
   au Filetype sh set ts=8 sts=2 sw=2 sr et ai nowrap
   au Filetype vim set ts=8 sts=2 sw=2 sr et ai nowrap
+  au Filetype go set ts=4 sts=4 sw=4 sr noet
+  au FileType go nmap <leader>r <Plug>(go-run)
+  au FileType go nmap <leader>b <Plug>(go-build)
+  au FileType go nmap <leader>t <Plug>(go-test)
+  au FileType go nmap <leader>c <Plug>(go-coverage)
+  au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
+  au FileType go nmap <Leader>s <Plug>(go-implements)
+  au FileType go nmap <Leader>i <Plug>(go-info)
 augroup END
 
 " Leaders:
@@ -175,7 +185,7 @@ iabbrev adn and
 iabbrev waht what
 iabbrev tehn then
 iabbrev @@  nad2000@gmail.com
-iabbrev ccopy Copyright 2015 Rad Cirskis, all rights reserved.
+iabbrev ccopy Copyright 2016 Rad Cirskis, all rights reserved.
 iabbrev ssig -- <cr>Rad Cirskis<cr>nad2000@gmail.com
 
 " Golang support (vim-go):
@@ -185,7 +195,8 @@ let g:go_highlight_methods = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
 "let g:go_fmt_fail_silently = 1
-"let g:go_fmt_autosave = 0
+let g:go_fmt_autosave = 1
 
