@@ -17,6 +17,8 @@ filetype plugin on
 " https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
 Plug 'fatih/vim-go'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'SirVer/ultisnips'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-fugitive'
 Plug 'kien/ctrlp.vim'
@@ -38,7 +40,7 @@ Plug 'jnurmine/Zenburn'
 Plug 'benekastah/neomake'
 " vimcmdline: Send lines to interpreter
 Plug 'jalvesaq/vimcmdline'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'vivien/vim-linux-coding-style'
 
 "Plug 'bfredl/nvim-ipy' """ :( doesn't support 4.x
