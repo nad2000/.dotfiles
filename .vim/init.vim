@@ -27,7 +27,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'pangloss/vim-javascript'
 "Plug 'davidhalter/jedi-vim' " replaced with 'Valloric/YouCompleteMe'
 "Plug 'msanders/snipmate.vim'
-"Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 "Plug 'honza/vim-snippets'
 "Plug 'mkitt/tabline.vim'
 Plug 'airblade/vim-gitgutter'
@@ -41,7 +41,7 @@ Plug 'jnurmine/Zenburn'
 Plug 'benekastah/neomake'
 " vimcmdline: Send lines to interpreter
 Plug 'jalvesaq/vimcmdline'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer' }
 Plug 'vivien/vim-linux-coding-style'
 
 "Plug 'bfredl/nvim-ipy' """ :( doesn't support 4.x
@@ -198,3 +198,9 @@ let g:go_highlight_build_constraints = 1
 "let g:go_fmt_fail_silently = 1
 let g:go_fmt_autosave = 1
 
+
+" Disable mouse (for clipboard support install xsel and/or xclip)
+set mouse=cn
+
+" Why YCM is so user unfiendly:
+let g:ycm_confirm_extra_conf = 0
