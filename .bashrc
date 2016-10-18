@@ -139,3 +139,10 @@ export GOROOT=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 [ -s "/home/nad2000/.dnx/dnvm/dnvm.sh" ] && . "/home/nad2000/.dnx/dnvm/dnvm.sh" # Load dnvm
+
+
+## Android Studio:
+export ANDROID_HOME=~/Android/Sdk
+if [ -d $ANDROID_HOME ] ; then
+  export PATH=${PATH}:${ANDROID_HOME}/tools
+fi
