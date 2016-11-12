@@ -143,6 +143,11 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 ## Android Studio:
 export ANDROID_HOME=~/Android/Sdk
+export ANDROID_STUDIO
 if [ -d $ANDROID_HOME ] ; then
-  export PATH=${PATH}:${ANDROID_HOME}/tools
+  PATH=${PATH}:${ANDROID_HOME}/tools
 fi
+[ -d ~/android-studio/jre/bin ] && PATH=~/android-studio/jre/bin:$PATH
+
+[ -d ~/spark-2.0.1-bin-hadoop2.7 ] && PATH=~/spark-2.0.1-bin-hadoop2.7/bin:$PATH
+
