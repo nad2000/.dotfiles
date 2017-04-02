@@ -18,6 +18,7 @@ filetype plugin on
 
 " https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
+Plug 'lepture/vim-jinja'
 Plug 'fatih/vim-go'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'SirVer/ultisnips'
@@ -48,6 +49,8 @@ Plug 'vivien/vim-linux-coding-style'
 
 "Plug 'bfredl/nvim-ipy' """ :( doesn't support 4.x
 "Plug 'ivanov/vim-ipython' """ :( doesn't support 4.x
+Plug 'rust-lang/rust.vim'
+Plut 'racer-rust/vim-racer'
 
 call plug#end()            " required
 
@@ -140,11 +143,16 @@ set foldtext=MyFoldText()
 " shiftwidth=n - when using the >> or << commands, shift lines by n spaces
 augroup FileTypes
   au!
+  au BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm set ft=jinja
+  au BufWritePre *.py,*.c,*.php :%s/ \+$//ge
+  au FileType html setl sw=2 sts=2 et
+  au FileType jinja setl sw=2 sts=2 et
   au Filetype python set ts=8 sts=4 sw=4 sr et ai | iabbrev <buffer> iff if:<esc>i
   au FileType javascript setlocal sw=2 | iabbrev <buffer> iff if ()<esc>i
   au Filetype sh set ts=8 sts=2 sw=2 sr et ai nowrap
   au Filetype vim set ts=8 sts=2 sw=2 sr et ai nowrap
   au Filetype go set ts=4 sts=4 sw=4 sr noet
+  au FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
   au FileType go nmap <leader>r <Plug>(go-run)
   au FileType go nmap <leader>b <Plug>(go-build)
   au FileType go nmap <leader>t <Plug>(go-test)
