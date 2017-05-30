@@ -151,3 +151,9 @@ fi
 
 [ -d ~/spark-2.0.1-bin-hadoop2.7 ] && PATH=~/spark-2.0.1-bin-hadoop2.7/bin:$PATH
 
+## ORCID:
+export ORCID_CLIENT_ID=APP-TF7LKIE084PYTQ59
+export ORCID_CLIENT_SECRET=bddcff36-8098-443a-bc5f-5cc18382f555
+export ENV=test
+export POSTGRES_PASSWORD=p455w0rd
+
