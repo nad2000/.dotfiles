@@ -1,7 +1,13 @@
 " vim: foldmethod=marker
+
+" enter the current millenium
+set nocompatible
 set encoding=utf-8
 set ignorecase
 set smartcase
+" hybrid line number mode
+set relativenumber
+set number
 
 "python with virtualenv support
 py << EOF
@@ -13,15 +19,19 @@ if 'VIRTUAL_ENV' in os.environ:
   execfile(activate_this, dict(__file__=activate_this))
 EOF
 
-filetype plugin indent on  " required
 filetype plugin on
+filetype plugin indent on  " required
 
 " https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
-Plug 'derekwyatt/vim-scala'
+Plug 'fntlnz/atags.vim' " helps you creating and updating your tag files
+Plug 'majutsushi/tagbar' " provides an easy way to browse the tags of the current file and get an overview of its structure
+Plug 'wikitopian/hardmode'
+"Plug 'w0rp/ale'
+Plug 'lepture/vim-jinja'
 Plug 'fatih/vim-go'
 Plug 'AndrewRadev/splitjoin.vim'
-Plug 'SirVer/ultisnips'
+"Plug 'SirVer/ultisnips'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary' " gc - toggle, gcap - comments out paragraph
@@ -30,13 +40,12 @@ Plug 'scrooloose/nerdtree'
 Plug 'pangloss/vim-javascript'
 "Plug 'davidhalter/jedi-vim' " replaced with 'Valloric/YouCompleteMe'
 "Plug 'msanders/snipmate.vim'
-Plug 'SirVer/ultisnips'
+"Plug 'SirVer/ultisnips'
 "Plug 'honza/vim-snippets'
 "Plug 'mkitt/tabline.vim'
 Plug 'airblade/vim-gitgutter'
 "Plug 'tpope/vim-markdown'
 "Plug 'nelstrom/vim-markdown-folding'
-Plug 'bling/vim-airline'
 """Plug 'bling/vim-bufferline' " airline has buffer list feature
 "Plug 'L9'
 "Plug 'git://git.wincent.com/command-t.git'
@@ -46,10 +55,12 @@ Plug 'benekastah/neomake'
 Plug 'jalvesaq/vimcmdline'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer' }
 Plug 'vivien/vim-linux-coding-style'
-
-"Plug 'bfredl/nvim-ipy' """ :( doesn't support 4.x
-"Plug 'ivanov/vim-ipython' """ :( doesn't support 4.x
-
+"Plug 'bfredl/nvim-ipy' " :( doesn't support 4.x
+"Plug 'ivanov/vim-ipython' " :( doesn't support 4.x
+Plug 'rust-lang/rust.vim'
+Plug 'racer-rust/vim-racer'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()            " required
 
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
@@ -136,16 +147,23 @@ set foldtext=MyFoldText()
 
 
 " Tab settings:
+"
 " autoindent - indent when moving to the next line while writing code
 " expandtab - expand tabs into spaces
 " shiftwidth=n - when using the >> or << commands, shift lines by n spaces
 augroup FileTypes
   au!
+  au BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm set ft=jinja
+  au BufWritePre *.py,*.c,*.php :%s/ \+$//ge
+  au BufWritePost * call atags#generate()
+  au FileType html setl sw=2 sts=2 et
+  au FileType jinja setl sw=2 sts=2 et
   au Filetype python set ts=8 sts=4 sw=4 sr et ai | iabbrev <buffer> iff if:<esc>i
   au FileType javascript setlocal sw=2 | iabbrev <buffer> iff if ()<esc>i
   au Filetype sh set ts=8 sts=2 sw=2 sr et ai nowrap
   au Filetype vim set ts=8 sts=2 sw=2 sr et ai nowrap
   au Filetype go set ts=4 sts=4 sw=4 sr noet
+  au FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
   au FileType go nmap <leader>r <Plug>(go-run)
   au FileType go nmap <leader>b <Plug>(go-build)
   au FileType go nmap <leader>t <Plug>(go-test)
@@ -154,6 +172,8 @@ augroup FileTypes
   au FileType go nmap <Leader>s <Plug>(go-implements)
   au FileType go nmap <Leader>i <Plug>(go-info)
 augroup END
+
+nmap <F8> :TagbarToggle<CR>
 
 " Leaders:
 let mapleader = ","

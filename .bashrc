@@ -148,8 +148,37 @@ if [ -d $ANDROID_HOME ] ; then
   PATH=${PATH}:${ANDROID_HOME}/tools
 fi
 [ -d ~/android-studio/jre/bin ] && PATH=~/android-studio/jre/bin:$PATH
-
 [ -d ~/spark-2.0.1-bin-hadoop2.7 ] && PATH=~/spark-2.0.1-bin-hadoop2.7/bin:$PATH
+[ -d $HOME/.cargo/bin ] && PATH=$HOME/.cargo/bin:$PATH
+
+source <(kubectl completion bash)
+
+# AWS completion:
+[ -f aws_bash_completer ] && . aws_bash_completer
+
+# Orcid Hub environments:
+#ENV=dev
+ENV=test
+POSTGRES_PASSWORD=p455w0rd
+POSTGRES_USER=orcidhub
+PGPASSWORD=p455w0rd
+PGUSER=orcidhub
+#PGHOST=
+PGDATABASE=orcidhub
+ORCID_CLIENT_ID=APP-TF7LKIE084PYTQ59
+ORCID_CLIENT_SECRET=bddcff36-8098-443a-bc5f-5cc18382f555
+export POSTGRES_PASSWORD POSTGRES_USER PGPASSWORD PGDATABASE PGUSER
+export ORCID_CLIENT_ID ORCID_CLIENT_SECRET ENV
+
+export P12_PASSWORD=p455w0rd
+export SHIB_SP_DOMAINNAME=${ENV}.orcidhub.org.nz
+export SHIB_IDP_DOMAINNAME=directory.test.tuakiri.ac.nz
+export METADATA_CERT_FILE=tuakiri-test-metadata-cert.pem
+export TOKEN_PASSWORD_SALT=testsalt
+export TOKEN_SECRET_KEY=testsecret
+export MAIL_USERNAME=AKIAICSRSUE3LNBSIBVQ
+export MAIL_PASSWORD=AqnVMLFc1+bZ9dnA6CDVZlGiltdP1je2Htv0wAwc6PH2
+export MAIL_SERVER=email-smtp.us-east-1.amazonaws.com
 
 ## ORCID:
 export ORCID_CLIENT_ID=APP-TF7LKIE084PYTQ59
