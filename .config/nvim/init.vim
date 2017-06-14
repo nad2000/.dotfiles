@@ -180,6 +180,7 @@ augroup FileTypes
   au FileType go nmap <Leader>i <Plug>(go-info)
 augroup END
 
+" Jump to the last cursor position in the file:
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
