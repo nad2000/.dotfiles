@@ -2,6 +2,7 @@
 
 " enter the current millenium
 set nocompatible
+set autoread
 set encoding=utf-8
 set ignorecase
 set smartcase
@@ -24,11 +25,12 @@ filetype plugin indent on  " required
 
 " https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
+Plug 'alvan/vim-closetag'
 Plug 'fntlnz/atags.vim' " helps you creating and updating your tag files
 Plug 'majutsushi/tagbar' " provides an easy way to browse the tags of the current file and get an overview of its structure
 Plug 'wikitopian/hardmode'
-"Plug 'w0rp/ale'
-Plug 'lepture/vim-jinja'
+Plug 'w0rp/ale'  " Syntax Checking
+Plug 'lepture/vim-jinja'  " Jinja2 template support
 Plug 'fatih/vim-go'
 Plug 'AndrewRadev/splitjoin.vim'
 "Plug 'SirVer/ultisnips'
@@ -50,7 +52,7 @@ Plug 'airblade/vim-gitgutter'
 "Plug 'L9'
 "Plug 'git://git.wincent.com/command-t.git'
 Plug 'jnurmine/Zenburn'
-Plug 'benekastah/neomake'
+" Plug 'benekastah/neomake'
 " vimcmdline: Send lines to interpreter
 Plug 'jalvesaq/vimcmdline'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer' }
@@ -61,9 +63,15 @@ Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-surround'
 call plug#end()            " required
 
-let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+let g:atags_build_commands_list = [
+    \"ctags --exclude=*.html --exclude=*.js --exclude=*.pxd -R -f tags.tmp",
+    \"awk 'length($0) < 400' tags.tmp > tags",
+    \"rm tags.tmp"
+    \]
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml" " for 'alvan/vim-closetag'
 
 " Turn on powerline fonts:
 """let g:airline_powerline_fonts = 1
@@ -82,22 +90,21 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
+"
 " Style:
 colorscheme zenburn
 set nosmd " short for 'showmode'
 syntax enable
-set number
 set cursorline
 set showmatch   " show mattching part of the pair for [] {} and ()
 
-" NERDtree settings {{{
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 " Open NERDTree automatically when vim starts up if no files were specified:
 autocmd vimenter * if !argc() | NERDTree | endif
 " Give a shortcut key to NERD Tree
 map <F2> :NERDTreeToggle<CR>
 "Show hidden files in NerdTree
 let NERDTreeShowHidden=1
-" }}}
 
 " Folding ----------------------------------------------------------------- {{{
 " from: https://bitbucket.org/sjl/dotfiles
@@ -144,8 +151,6 @@ set foldtext=MyFoldText()
 
 " }}}
 
-
-
 " Tab settings:
 "
 " autoindent - indent when moving to the next line while writing code
@@ -159,6 +164,8 @@ augroup FileTypes
   au FileType html setl sw=2 sts=2 et
   au FileType jinja setl sw=2 sts=2 et
   au Filetype python set ts=8 sts=4 sw=4 sr et ai | iabbrev <buffer> iff if:<esc>i
+  au Filetype python nnoremap <LocalLeader>i :!isort %<CR><CR>  " Import re-sorting (https://github.com/timothycrosley/isort)
+  au FileType python nnoremap <LocalLeader>= :0,$!yapf<CR>  " Code formating with YAPF (https://github.com/google/yapf)
   au FileType javascript setlocal sw=2 | iabbrev <buffer> iff if ()<esc>i
   au Filetype sh set ts=8 sts=2 sw=2 sr et ai nowrap
   au Filetype vim set ts=8 sts=2 sw=2 sr et ai nowrap
@@ -173,12 +180,15 @@ augroup FileTypes
   au FileType go nmap <Leader>i <Plug>(go-info)
 augroup END
 
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
 nmap <F8> :TagbarToggle<CR>
 
 " Leaders:
 let mapleader = ","
 let maplocalleader = "\\"
-
 
 " Remember the last open terminal buffer ID:
 augroup Terminal
@@ -206,7 +216,7 @@ iabbrev adn and
 iabbrev waht what
 iabbrev tehn then
 iabbrev @@  nad2000@gmail.com
-iabbrev ccopy Copyright 2016 Rad Cirskis, all rights reserved.
+iabbrev ccopy Copyright 2017 Rad Cirskis, all rights reserved.
 iabbrev ssig -- <cr>Rad Cirskis<cr>nad2000@gmail.com
 
 " Golang support (vim-go):

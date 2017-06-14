@@ -134,7 +134,7 @@ fi
 hash most 2>/dev/null || export PAGER="most"
 
 ## GO:
-export GOPATH=$HOME/work
+export GOPATH=$HOME
 export GOROOT=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
@@ -176,7 +176,13 @@ export SHIB_IDP_DOMAINNAME=directory.test.tuakiri.ac.nz
 export METADATA_CERT_FILE=tuakiri-test-metadata-cert.pem
 export TOKEN_PASSWORD_SALT=testsalt
 export TOKEN_SECRET_KEY=testsecret
-export MAIL_USERNAME=AKIAICSRSUE3LNBSIBVQ
-export MAIL_PASSWORD=AqnVMLFc1+bZ9dnA6CDVZlGiltdP1je2Htv0wAwc6PH2
-export MAIL_SERVER=email-smtp.us-east-1.amazonaws.com
 
+export MAIL_DEFAULT_SENDER=no-reply@orcidhub.org.nz
+export MAIL_PASSWORD=AgPDjD2UUs7O7Qg7YZxYXnMyl5Rjg6j0/6mgHz4NOQkr
+export MAIL_SERVER=email-smtp.us-east-1.amazonaws.com
+export MAIL_USERNAME=AKIAISUVN4HBEQK6VRIA
+
+export USER_UID=$(id -u)
+export USER_GID=$(id -g)
+export BACKUP_DATABASE_URL=postgresql://orcidhub:p455w0rd@backup.orcidhub.org.nz:5432/orcidhub
+export SECRET_KEY=f5e95a2e69e61e0891d58c831125533ab514ef58590b1c52bd5cb7d1
