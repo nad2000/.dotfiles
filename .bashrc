@@ -165,7 +165,7 @@ fi
 [ -d ~/spark-2.0.1-bin-hadoop2.7 ] && PATH=~/spark-2.0.1-bin-hadoop2.7/bin:$PATH
 [ -d $HOME/.cargo/bin ] && PATH=$HOME/.cargo/bin:$PATH
 
-source <(kubectl completion bash)
+which kubectl &>/dev/null && source <(kubectl completion bash)
 
 # AWS completion:
 [ -f aws_bash_completer ] && . aws_bash_completer
