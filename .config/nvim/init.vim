@@ -67,9 +67,9 @@ Plug 'tpope/vim-surround'
 call plug#end()            " required
 
 let g:atags_build_commands_list = [
-    \"ctags --exclude=*.html --exclude=*.js --exclude=*.pxd -R -f tags.tmp",
-    \"awk 'length($0) < 400' tags.tmp > tags",
-    \"rm tags.tmp"
+    \"[[ $PWD != $HOME ]] && ctags --exclude=$HOME --exclude=*.html --exclude=*.js --exclude=*.pxd -R -f tags.tmp",
+    \"[[ $PWD != $HOME ]] && awk 'length($0) < 400' tags.tmp > tags",
+    \"[[ $PWD != $HOME ]] && rm tags.tmp"
     \]
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml" " for 'alvan/vim-closetag'
 
