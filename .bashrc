@@ -177,10 +177,10 @@ export METADATA_CERT_FILE=tuakiri-test-metadata-cert.pem
 export TOKEN_PASSWORD_SALT=testsalt
 export TOKEN_SECRET_KEY=testsecret
 
-export MAIL_DEFAULT_SENDER=no-reply@orcidhub.org.nz
-export MAIL_PASSWORD=AgPDjD2UUs7O7Qg7YZxYXnMyl5Rjg6j0/6mgHz4NOQkr
-export MAIL_SERVER=email-smtp.us-east-1.amazonaws.com
-export MAIL_USERNAME=AKIAISUVN4HBEQK6VRIA
+#export MAIL_DEFAULT_SENDER=no-reply@orcidhub.org.nz
+#export MAIL_PASSWORD=AgPDjD2UUs7O7Qg7YZxYXnMyl5Rjg6j0/6mgHz4NOQkr
+#export MAIL_SERVER=email-smtp.us-east-1.amazonaws.com
+#export MAIL_USERNAME=AKIAISUVN4HBEQK6VRIA
 
 export USER_UID=$(id -u)
 export USER_GID=$(id -g)
