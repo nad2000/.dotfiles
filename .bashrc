@@ -9,18 +9,18 @@ case $- in
 esac
 
 
-if test -z ${TMUX} && which tmux &>/dev/null; then
-  ID="`tmux ls | grep -vm1 attached | cut -d: -f1`" # get the id of a deattached session
-  if [[ -z ${ID} ]] ;then # if not available create a new one
-    exec tmux -2 new-session
-  else
-    exec tmux -2 attach-session -t ${ID} # if available attach to it
-  fi
-  # # when quitting tmux, try to attach
-  # while test -z ${TMUX}; do
-  #   exec tmux -2 attach || break
-  # done
-fi
+# if test -z ${TMUX} && which tmux &>/dev/null; then
+#   ID="`tmux ls | grep -vm1 attached | cut -d: -f1`" # get the id of a deattached session
+#   if [[ -z ${ID} ]] ;then # if not available create a new one
+#     exec tmux -2 new-session
+#   else
+#     exec tmux -2 attach-session -t ${ID} # if available attach to it
+#   fi
+#   # # when quitting tmux, try to attach
+#   # while test -z ${TMUX}; do
+#   #   exec tmux -2 attach || break
+#   # done
+# fi
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
