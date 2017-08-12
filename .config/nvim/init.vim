@@ -37,7 +37,8 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary' " gc - toggle, gcap - comments out paragraph
-Plug 'ctrlpvim/ctrlp.vim' " active fork of 'kien/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim' " active fork of 'kien/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'scrooloose/nerdtree'
 Plug 'pangloss/vim-javascript'
 "Plug 'davidhalter/jedi-vim' " replaced with 'Valloric/YouCompleteMe'
@@ -64,6 +65,7 @@ Plug 'racer-rust/vim-racer'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-surround'
+Plug 'integralist/vim-mypy'
 call plug#end()            " required
 
 let g:atags_build_commands_list = [
