@@ -9,18 +9,18 @@ case $- in
 esac
 
 
-if test -z ${TMUX} && which tmux &>/dev/null; then
-  ID="`tmux ls | grep -vm1 attached | cut -d: -f1`" # get the id of a deattached session
-  if [[ -z ${ID} ]] ;then # if not available create a new one
-    exec tmux -2 new-session
-  else
-    exec tmux -2 attach-session -t ${ID} # if available attach to it
-  fi
-  # # when quitting tmux, try to attach
-  # while test -z ${TMUX}; do
-  #   exec tmux -2 attach || break
-  # done
-fi
+# if test -z ${TMUX} && which tmux &>/dev/null; then
+#   ID="`tmux ls | grep -vm1 attached | cut -d: -f1`" # get the id of a deattached session
+#   if [[ -z ${ID} ]] ;then # if not available create a new one
+#     exec tmux -2 new-session
+#   else
+#     exec tmux -2 attach-session -t ${ID} # if available attach to it
+#   fi
+#   # # when quitting tmux, try to attach
+#   # while test -z ${TMUX}; do
+#   #   exec tmux -2 attach || break
+#   # done
+# fi
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -171,18 +171,15 @@ which kubectl &>/dev/null && source <(kubectl completion bash)
 [ -f aws_bash_completer ] && . aws_bash_completer
 
 # Orcid Hub environments:
-#ENV=dev
-ENV=test
+ENV=dev
+#ENV=test
 POSTGRES_PASSWORD=p455w0rd
 POSTGRES_USER=orcidhub
 PGPASSWORD=p455w0rd
 PGUSER=orcidhub
 #PGHOST=
 PGDATABASE=orcidhub
-ORCID_CLIENT_ID=APP-TF7LKIE084PYTQ59
-ORCID_CLIENT_SECRET=bddcff36-8098-443a-bc5f-5cc18382f555
-export POSTGRES_PASSWORD POSTGRES_USER PGPASSWORD PGDATABASE PGUSER
-export ORCID_CLIENT_ID ORCID_CLIENT_SECRET ENV
+export POSTGRES_PASSWORD POSTGRES_USER PGPASSWORD PGDATABASE PGUSER ENV
 
 export P12_PASSWORD=p455w0rd
 export SHIB_SP_DOMAINNAME=${ENV}.orcidhub.org.nz
@@ -196,7 +193,16 @@ export TOKEN_SECRET_KEY=testsecret
 #export MAIL_SERVER=email-smtp.us-east-1.amazonaws.com
 #export MAIL_USERNAME=AKIAISUVN4HBEQK6VRIA
 
+export MAIL_SERVER=dev.orcidhub.org.nz
+export MAIL_PORT=2525
+
 export USER_UID=$(id -u)
 export USER_GID=$(id -g)
 export BACKUP_DATABASE_URL=postgresql://orcidhub:p455w0rd@backup.orcidhub.org.nz:5432/orcidhub
 export SECRET_KEY=f5e95a2e69e61e0891d58c831125533ab514ef58590b1c52bd5cb7d1
+export OAUTHLIB_INSECURE_TRANSPORT=1
+export ORCID_CLIENT_ID=APP-42W3G8FS4OHGM562
+export ORCID_CLIENT_SECRET=f6a1088a-b8d9-4e3a-992b-ab4a583782b5
+export SHIB_METADATA_PROVIDER_URI=https://directory.test.tuakiri.ac.nz/metadata/tuakiri-test-metadata-signed.xml
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
