@@ -56,3 +56,4 @@ updated.*
 .vim/colors/zenburn.vim
 .vim/plugged/
 *.old
+tags.tmp
