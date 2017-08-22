@@ -37,8 +37,8 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary' " gc - toggle, gcap - comments out paragraph
-" Plug 'ctrlpvim/ctrlp.vim' " active fork of 'kien/ctrlp.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'ctrlpvim/ctrlp.vim' " active fork of 'kien/ctrlp.vim'
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'scrooloose/nerdtree'
 Plug 'pangloss/vim-javascript'
 "Plug 'davidhalter/jedi-vim' " replaced with 'Valloric/YouCompleteMe'
