@@ -240,3 +240,7 @@ set mouse=cn
 
 " Why YCM is so user unfiendly:
 let g:ycm_confirm_extra_conf = 0
+
+" Cipboard for all operations:
+set clipboard+=unnamedplus
+
