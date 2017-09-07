@@ -10,6 +10,20 @@ set smartcase
 set relativenumber
 set number
 
+"Switch between buffers without saving
+set hidden
+
+""" Disable arrow keys
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+
+"
 "python with virtualenv support
 py << EOF
 import os
@@ -25,51 +39,64 @@ filetype plugin indent on  " required
 
 " https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
-Plug 'alvan/vim-closetag'
-Plug 'fntlnz/atags.vim' " helps you creating and updating your tag files
-Plug 'majutsushi/tagbar' " provides an easy way to browse the tags of the current file and get an overview of its structure
-Plug 'wikitopian/hardmode'
+
+" General
+Plug 'scrooloose/nerdtree'
 Plug 'w0rp/ale'  " Syntax Checking
-Plug 'lepture/vim-jinja'  " Jinja2 template support
-Plug 'fatih/vim-go'
-Plug 'AndrewRadev/splitjoin.vim'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer' }
 "Plug 'SirVer/ultisnips'
+Plug 'tpope/vim-surround'
+Plug 'fntlnz/atags.vim' " helps you creating and updating your tag files
+Plug 'AndrewRadev/splitjoin.vim'  " gS - split; gJ - join
 Plug 'christoomey/vim-tmux-navigator'
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary' " gc - toggle, gcap - comments out paragraph
-Plug 'ctrlpvim/ctrlp.vim' " active fork of 'kien/ctrlp.vim'
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'scrooloose/nerdtree'
-Plug 'pangloss/vim-javascript'
+" Plug 'ctrlpvim/ctrlp.vim' " active fork of 'kien/ctrlp.vim'
+Plug 'jalvesaq/vimcmdline'
+"Plug 'SirVer/ultisnips'
 "Plug 'davidhalter/jedi-vim' " replaced with 'Valloric/YouCompleteMe'
 "Plug 'msanders/snipmate.vim'
-"Plug 'SirVer/ultisnips'
 "Plug 'honza/vim-snippets'
 "Plug 'mkitt/tabline.vim'
-Plug 'airblade/vim-gitgutter'
 "Plug 'tpope/vim-markdown'
 "Plug 'nelstrom/vim-markdown-folding'
-"""Plug 'bling/vim-bufferline' " airline has buffer list feature
-"Plug 'L9'
-"Plug 'git://git.wincent.com/command-t.git'
-Plug 'jnurmine/Zenburn'
-" Plug 'benekastah/neomake'
-" vimcmdline: Send lines to interpreter
-Plug 'jalvesaq/vimcmdline'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer' }
-Plug 'vivien/vim-linux-coding-style'
 "Plug 'bfredl/nvim-ipy' " :( doesn't support 4.x
 "Plug 'ivanov/vim-ipython' " :( doesn't support 4.x
-Plug 'rust-lang/rust.vim'
-Plug 'racer-rust/vim-racer'
+"Plug 'bling/vim-bufferline' " airline has buffer list feature
+"Plug 'git://git.wincent.com/command-t.git'
+"Plug 'benekastah/neomake'
+
+" Themeing
+Plug 'wikitopian/hardmode'  " disable arrow keys and other vim-smells
+Plug 'jnurmine/Zenburn'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-surround'
+Plug 'majutsushi/tagbar' " provides an easy way to browse the tags of the current file and get an overview of its structure
+
+" C
+Plug 'vivien/vim-linux-coding-style'
+
+" HTML
+Plug 'alvan/vim-closetag'
+Plug 'lepture/vim-jinja'  " Jinja2 template support
+
+" JavaScript and stuff
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx' " React JSX support
+
+" GO
+Plug 'fatih/vim-go'
+Plug 'airblade/vim-gitgutter'
+
+" Rust..
+Plug 'rust-lang/rust.vim'
+Plug 'racer-rust/vim-racer'
 Plug 'integralist/vim-mypy'
 call plug#end()            " required
 
 let g:atags_build_commands_list = [
-    \"[[ $PWD != $HOME ]] && ctags --exclude=$HOME --exclude=*.html --exclude=*.js --exclude=*.pxd -R -f tags.tmp",
+    \"[[ $PWD != $HOME ]] && ctags --exclude=$HOME --exclude='*.html' --exclude='*.js' --exclude='*.pxd' -R -f tags.tmp",
     \"[[ $PWD != $HOME ]] && awk 'length($0) < 400' tags.tmp > tags",
     \"[[ $PWD != $HOME ]] && rm tags.tmp"
     \]
@@ -80,19 +107,6 @@ let g:closetag_filenames = "*.html,*.xhtml,*.phtml" " for 'alvan/vim-closetag'
 " Enable the list of buffers
 "let g:airline#extensions#tabline#enabled = 1
 
-"Switch between buffers without saving
-set hidden
-
-""" Disable arrow keys
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
-"
 " Style:
 colorscheme zenburn
 set nosmd " short for 'showmode'
@@ -161,7 +175,7 @@ set foldtext=MyFoldText()
 augroup FileTypes
   au!
   au BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm set ft=jinja
-  au BufWritePre *.py,*.c,*.php :%s/ \+$//ge
+  au BufWritePre *.py,*.c,*.php,*.html :%s/ \+$//ge
   au BufWritePost * call atags#generate()
   au FileType html setl sw=2 sts=2 et
   au FileType jinja setl sw=2 sts=2 et
@@ -173,10 +187,10 @@ augroup FileTypes
   au Filetype vim set ts=8 sts=2 sw=2 sr et ai nowrap
   au Filetype go set ts=4 sts=4 sw=4 sr noet
   au FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-  au FileType go nmap <leader>r <Plug>(go-run)
-  au FileType go nmap <leader>b <Plug>(go-build)
-  au FileType go nmap <leader>t <Plug>(go-test)
-  au FileType go nmap <leader>c <Plug>(go-coverage)
+  au FileType go nmap <Leader>r <Plug>(go-run)
+  au FileType go nmap <Leader>b <Plug>(go-build)
+  au FileType go nmap <Leader>t <Plug>(go-test)
+  au FileType go nmap <Leader>c <Plug>(go-coverage)
   au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
   au FileType go nmap <Leader>s <Plug>(go-implements)
   au FileType go nmap <Leader>i <Plug>(go-info)
@@ -206,14 +220,14 @@ endfunction
 command! REPLSendLine call REPLSend([getline('.')])
 command! REPLSendSelectedLines call REPLSend(getline("'<", "'>" ))
 
-nnoremap <silent> <f6> :REPLSendLine<cr>
-vnoremap <selent> <f5> :REPLSendSelectedLines<cr>
+nnoremap <Silent> <F6> :REPLSendLine<cr>
+vnoremap <Silent> <F5> :REPLSendSelectedLines<cr>
 
 
-nnoremap <leader>- ddp
-nnoremap <leader>_ ddkP
-inoremap <leader><c-u> <esc>viwUi
-nnoremap <leader><c-u> viwU
+nnoremap <Leader>- ddp
+nnoremap <Leader>_ ddkP
+inoremap <Leader><C-U> <ESC>viwUi
+nnoremap <Leader><C-U> viwU
 
 iabbrev adn and
 iabbrev waht what
@@ -240,3 +254,11 @@ set mouse=cn
 
 " Why YCM is so user unfiendly:
 let g:ycm_confirm_extra_conf = 0
+
+" Cipboard for all operations 
+"" set clipboard+=unnamedplus  " better to user '*' or '+' register
+
+" CTRL-S for saveing:
+noremap <silent> <C-S>          :update<CR>
+vnoremap <silent> <C-S>         <C-C>:update<CR>
+inoremap <silent> <C-S>         <C-O>:update<CR>
