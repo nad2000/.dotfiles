@@ -41,10 +41,31 @@ filetype plugin indent on  " required
 call plug#begin('~/.vim/plugged')
 
 " General
+Plug 'scrooloose/nerdtree'
 Plug 'w0rp/ale'  " Syntax Checking
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer' }
+"Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-surround'
 Plug 'fntlnz/atags.vim' " helps you creating and updating your tag files
+Plug 'AndrewRadev/splitjoin.vim'  " gS - split; gJ - join
+Plug 'christoomey/vim-tmux-navigator'
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary' " gc - toggle, gcap - comments out paragraph
+" Plug 'ctrlpvim/ctrlp.vim' " active fork of 'kien/ctrlp.vim'
+Plug 'jalvesaq/vimcmdline'
+"Plug 'SirVer/ultisnips'
+"Plug 'davidhalter/jedi-vim' " replaced with 'Valloric/YouCompleteMe'
+"Plug 'msanders/snipmate.vim'
+"Plug 'honza/vim-snippets'
+"Plug 'mkitt/tabline.vim'
+"Plug 'tpope/vim-markdown'
+"Plug 'nelstrom/vim-markdown-folding'
+"Plug 'bfredl/nvim-ipy' " :( doesn't support 4.x
+"Plug 'ivanov/vim-ipython' " :( doesn't support 4.x
+"Plug 'bling/vim-bufferline' " airline has buffer list feature
+"Plug 'git://git.wincent.com/command-t.git'
+"Plug 'benekastah/neomake'
 
 " Themeing
 Plug 'wikitopian/hardmode'  " disable arrow keys and other vim-smells
@@ -53,39 +74,22 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'majutsushi/tagbar' " provides an easy way to browse the tags of the current file and get an overview of its structure
 
+" C
+Plug 'vivien/vim-linux-coding-style'
+
 " HTML
 Plug 'alvan/vim-closetag'
 Plug 'lepture/vim-jinja'  " Jinja2 template support
 
-" GO
-Plug 'fatih/vim-go'
-Plug 'AndrewRadev/splitjoin.vim'
-"Plug 'SirVer/ultisnips'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-commentary' " gc - toggle, gcap - comments out paragraph
-Plug 'ctrlpvim/ctrlp.vim' " active fork of 'kien/ctrlp.vim'
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'scrooloose/nerdtree'
+" JavaScript and stuff
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx' " React JSX support
-"Plug 'davidhalter/jedi-vim' " replaced with 'Valloric/YouCompleteMe'
-"Plug 'msanders/snipmate.vim'
-"Plug 'SirVer/ultisnips'
-"Plug 'honza/vim-snippets'
-"Plug 'mkitt/tabline.vim'
+
+" GO
+Plug 'fatih/vim-go'
 Plug 'airblade/vim-gitgutter'
-"Plug 'tpope/vim-markdown'
-"Plug 'nelstrom/vim-markdown-folding'
-"""Plug 'bling/vim-bufferline' " airline has buffer list feature
-"Plug 'L9'
-"Plug 'git://git.wincent.com/command-t.git'
-" Plug 'benekastah/neomake'
-" vimcmdline: Send lines to interpreter
-Plug 'jalvesaq/vimcmdline'
-Plug 'vivien/vim-linux-coding-style'
-"Plug 'bfredl/nvim-ipy' " :( doesn't support 4.x
-"Plug 'ivanov/vim-ipython' " :( doesn't support 4.x
+
+" Rust..
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
 Plug 'integralist/vim-mypy'
