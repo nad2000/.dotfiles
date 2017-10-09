@@ -121,4 +121,10 @@ export OAUTHLIB_INSECURE_TRANSPORT=1
 export ORCID_CLIENT_ID=APP-42W3G8FS4OHGM562
 export ORCID_CLIENT_SECRET=f6a1088a-b8d9-4e3a-992b-ab4a583782b5
 export SHIB_METADATA_PROVIDER_URI=https://directory.test.tuakiri.ac.nz/metadata/tuakiri-test-metadata-signed.xml
+export SENTRY_DSN=https://bec5d4a546aa43e7b01b82d43751990e:ab4cc99df77143718ee9d44d6c19ee5e@sentry.io/226636
 
+## GO:                                                                                      
+export GOPATH=$HOME                                                                         
+export GOROOT=$HOME/go                                                                      
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin                                                   
+                                                                                            
