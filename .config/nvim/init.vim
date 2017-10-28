@@ -89,6 +89,9 @@ Plug 'mxw/vim-jsx' " React JSX support
 Plug 'fatih/vim-go'
 Plug 'airblade/vim-gitgutter'
 
+" Python:
+Plug 'google/yapf', { 'rtp': 'plugins/vim', 'for': 'python' }
+
 " Rust..
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
