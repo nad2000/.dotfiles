@@ -267,3 +267,6 @@ let g:ycm_confirm_extra_conf = 0
 noremap <silent> <C-S>          :update<CR>
 vnoremap <silent> <C-S>         <C-C>:update<CR>
 inoremap <silent> <C-S>         <C-O>:update<CR>
+function! PLAY()
+  normal /mysql
+endfunction
