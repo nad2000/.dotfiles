@@ -1,5 +1,7 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3.6
+source $HOME/.local/bin/virtualenvwrapper.sh
 
 # Path to your oh-my-zsh installation.
   export ZSH=/home/rcir178/.oh-my-zsh
