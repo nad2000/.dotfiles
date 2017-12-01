@@ -36,7 +36,6 @@ EOF
 
 filetype plugin on
 filetype plugin indent on  " required
-
 " https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
 
@@ -87,15 +86,17 @@ Plug 'mxw/vim-jsx' " React JSX support
 
 " GO
 Plug 'fatih/vim-go'
+
+" Git
 Plug 'airblade/vim-gitgutter'
 
-" Python:
+" Python
 Plug 'google/yapf', { 'rtp': 'plugins/vim', 'for': 'python' }
+Plug 'integralist/vim-mypy'
 
 " Rust..
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
-Plug 'integralist/vim-mypy'
 call plug#end()            " required
 
 let g:atags_build_commands_list = [
@@ -187,6 +188,7 @@ augroup FileTypes
   au FileType python nnoremap <LocalLeader>= :0,$!yapf<CR>  " Code formating with YAPF (https://github.com/google/yapf)
   au FileType python map <C-Y> :call yapf#YAPF()<cr>
   au FileType python imap <C-Y> <c-o>:call yapf#YAPF()<cr>
+  au FileType python let g:ale_linters = {'python': ['flake8']}
   au FileType javascript setlocal sw=2 | iabbrev <buffer> iff if ()<esc>i
   au Filetype sh set ts=8 sts=2 sw=2 sr et ai nowrap
   au Filetype vim set ts=8 sts=2 sw=2 sr et ai nowrap
