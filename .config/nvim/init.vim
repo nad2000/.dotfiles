@@ -97,6 +97,9 @@ Plug 'integralist/vim-mypy'
 " Rust..
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
+
+" Generic
+Plug 'editorconfig/editorconfig-vim'
 call plug#end()            " required
 
 let g:atags_build_commands_list = [
