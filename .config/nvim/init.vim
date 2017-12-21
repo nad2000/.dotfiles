@@ -40,6 +40,7 @@ filetype plugin indent on  " required
 call plug#begin('~/.vim/plugged')
 
 " General
+Plug 'lucc/vim-tip'
 Plug 'scrooloose/nerdtree'
 Plug 'w0rp/ale'  " Syntax Checking
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer' }
