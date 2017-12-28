@@ -145,7 +145,7 @@ fi
 [ -d $HOME/.local ] && PATH=$HOME/.local/bin:$PATH
 
 ## export sudo apt-get install most
-hash most 2>/dev/null || export PAGER="most"
+which most &>/dev/null && export PAGER="most"
 
 ## GO:
 export GOPATH=$HOME
