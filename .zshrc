@@ -4,7 +4,11 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3.6
 [ -e $HOME/.local/bin/virtualenvwrapper.sh ] && source $HOME/.local/bin/virtualenvwrapper.sh
 
 # Path to your oh-my-zsh installation.
+<<<<<<< HEAD
 export ZSH=/home/$USER/.oh-my-zsh
+=======
+export ZSH=/home/rcir178/.oh-my-zsh
+>>>>>>> 47819a4... .zprofile added..
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
