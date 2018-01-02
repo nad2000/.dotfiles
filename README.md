@@ -11,6 +11,8 @@ mv .gitconfig .gitconfig.bak
 ln -fs ~/dotfiles/.gitconfig
 mv .bashrc .bashrc.bak
 ln -fs ~/dotfiles/.bashrc 
+ln -fs ~/dotfiles/.zshrc
+ln -fs ~/dotfiles/.zprofile
 ln -fs ~/dotfiles/.emacs 
 ln -fs ~/dotfiles/.tmux.conf 
 ln -fs ~/dotfiles/.config/nvim/init.vim ~/.vimrc
