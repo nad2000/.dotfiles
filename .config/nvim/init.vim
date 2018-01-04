@@ -82,6 +82,7 @@ Plug 'alvan/vim-closetag'
 Plug 'lepture/vim-jinja'  " Jinja2 template support
 
 " JavaScript and stuff
+Plug 'ternjs/tern_for_vim', { 'for': 'javascript' }
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx' " React JSX support
 
