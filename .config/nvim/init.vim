@@ -85,6 +85,7 @@ Plug 'lepture/vim-jinja'  " Jinja2 template support
 Plug 'ternjs/tern_for_vim', { 'for': 'javascript' }
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx' " React JSX support
+Plug 'maksimr/vim-jsbeautify'
 
 " GO
 Plug 'fatih/vim-go'
@@ -195,6 +196,11 @@ augroup FileTypes
   au FileType python imap <C-Y> <c-o>:call yapf#YAPF()<cr>
   au FileType python let g:ale_linters = {'python': ['flake8']}
   au FileType javascript setlocal sw=2 | iabbrev <buffer> iff if ()<esc>i
+  au FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+  au FileType json noremap <buffer> <c-f> :call JsonBeautify()<cr>
+  au FileType jsx noremap <buffer> <c-f> :call JsxBeautify()<cr>
+  au FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+  au FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
   au Filetype sh set ts=8 sts=2 sw=2 sr et ai nowrap
   au Filetype vim set ts=8 sts=2 sw=2 sr et ai nowrap
   au Filetype go set ts=4 sts=4 sw=4 sr noet
