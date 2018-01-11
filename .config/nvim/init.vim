@@ -38,9 +38,8 @@ filetype plugin on
 filetype plugin indent on  " required
 " https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
-
 " General
-Plug 'lucc/vim-tip'
+"Plug 'lucc/vim-tip'
 Plug 'scrooloose/nerdtree'
 Plug 'w0rp/ale'  " Syntax Checking
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer' }
@@ -104,6 +103,7 @@ Plug 'racer-rust/vim-racer'
 " Generic
 Plug 'editorconfig/editorconfig-vim'
 call plug#end()            " required
+"let loaded_matchit = 1
 
 let g:atags_build_commands_list = [
     \"[[ $PWD != $HOME ]] && ctags --exclude=$HOME --exclude='*.html' --exclude='*.js' --exclude='*.pxd' -R -f tags.tmp",
@@ -201,6 +201,11 @@ augroup FileTypes
   au FileType jsx noremap <buffer> <c-f> :call JsxBeautify()<cr>
   au FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
   au FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
+  au FileType javascript vnoremap <buffer>  <c-f> :call RangeJsBeautify()<cr>
+  au FileType json vnoremap <buffer> <c-f> :call RangeJsonBeautify()<cr>
+  au FileType jsx vnoremap <buffer> <c-f> :call RangeJsxBeautify()<cr>
+  au FileType html vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
+  au FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr>
   au Filetype sh set ts=8 sts=2 sw=2 sr et ai nowrap
   au Filetype vim set ts=8 sts=2 sw=2 sr et ai nowrap
   au Filetype go set ts=4 sts=4 sw=4 sr noet
@@ -273,7 +278,7 @@ set mouse=cn
 " Why YCM is so user unfiendly:
 let g:ycm_confirm_extra_conf = 0
 
-" Cipboard for all operations 
+" Cipboard for all operations
 "" set clipboard+=unnamedplus  " better to user '*' or '+' register
 
 " CTRL-S for saveing:
