@@ -218,6 +218,7 @@ augroup FileTypes
   au FileType go nmap <Leader>s <Plug>(go-implements)
   au FileType go nmap <Leader>i <Plug>(go-info)
 augroup END
+let g:ale_fix_on_save = 1
 
 " Jump to the last cursor position in the file:
 if has("autocmd")
