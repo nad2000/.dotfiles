@@ -187,6 +187,7 @@ export SHIB_IDP_DOMAINNAME=directory.test.tuakiri.ac.nz
 export METADATA_CERT_FILE=tuakiri-test-metadata-cert.pem
 export TOKEN_PASSWORD_SALT=testsalt
 export TOKEN_SECRET_KEY=testsecret
+export FLASK_APP=orcid_hub
 
 #export MAIL_DEFAULT_SENDER=no-reply@orcidhub.org.nz
 #export MAIL_PASSWORD=AgPDjD2UUs7O7Qg7YZxYXnMyl5Rjg6j0/6mgHz4NOQkr
