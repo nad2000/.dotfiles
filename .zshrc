@@ -1,7 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3.6
-source $HOME/.local/bin/virtualenvwrapper.sh
+[ -e $HOME/.local/bin/virtualenvwrapper.sh ] && source $HOME/.local/bin/virtualenvwrapper.sh
 
 # Path to your oh-my-zsh installation.
 export ZSH=/home/$USER/.oh-my-zsh
@@ -125,14 +125,14 @@ export ORCID_CLIENT_SECRET=f6a1088a-b8d9-4e3a-992b-ab4a583782b5
 export SHIB_METADATA_PROVIDER_URI=https://directory.test.tuakiri.ac.nz/metadata/tuakiri-test-metadata-signed.xml
 export SENTRY_DSN=https://bec5d4a546aa43e7b01b82d43751990e:ab4cc99df77143718ee9d44d6c19ee5e@sentry.io/226636
 export DATABASE_URL=postgresql://dev.orcidhub.org.nz:5432/orcidhub
-export EXTERNAL_SP=https://dev.orcidhub.org.nz/Tuakiri/SP         
-export FLASK_APP=orcid_hub                                        
+export EXTERNAL_SP=https://dev.orcidhub.org.nz/Tuakiri/SP
+export FLASK_APP=orcid_hub
 
-## GO:                                                                                      
-export GOPATH=$HOME                                                                         
-export GOROOT=$HOME/go                                                                      
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin                                                   
-                                                                                            
+## GO:
+export GOPATH=$HOME
+export GOROOT=$HOME/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
 # NPM packages in homedir
 export NPM_PACKAGES="$HOME/.npm-packages"
 
