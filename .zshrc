@@ -90,7 +90,7 @@ source $ZSH/oh-my-zsh.sh
 #
 #
 # Orcid Hub environments:
-ENV=dev
+ENV=dev0
 #ENV=test
 POSTGRES_PASSWORD=p455w0rd
 POSTGRES_USER=orcidhub
