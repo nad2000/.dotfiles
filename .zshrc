@@ -133,8 +133,13 @@ export GOPATH=$HOME
 export GOROOT=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
+
+## Rust:
+[ -d $HOME/.cargo/bin ] && PATH=$HOME/.cargo/bin:$PATH
+
 # NPM packages in homedir
 export NPM_PACKAGES="$HOME/.npm-packages"
+[ ! -d $NPM_PACKAGES ] && mkdir -p $NPM_PACKAGES
 
 # Tell our environment about user-installed node tools
 PATH="$NPM_PACKAGES/bin:$PATH"
