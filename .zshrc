@@ -127,6 +127,7 @@ export SENTRY_DSN=https://bec5d4a546aa43e7b01b82d43751990e:ab4cc99df77143718ee9d
 export DATABASE_URL=postgresql://dev.orcidhub.org.nz:5432/orcidhub
 export EXTERNAL_SP=https://dev.orcidhub.org.nz/Tuakiri/SP
 export FLASK_APP=orcid_hub
+export FLASK_ENV=development
 
 ## GO:
 export GOPATH=$HOME
@@ -150,3 +151,6 @@ export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 # Tell Node about these packages
 export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 
+
+# added by travis gem
+[ -f /home/rcir178/.travis/travis.sh ] && source /home/rcir178/.travis/travis.sh

@@ -220,3 +220,6 @@ MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 # Tell Node about these packages
 NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 
+
+# added by travis gem
+[ -f /home/rcir178/.travis/travis.sh ] && source /home/rcir178/.travis/travis.sh
