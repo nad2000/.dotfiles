@@ -11,3 +11,5 @@
 	name = Rad Cirskis
 [push]
 	default = simple
+[merge]
+  tool = meld
