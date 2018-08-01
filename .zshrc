@@ -117,7 +117,7 @@ export MAIL_PORT=2525
 
 export USER_UID=$(id -u)
 export USER_GID=$(id -g)
-export BACKUP_DATABASE_URL=postgresql://orcidhub:p455w0rd@backup.orcidhub.org.nz:5432/orcidhub
+# export BACKUP_DATABASE_URL=postgresql://orcidhub:p455w0rd@backup.orcidhub.org.nz:5432/orcidhub
 export SECRET_KEY=f5e95a2e69e61e0891d58c831125533ab514ef58590b1c52bd5cb7d1
 export OAUTHLIB_INSECURE_TRANSPORT=1
 export ORCID_CLIENT_ID=APP-42W3G8FS4OHGM562
@@ -134,7 +134,6 @@ export GOPATH=$HOME
 export GOROOT=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
-
 ## Rust:
 [ -d $HOME/.cargo/bin ] && PATH=$HOME/.cargo/bin:$PATH
 
@@ -150,7 +149,6 @@ export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
 # Tell Node about these packages
 export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
-
 
 # added by travis gem
 [ -f /home/rcir178/.travis/travis.sh ] && source /home/rcir178/.travis/travis.sh
