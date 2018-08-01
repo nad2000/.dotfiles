@@ -7,7 +7,7 @@
 
 ```
 cd ~
-mkdir -p  ~/.config/nvim/
+mkdir -p ~/.config/nvim/
 mkdir -p ~/.local/share/nvim/site/
 mv .gitconfig .gitconfig.bak
 ln -fs ~/dotfiles/.gitconfig
