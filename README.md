@@ -8,6 +8,7 @@
 ```
 cd ~
 mkdir -p  ~/.config/nvim/
+mkdir -p ~/.local/share/nvim/site/
 mv .gitconfig .gitconfig.bak
 ln -fs ~/dotfiles/.gitconfig
 mv .bashrc .bashrc.bak
@@ -21,5 +22,6 @@ ln -fs ~/dotfiles/.config/nvim/init.vim ~/.nvimrc
 ln -fs ~/dotfiles/.config/nvim/init.vim ~/.config/nvim/init.vim
 ln -fs ~/dotfiles/.vim ~/.vim
 ln -fs ~/dotfiles/.config/fontconfig/.fonts.conf ~/.config/fontconfig/.fonts.conf
+ln -fs vim ~/dotfiles/.vim/autoload ~/.local/share/nvim/site/autoload
 
 ```
