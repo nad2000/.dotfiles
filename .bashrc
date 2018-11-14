@@ -5,6 +5,7 @@
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
+<<<<<<< HEAD
     *) return;;
 esac
 
@@ -22,6 +23,11 @@ esac
 #   # done
 # fi
 
+=======
+      *) return;;
+esac
+
+>>>>>>> 4bfc838... support with ubuntu 15.x
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -57,7 +63,11 @@ esac
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
+<<<<<<< HEAD
 force_color_prompt=yes
+=======
+#force_color_prompt=yes
+>>>>>>> 4bfc838... support with ubuntu 15.x
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -107,8 +117,11 @@ alias la='ls -A'
 alias l='ls -CF'
 alias python=python3
 
+<<<<<<< HEAD
 which neovim &>/dev/null && alias vim='vim'
 
+=======
+>>>>>>> 4bfc838... support with ubuntu 15.x
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
