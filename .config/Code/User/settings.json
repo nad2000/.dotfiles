@@ -1,0 +1,29 @@
+{
+    "workbench.colorTheme": "Zenburn",
+    "vim.enableNeovim": true,
+    "vim.neovimPath": "/usr/bin/nvim",
+    "vim.statusBarColorControl": true,
+    "vim.statusBarColors": {
+        "normal": "#005f5f",
+        "insert": "#5f0000",
+        "visual": "#fda50f",
+        "visualline": "#d4af37",
+        "visualblock": "#c49102",
+        "replace": "#000000"
+    },
+    "vim.cursorStylePerMode" : {
+        "normal": "underline",
+        "insert": "line-thin",
+        "replace": "block-outline"
+    },
+    "editor.fontSize": 12,
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#005f5f",
+        "statusBar.noFolderBackground": "#005f5f",
+        "statusBar.debuggingBackground": "#005f5f"
+    },
+    "gitlens.advanced.messages": {
+        "suppressShowKeyBindingsNotice": true
+    },
+    "files.autoGuessEncoding": true
+}

@@ -25,3 +25,16 @@ ln -fs ~/dotfiles/.vim/autoload ~/.local/share/nvim/site/autoload
 ln -fs ~/dotfiles/.config/Code/User/settings.json ~/.config/Code/User/settings.json
 
 ```
+3. install stuff:
+```
+sudo apt-get install curl exuberant-ctags ack-grep neovim
+pip install -U --user pep8 flake8 pyflakes isort yapf
+
+```
+4. install vim-plug[https://github.com/junegunn/vim-plug]:
+```
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+
+

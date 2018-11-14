@@ -13,3 +13,7 @@
 	default = simple
 [merge]
   tool = meld
+[color]
+	branch = auto
+	diff = auto
+	status = auto

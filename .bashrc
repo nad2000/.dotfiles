@@ -105,6 +105,7 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias python=python3
 
 which neovim &>/dev/null && alias vim='vim'
 
@@ -200,9 +201,10 @@ export USER_GID=$(id -g)
 export BACKUP_DATABASE_URL=postgresql://orcidhub:p455w0rd@backup.orcidhub.org.nz:5432/orcidhub
 export SECRET_KEY=f5e95a2e69e61e0891d58c831125533ab514ef58590b1c52bd5cb7d1
 export OAUTHLIB_INSECURE_TRANSPORT=1
-export ORCID_CLIENT_ID=APP-42W3G8FS4OHGM562
-export ORCID_CLIENT_SECRET=f6a1088a-b8d9-4e3a-992b-ab4a583782b5
+export ORCID_CLIENT_ID=APP-6DZOOMOKJCYRY6GE
+export ORCID_CLIENT_SECRET=f7a2d69a-b3f9-4988-8772-160db671d814
 export SHIB_METADATA_PROVIDER_URI=https://directory.test.tuakiri.ac.nz/metadata/tuakiri-test-metadata-signed.xml
+export FLASK_ENV=development
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
