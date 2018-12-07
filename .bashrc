@@ -71,9 +71,9 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-  #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\] '
-    # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\h\[\033[01;34m\] \W \$\[\033[00m\] '
+    # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    # PS1='\[\033[0;32m\]\u\[\033[0;36m\] @ \h \w\[\033[0;32m\]$(__git_ps1)\n└─ ▶\[\033[0m\] '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[0;36m\]\w\[\033[0;32m\]$(__git_ps1)\[\033[00m\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -92,8 +92,8 @@ esac
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
 
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
@@ -107,6 +107,7 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias python=python3
 
 which neovim &>/dev/null && alias vim='vim'
 
@@ -205,9 +206,10 @@ export USER_GID=$(id -g)
 export BACKUP_DATABASE_URL=postgresql://orcidhub:p455w0rd@backup.orcidhub.org.nz:5432/orcidhub
 export SECRET_KEY=f5e95a2e69e61e0891d58c831125533ab514ef58590b1c52bd5cb7d1
 export OAUTHLIB_INSECURE_TRANSPORT=1
-export ORCID_CLIENT_ID=APP-42W3G8FS4OHGM562
-export ORCID_CLIENT_SECRET=f6a1088a-b8d9-4e3a-992b-ab4a583782b5
+export ORCID_CLIENT_ID=APP-6DZOOMOKJCYRY6GE
+export ORCID_CLIENT_SECRET=f7a2d69a-b3f9-4988-8772-160db671d814
 export SHIB_METADATA_PROVIDER_URI=https://directory.test.tuakiri.ac.nz/metadata/tuakiri-test-metadata-signed.xml
+export FLASK_ENV=development
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
@@ -223,3 +225,6 @@ MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 # Tell Node about these packages
 NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 
+
+# added by travis gem
+[ -f /home/rcir178/.travis/travis.sh ] && source /home/rcir178/.travis/travis.sh

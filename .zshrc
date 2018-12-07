@@ -117,24 +117,31 @@ export MAIL_PORT=2525
 
 export USER_UID=$(id -u)
 export USER_GID=$(id -g)
-export BACKUP_DATABASE_URL=postgresql://orcidhub:p455w0rd@backup.orcidhub.org.nz:5432/orcidhub
+# export BACKUP_DATABASE_URL=postgresql://orcidhub:p455w0rd@backup.orcidhub.org.nz:5432/orcidhub
 export SECRET_KEY=f5e95a2e69e61e0891d58c831125533ab514ef58590b1c52bd5cb7d1
 export OAUTHLIB_INSECURE_TRANSPORT=1
-export ORCID_CLIENT_ID=APP-42W3G8FS4OHGM562
-export ORCID_CLIENT_SECRET=f6a1088a-b8d9-4e3a-992b-ab4a583782b5
+# export ORCID_CLIENT_ID=APP-42W3G8FS4OHGM562
+# export ORCID_CLIENT_SECRET=f6a1088a-b8d9-4e3a-992b-ab4a583782b5
+export ORCID_CLIENT_ID=APP-6DZOOMOKJCYRY6GE
+export ORCID_CLIENT_SECRET=f7a2d69a-b3f9-4988-8772-160db671d814
 export SHIB_METADATA_PROVIDER_URI=https://directory.test.tuakiri.ac.nz/metadata/tuakiri-test-metadata-signed.xml
 export SENTRY_DSN=https://bec5d4a546aa43e7b01b82d43751990e:ab4cc99df77143718ee9d44d6c19ee5e@sentry.io/226636
 export DATABASE_URL=postgresql://dev.orcidhub.org.nz:5432/orcidhub
 export EXTERNAL_SP=https://dev.orcidhub.org.nz/Tuakiri/SP
 export FLASK_APP=orcid_hub
+export FLASK_ENV=development
 
 ## GO:
 export GOPATH=$HOME
 export GOROOT=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
+## Rust:
+[ -d $HOME/.cargo/bin ] && PATH=$HOME/.cargo/bin:$PATH
+
 # NPM packages in homedir
 export NPM_PACKAGES="$HOME/.npm-packages"
+[ ! -d $NPM_PACKAGES ] && mkdir -p $NPM_PACKAGES
 
 # Tell our environment about user-installed node tools
 PATH="$NPM_PACKAGES/bin:$PATH"
@@ -145,3 +152,5 @@ export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 # Tell Node about these packages
 export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 
+# added by travis gem
+[ -f /home/rcir178/.travis/travis.sh ] && source /home/rcir178/.travis/travis.sh

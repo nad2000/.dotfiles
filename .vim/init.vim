@@ -1,1 +1,1 @@
-/home/nad2000/dotfiles/.config/nvim/init.vim
+../.config/nvim/init.vim

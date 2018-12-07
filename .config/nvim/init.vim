@@ -37,13 +37,16 @@ inoremap <right> <nop>
 filetype plugin on
 filetype plugin indent on  " required
 " https://github.com/junegunn/vim-plug
+
 call plug#begin('~/.vim/plugged')
 " General
 "Plug 'lucc/vim-tip'
 Plug 'scrooloose/nerdtree'
 Plug 'w0rp/ale'  " Syntax Checking
+Plug 'ervandew/supertab'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer' }
-"Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'  " Track the engine.
+Plug 'honza/vim-snippets' " Snippets are separated from the engine. Add this if you want them
 Plug 'tpope/vim-surround'
 Plug 'fntlnz/atags.vim' " helps you creating and updating your tag files
 Plug 'AndrewRadev/splitjoin.vim'  " gS - split; gJ - join
@@ -53,10 +56,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary' " gc - toggle, gcap - comments out paragraph
 " Plug 'ctrlpvim/ctrlp.vim' " active fork of 'kien/ctrlp.vim'
 Plug 'jalvesaq/vimcmdline'
-"Plug 'SirVer/ultisnips'
 "Plug 'davidhalter/jedi-vim' " replaced with 'Valloric/YouCompleteMe'
 "Plug 'msanders/snipmate.vim'
-"Plug 'honza/vim-snippets'
 "Plug 'mkitt/tabline.vim'
 "Plug 'tpope/vim-markdown'
 "Plug 'nelstrom/vim-markdown-folding'
@@ -87,7 +88,9 @@ Plug 'mxw/vim-jsx' " React JSX support
 Plug 'maksimr/vim-jsbeautify'
 
 " GO
+let g:go_version_warning = 0
 Plug 'fatih/vim-go'
+Plug 'nsf/gocode'
 
 " Git
 Plug 'airblade/vim-gitgutter'
@@ -95,6 +98,8 @@ Plug 'airblade/vim-gitgutter'
 " Python
 Plug 'google/yapf', { 'rtp': 'plugins/vim', 'for': 'python' }
 Plug 'integralist/vim-mypy'
+" Automatically sort python imports
+Plug 'fisadev/vim-isort'
 
 " Rust..
 Plug 'rust-lang/rust.vim'
@@ -102,6 +107,9 @@ Plug 'racer-rust/vim-racer'
 
 " Generic
 Plug 'editorconfig/editorconfig-vim'
+
+" post install (yarn install | npm install)
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 call plug#end()            " required
 "let loaded_matchit = 1
 
@@ -115,7 +123,9 @@ let g:closetag_filenames = "*.html,*.xhtml,*.phtml" " for 'alvan/vim-closetag'
 " Turn on powerline fonts:
 """let g:airline_powerline_fonts = 1
 " Enable the list of buffers
-"let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='alduin'
+
 
 " Style:
 colorscheme zenburn
@@ -185,7 +195,7 @@ set foldtext=MyFoldText()
 augroup FileTypes
   au!
   au BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm set ft=jinja
-  au BufWritePre *.py,*.c,*.php,*.html :%s/ \+$//ge
+  au BufWritePre *.py,*.c,*.php,*.html :%s/\s+$//ge
   au BufWritePost * call atags#generate()
   au FileType html setl sw=2 sts=2 et
   au FileType jinja setl sw=2 sts=2 et
@@ -289,3 +299,27 @@ inoremap <silent> <C-S>         <C-O>:update<CR>
 function! PLAY()
   normal /mysql
 endfunction
+
+" Search in subdirs:
+set path+=**
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+" let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+" Snippep completion:
+let g:UltiSnipsExpandTrigger = "<nop>"
+let g:ulti_expand_or_jump_res = 0
+function ExpandSnippetOrCarriageReturn()
+    let snippet = UltiSnips#ExpandSnippetOrJump()
+    if g:ulti_expand_or_jump_res > 0
+        return snippet
+    else
+        return "\<CR>"
+    endif
+endfunction
+inoremap <expr> <CR> pumvisible() ? "<C-R>=ExpandSnippetOrCarriageReturn()<CR>" : "\<CR>"
