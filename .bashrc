@@ -150,8 +150,11 @@ which most &>/dev/null && export PAGER="most"
 
 ## GO:
 export GOPATH=$HOME
-export GOROOT=$HOME/go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+if [ ~d $HOME/go ] ; then
+  export GOROOT=$HOME/go
+  export PATH=$PATH:$GOROOT/bin
+fi
+export PATH=$PATH:$GOPATH/bin
 
 [ -s "/home/nad2000/.dnx/dnvm/dnvm.sh" ] && . "/home/nad2000/.dnx/dnvm/dnvm.sh" # Load dnvm
 

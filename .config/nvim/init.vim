@@ -242,10 +242,10 @@ let mapleader = ","
 let maplocalleader = "\\"
 
 " Remember the last open terminal buffer ID:
-augroup Terminal
-  au!
-  au TermOpen * let g:last_terminal_job_id = b:terminal_job_id
-augroup END
+" augroup Terminal
+"   au!
+"   au TermOpen * let g:last_terminal_job_id = b:terminal_job_id
+" augroup END
 
 function! REPLSend(lines)
   call jobsend(g:last_terminal_job_id, add(a:lines, ''))
