@@ -150,7 +150,7 @@ which most &>/dev/null && export PAGER="most"
 
 ## GO:
 export GOPATH=$HOME
-if [ ~d $HOME/go ] ; then
+if [ -d $HOME/go ] ; then
   export GOROOT=$HOME/go
   export PATH=$PATH:$GOROOT/bin
 fi
