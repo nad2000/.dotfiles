@@ -23,6 +23,11 @@ inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 
+" <ESC> from INSERT mode via 'jj':
+vmap jj <ESC>
+imap jj <ESC>
+cmap jj <ESC>
+
 "
 "python with virtualenv support
 " py << EOF
