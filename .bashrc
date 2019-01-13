@@ -109,7 +109,7 @@ alias la='ls -A'
 alias l='ls -CF'
 alias python=python3
 
-if which neovim &>/dev/null; then
+if which nvim &>/dev/null; then
   alias vim='nvim'
   alias vi='nvim'
 fi
