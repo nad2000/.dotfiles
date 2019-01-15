@@ -16,6 +16,7 @@ ln -fs ~/dotfiles/.zshrc
 ln -fs ~/dotfiles/.zprofile
 ln -fs ~/dotfiles/.emacs
 ln -fs ~/dotfiles/.tmux.conf
+ln -fs ~/dotfiles/.clang-format
 ln -fs ~/dotfiles/.config/nvim/init.vim ~/.vimrc
 ln -fs ~/dotfiles/.config/nvim/init.vim ~/.nvimrc
 ln -fs ~/dotfiles/.config/nvim/init.vim ~/.config/nvim/init.vim

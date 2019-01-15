@@ -82,6 +82,9 @@ Plug 'majutsushi/tagbar' " provides an easy way to browse the tags of the curren
 " C
 Plug 'vivien/vim-linux-coding-style'
 
+" C++/clang
+Plug 'rhysd/vim-clang-format'
+
 " HTML
 Plug 'alvan/vim-closetag'
 Plug 'lepture/vim-jinja'  " Jinja2 template support
@@ -232,6 +235,8 @@ augroup FileTypes
   au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
   au FileType go nmap <Leader>s <Plug>(go-implements)
   au FileType go nmap <Leader>i <Plug>(go-info)
+  au Filetype cpp set sts=2 sw=2 sr et cino=:0,g0,(0,Ws,l1
+  au Filetype cpp ClangFormatAutoEnable
 augroup END
 let g:ale_fix_on_save = 1
 
@@ -328,3 +333,20 @@ function ExpandSnippetOrCarriageReturn()
     endif
 endfunction
 inoremap <expr> <CR> pumvisible() ? "<C-R>=ExpandSnippetOrCarriageReturn()<CR>" : "\<CR>"
+
+" LLVM C++ Style:
+let g:clang_format#style_options = {
+  \ "AccessModifierOffset" : -4,
+  \ "AllowShortIfStatementsOnASingleLine" : "true",
+  \ "AlwaysBreakTemplateDeclarations" : "true",
+  \ "Standard" : "C++2a"}
+
+" map to <Leader>cf in C++ code
+"autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+"autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
+autocmd FileType cpp,objc nnoremap <c-f> :<C-u>ClangFormat<CR>
+autocmd FileType cpp,objc vnoremap <c-f> :ClangFormat<CR>
+" if you install vim-operator-user
+"autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
+" Toggle auto formatting:
+nmap <Leader>C :ClangFormatAutoToggle<CR>
