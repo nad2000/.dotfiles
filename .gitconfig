@@ -17,3 +17,5 @@
 	branch = auto
 	diff = auto
 	status = auto
+[credential]
+	helper = cache
