@@ -23,10 +23,10 @@ inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 
-" <ESC> from INSERT mode via 'jj':
-vmap jj <ESC>
-imap jj <ESC>
-cmap jj <ESC>
+" <ESC> from INSERT mode via 'jk':
+vmap jk <ESC>
+imap jk <ESC>
+cmap jk <ESC>
 
 "
 "python with virtualenv support
@@ -339,7 +339,7 @@ let g:clang_format#style_options = {
   \ "AccessModifierOffset" : -4,
   \ "AllowShortIfStatementsOnASingleLine" : "true",
   \ "AlwaysBreakTemplateDeclarations" : "true",
-  \ "Standard" : "C++2a"}
+  \ "Standard" : "C++11"}
 
 " map to <Leader>cf in C++ code
 "autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
