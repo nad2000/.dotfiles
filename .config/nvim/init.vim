@@ -23,10 +23,14 @@ inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 
-" <ESC> from INSERT mode via 'jj':
-vmap jj <ESC>
-imap jj <ESC>
-cmap jj <ESC>
+" <ESC> from INSERT mode via 'jk':
+vmap jk <ESC>
+vmap JK <ESC>
+imap jk <ESC>
+imap JK <ESC>
+cmap jk <ESC>
+cmap JK <ESC>
+set timeoutlen=400
 
 "
 "python with virtualenv support
