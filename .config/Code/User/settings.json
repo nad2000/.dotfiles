@@ -25,6 +25,5 @@
     "gitlens.advanced.messages": {
         "suppressShowKeyBindingsNotice": true
     },
-    "files.autoGuessEncoding": true,
-    "vsicons.dontShowNewVersionMessage": true
+    "files.autoGuessEncoding": true
 }

@@ -1,6 +1,6 @@
 " vim: foldmethod=marker
 
-" enter the current millenium
+" enter the current millennium
 set nocompatible
 set autoread
 set encoding=utf-8
@@ -54,6 +54,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'w0rp/ale'  " Syntax Checking
 Plug 'ervandew/supertab'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer' }
+" Install nightly build, replace ./install.sh with install.cmd on windows
+" Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
 Plug 'SirVer/ultisnips'  " Track the engine.
 Plug 'honza/vim-snippets' " Snippets are separated from the engine. Add this if you want them
 Plug 'tpope/vim-surround'
@@ -76,7 +78,7 @@ Plug 'jalvesaq/vimcmdline'
 "Plug 'git://git.wincent.com/command-t.git'
 "Plug 'benekastah/neomake'
 
-" Themeing
+" Theming
 Plug 'wikitopian/hardmode'  " disable arrow keys and other vim-smells
 Plug 'jnurmine/Zenburn'
 Plug 'vim-airline/vim-airline'
@@ -89,20 +91,26 @@ Plug 'vivien/vim-linux-coding-style'
 " C++/clang
 Plug 'rhysd/vim-clang-format'
 
+" C#
+Plug 'OmniSharp/omnisharp-vim'
+
 " HTML
 Plug 'alvan/vim-closetag'
 Plug 'lepture/vim-jinja'  " Jinja2 template support
+"Plug 'vim-scripts/matchit.zip'
 
 " JavaScript and stuff
 Plug 'ternjs/tern_for_vim', { 'for': 'javascript' }
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx' " React JSX support
 Plug 'maksimr/vim-jsbeautify'
+Plug 'leafgarland/typescript-vim'
 
 " GO
 let g:go_version_warning = 0
 Plug 'fatih/vim-go'
-Plug 'nsf/gocode'
+Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.vim/plugged/gocode/nvim/symlink.sh' }
+Plug 'buoto/gotests-vim'
 
 " Git
 Plug 'airblade/vim-gitgutter'
@@ -124,6 +132,18 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 call plug#end()            " required
 "let loaded_matchit = 1
+
+" Nvim specific key mappings (for term). NB! it will conflit with FZF.
+if exists(':tnoremap')
+  " Enter term with 'A'
+  autocmd BufWinEnter,WinEnter term://* startinsert!
+  tnoremap <silent> <c-h> <c-\><c-n>:TmuxNavigateLeft<cr>
+  tnoremap <silent> <c-j> <c-\><c-n>:TmuxNavigateDown<cr>
+  tnoremap <silent> <c-k> <c-\><c-n>:TmuxNavigateUp<cr>
+  tnoremap <silent> <c-l> <c-\><c-n>:TmuxNavigateRight<cr>
+  " tnoremap <silent> <c-\> <c-\><c-n>:TmuxNavigatePrevious<cr>
+  tnoremap jk <C-\><C-n> 
+endif
 
 let g:atags_build_commands_list = [
     \"[[ $PWD != $HOME ]] && ctags --exclude=$HOME --exclude='*.html' --exclude='*.js' --exclude='*.pxd' -R -f tags.tmp",

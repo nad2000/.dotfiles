@@ -204,8 +204,7 @@ export FLASK_APP=orcid_hub
 export MAIL_SERVER=dev.orcidhub.org.nz
 export MAIL_PORT=2525
 
-export USER_UID=$(id -u)
-export USER_GID=$(id -g)
+export UID USER_GID=$(id -g)
 export BACKUP_DATABASE_URL=postgresql://orcidhub:p455w0rd@backup.orcidhub.org.nz:5432/orcidhub
 export SECRET_KEY=f5e95a2e69e61e0891d58c831125533ab514ef58590b1c52bd5cb7d1
 export OAUTHLIB_INSECURE_TRANSPORT=1
@@ -235,4 +234,9 @@ NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 [ -f /home/rcir178/.travis/travis.sh ] && source /home/rcir178/.travis/travis.sh
 
 # Swap CAPS with ESC:
-which /usr/bin/setxkbmap &>/dev/null && /usr/bin/setxkbmap -option "caps:swapescape"
+#which /usr/bin/setxkbmap &>/dev/null && /usr/bin/setxkbmap -option "caps:swapescape"
+
+if [ -d $HOME/dotnet ] ; then 
+  export DOTNET_ROOT=$HOME/dotnet 
+  export PATH=$PATH:$HOME/dotnet
+fi
