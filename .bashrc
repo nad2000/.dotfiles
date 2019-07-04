@@ -113,6 +113,7 @@ if which nvim &>/dev/null; then
   alias vim='nvim'
   alias vi='nvim'
 fi
+alias emacs='emacs -nw'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert

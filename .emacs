@@ -9,6 +9,10 @@
 ;;; VIM-mode:
 (require 'evil)
 (evil-mode 1)
+(use-package evil-surround
+  :ensure t
+  :config
+  (global-evil-surround-mode 1))
 
 ;;; Style and theme:
 (load-theme 'zenburn t)

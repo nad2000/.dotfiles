@@ -110,6 +110,7 @@ Plug 'leafgarland/typescript-vim'
 let g:go_version_warning = 0
 Plug 'fatih/vim-go'
 Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.vim/plugged/gocode/nvim/symlink.sh' }
+" go get -u github.com/cweill/gotests/...
 Plug 'buoto/gotests-vim'
 
 " Git
