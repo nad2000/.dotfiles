@@ -122,6 +122,9 @@ Plug 'integralist/vim-mypy'
 " Automatically sort python imports
 Plug 'fisadev/vim-isort'
 
+" Robot Framework
+Plug 'Costallat/robotframework-vim'
+
 " Rust..
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
