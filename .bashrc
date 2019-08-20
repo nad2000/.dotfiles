@@ -109,11 +109,23 @@ alias la='ls -A'
 alias l='ls -CF'
 alias python=python3
 
-if which nvim &>/dev/null; then
+if which nvim &>/dev/null ; then
   alias vim='nvim'
   alias vi='nvim'
 fi
 alias emacs='emacs -nw'
+
+if which ctags &>/dev/null ; then
+  function ta () {
+    #clean older info
+    rm -rf tags
+    rm -rf cscope.files
+    rm -rf cscope.out
+    # generate new info
+    find $PWD | egrep -i "\.(c|h|hpp|cpp)$" > cscope.files
+    ctags -R . *.{c,h,hpp,cpp} --tag-relative=yes ./ &>/dev/null
+  }
+fi
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -159,6 +171,7 @@ if [ -d $HOME/go ] ; then
   export PATH=$PATH:$GOROOT/bin
 fi
 export PATH=$PATH:$GOPATH/bin
+export GO111MODULE=on
 
 [ -s "/home/nad2000/.dnx/dnvm/dnvm.sh" ] && . "/home/nad2000/.dnx/dnvm/dnvm.sh" # Load dnvm
 
@@ -172,6 +185,7 @@ fi
 [ -d ~/android-studio/jre/bin ] && PATH=~/android-studio/jre/bin:$PATH
 [ -d ~/spark-2.0.1-bin-hadoop2.7 ] && PATH=~/spark-2.0.1-bin-hadoop2.7/bin:$PATH
 [ -d $HOME/.cargo/bin ] && PATH=$HOME/.cargo/bin:$PATH
+[ -d /snap ] && PATH=/snap/bin:$PATH
 
 which kubectl &>/dev/null && source <(kubectl completion bash)
 

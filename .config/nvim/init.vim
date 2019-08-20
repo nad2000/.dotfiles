@@ -10,8 +10,12 @@ set smartcase
 set relativenumber
 set number
 
-"Switch between buffers without saving
+" Switch between buffers without saving
 set hidden
+
+" Switch between buffers with C-S-PageUp/PageDown:
+noremap <c-s-PageDown> <esc>:bn<cr>
+noremap <c-s-PageUp> <esc>:bp<cr>
 
 """ Disable arrow keys
 nnoremap <up> <nop>
@@ -31,6 +35,8 @@ imap JK <ESC>
 cmap jk <ESC>
 cmap JK <ESC>
 set timeoutlen=400
+
+" 
 
 "
 "python with virtualenv support
@@ -79,7 +85,7 @@ Plug 'jalvesaq/vimcmdline'
 "Plug 'benekastah/neomake'
 
 " Theming
-Plug 'wikitopian/hardmode'  " disable arrow keys and other vim-smells
+Plug 'takac/vim-hardtime'  " disable arrow keys and other vim-smells
 Plug 'jnurmine/Zenburn'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -134,6 +140,12 @@ Plug 'editorconfig/editorconfig-vim'
 
 " post install (yarn install | npm install)
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+
+" Terraform
+Plug 'hashivim/vim-terraform'
+Plug 'vim-syntastic/syntastic'
+Plug 'juliosueiras/vim-terraform-completion'
+
 call plug#end()            " required
 "let loaded_matchit = 1
 
@@ -146,7 +158,9 @@ if exists(':tnoremap')
   tnoremap <silent> <c-k> <c-\><c-n>:TmuxNavigateUp<cr>
   tnoremap <silent> <c-l> <c-\><c-n>:TmuxNavigateRight<cr>
   " tnoremap <silent> <c-\> <c-\><c-n>:TmuxNavigatePrevious<cr>
-  tnoremap jk <C-\><C-n> 
+  tnoremap jk <c-\><c-n> 
+  tnoremap <c-s-PageDown> <c-\><c-n>:bn<cr>
+  tnoremap <c-s-PageUp> <c-\><c-n>:bp<cr>
 endif
 
 let g:atags_build_commands_list = [
@@ -238,8 +252,8 @@ augroup FileTypes
   au Filetype python set ts=8 sts=4 sw=4 sr et ai | iabbrev <buffer> iff if:<esc>i
   au Filetype python nnoremap <LocalLeader>i :!isort %<CR><CR>  " Import re-sorting (https://github.com/timothycrosley/isort)
   au FileType python nnoremap <LocalLeader>= :0,$!yapf<CR>  " Code formating with YAPF (https://github.com/google/yapf)
-  au FileType python map <C-Y> :call yapf#YAPF()<cr>
-  au FileType python imap <C-Y> <c-o>:call yapf#YAPF()<cr>
+  au FileType python map <c-s-y> :call yapf#YAPF()<cr>
+  au FileType python imap <c-s-y> <c-o>:call yapf#YAPF()<cr>
   au FileType python let g:ale_linters = {'python': ['flake8']}
   au FileType javascript setlocal sw=2 | iabbrev <buffer> iff if ()<esc>i
   au FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
@@ -305,7 +319,7 @@ iabbrev adn and
 iabbrev waht what
 iabbrev tehn then
 iabbrev @@  nad2000@gmail.com
-iabbrev ccopy Copyright 2017 Rad Cirskis, all rights reserved.
+iabbrev ccopy Copyright 2019 Rad Cirskis, all rights reserved.
 iabbrev ssig -- <cr>Rad Cirskis<cr>nad2000@gmail.com
 
 " Golang support (vim-go):
@@ -378,3 +392,10 @@ autocmd FileType cpp,objc vnoremap <c-f> :ClangFormat<CR>
 "autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
 " Toggle auto formatting:
 nmap <Leader>C :ClangFormatAutoToggle<CR>
+
+" Zoom-in/out:
+" ^w_ -- increases the hight to the max
+" ^w| -- increases the width to the max
+noremap Zz <c-w>_ \| <c-w>\|
+" ^w= -- makes all windows the same height & width
+noremap Zo <c-w>=

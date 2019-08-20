@@ -22,3 +22,5 @@
 (require 'powerline-evil)
 (powerline-evil-vim-color-theme)
 ;;(require 'airline-themes)
+
+(require 'go-mode nil t)
