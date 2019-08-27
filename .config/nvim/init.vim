@@ -36,7 +36,11 @@ cmap jk <ESC>
 cmap JK <ESC>
 set timeoutlen=400
 
-" 
+" stop c, s form yanking
+nnoremap c "_c
+xnoremap c "_c
+nnoremap s "_s
+xnoremap s "_s
 
 "
 "python with virtualenv support
@@ -52,6 +56,11 @@ set timeoutlen=400
 filetype plugin on
 filetype plugin indent on  " required
 " https://github.com/junegunn/vim-plug
+if ! filereadable(expand('~/.vim/autoload/plug.vim'))
+  echo "Downloading junegunn/vim-plug to manage plugins..."
+  silent !mkdir -p ~/.vim/autoload/
+  silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > ~/.vim/autoload/plug.vim
+endif
 
 call plug#begin('~/.vim/plugged')
 " General
@@ -146,6 +155,8 @@ Plug 'hashivim/vim-terraform'
 Plug 'vim-syntastic/syntastic'
 Plug 'juliosueiras/vim-terraform-completion'
 
+" LaTex
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 call plug#end()            " required
 "let loaded_matchit = 1
 

@@ -22,6 +22,9 @@ esac
 #   # done
 # fi
 
+
+shopt -s autocd  # Allows you to cd into directory merely by typing the directory name.
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -30,8 +33,9 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=10000
-HISTFILESIZE=20000
+# HISTSIZE=10000
+# HISTFILESIZE=20000
+HISTSIZE= HISTFILESIZE=  # Infinite histroy
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -53,6 +57,7 @@ fi
 case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
+
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
@@ -91,13 +96,15 @@ esac
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
+    alias ls='ls -hN --color=auto --group-directories-first'
     alias dir='dir --color=auto'
     alias vdir='vdir --color=auto'
 
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
+
+    alias ccat=highlight --out-format=ansi
 fi
 
 # colored GCC warnings and errors
@@ -108,12 +115,29 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias python=python3
+alias py=python3
+alias pp=ptpython
+alias a='source ./venv/bin/activate'
+alias yt='youtube-dl --add-metadata -ic'  # download video link
+alias yta='youtube-dl --add-metadata -xic'  # download only audio
 
 if which nvim &>/dev/null ; then
   alias vim='nvim'
   alias vi='nvim'
+  alias v='nvim'
 fi
-alias emacs='emacs -nw'
+which emacs &>/dev/null && alias emacs='emacs -nw'
+
+if which git &>/dev/null ; then
+  alias push='git push'
+  alias s='git status'
+  alias d='git diff'
+  alias pull='git pull'
+  alias p='git push'
+  function c() {
+    git commit -am "$*"
+  }
+fi 
 
 if which ctags &>/dev/null ; then
   function ta () {
@@ -172,6 +196,9 @@ if [ -d $HOME/go ] ; then
 fi
 export PATH=$PATH:$GOPATH/bin
 export GO111MODULE=on
+alias gt=gotest
+alias gb='go build'
+alias gg='go get'
 
 [ -s "/home/nad2000/.dnx/dnvm/dnvm.sh" ] && . "/home/nad2000/.dnx/dnvm/dnvm.sh" # Load dnvm
 
