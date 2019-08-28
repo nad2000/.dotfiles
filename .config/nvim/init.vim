@@ -317,9 +317,11 @@ endfunction
 command! REPLSendLine call REPLSend([getline('.')])
 command! REPLSendSelectedLines call REPLSend(getline("'<", "'>" ))
 
-nnoremap <Silent> <F6> :REPLSendLine<cr>
-vnoremap <Silent> <F5> :REPLSendSelectedLines<cr>
+" nnoremap <Silent> <F6> :REPLSendLine<cr>
+" vnoremap <Silent> <F5> :REPLSendSelectedLines<cr>
 
+map <f6> <esc>:setlocal spell! spelllang=en_uk<cr>
+map <f10> <esc>:Goyo<cr>
 
 nnoremap <Leader>- ddp
 nnoremap <Leader>_ ddkP
@@ -377,7 +379,7 @@ let g:UltiSnipsEditSplit="vertical"
 " Snippep completion:
 " let g:UltiSnipsExpandTrigger = "<nop>"
 let g:ulti_expand_or_jump_res = 0
-function ExpandSnippetOrCarriageReturn()
+function! ExpandSnippetOrCarriageReturn()
     let snippet = UltiSnips#ExpandSnippetOrJump()
     if g:ulti_expand_or_jump_res > 0
         return snippet
