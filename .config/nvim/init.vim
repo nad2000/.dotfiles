@@ -93,12 +93,13 @@ Plug 'jalvesaq/vimcmdline'
 "Plug 'git://git.wincent.com/command-t.git'
 "Plug 'benekastah/neomake'
 
-" Theming
+" Theming and UX
 Plug 'takac/vim-hardtime'  " disable arrow keys and other vim-smells
 Plug 'jnurmine/Zenburn'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'majutsushi/tagbar' " provides an easy way to browse the tags of the current file and get an overview of its structure
+Plug 'junegunn/goyo.vim'
 
 " C
 Plug 'vivien/vim-linux-coding-style'
@@ -263,7 +264,7 @@ augroup FileTypes
   au Filetype python set ts=8 sts=4 sw=4 sr et ai | iabbrev <buffer> iff if:<esc>i
   au Filetype python nnoremap <LocalLeader>i :!isort %<CR><CR>  " Import re-sorting (https://github.com/timothycrosley/isort)
   au FileType python nnoremap <LocalLeader>= :0,$!yapf<CR>  " Code formating with YAPF (https://github.com/google/yapf)
-  au FileType python map <c-s-y> :call yapf#YAPF()<cr>
+  au FileType python vmap <c-s-y> :call yapf#YAPF()<cr>
   au FileType python imap <c-s-y> <c-o>:call yapf#YAPF()<cr>
   au FileType python let g:ale_linters = {'python': ['flake8']}
   au FileType javascript setlocal sw=2 | iabbrev <buffer> iff if ()<esc>i
@@ -321,7 +322,8 @@ command! REPLSendSelectedLines call REPLSend(getline("'<", "'>" ))
 " vnoremap <Silent> <F5> :REPLSendSelectedLines<cr>
 
 map <f6> <esc>:setlocal spell! spelllang=en_uk<cr>
-map <f10> <esc>:Goyo<cr>
+nmap <f10> :Goyo<cr>
+imap <f10> <c-o>:Goyo<cr>
 
 nnoremap <Leader>- ddp
 nnoremap <Leader>_ ddkP
