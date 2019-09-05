@@ -120,6 +120,7 @@ alias pp=ptpython
 alias a='source ./venv/bin/activate'
 alias yt='youtube-dl --add-metadata -ic'  # download video link
 alias yta='youtube-dl --add-metadata -xic'  # download only audio
+alias pt='./pytest.sh'
 
 if which nvim &>/dev/null ; then
   alias vim='nvim'
@@ -129,11 +130,13 @@ fi
 which emacs &>/dev/null && alias emacs='emacs -nw'
 
 if which git &>/dev/null ; then
-  alias push='git push'
   alias s='git status'
   alias d='git diff'
   alias pull='git pull'
-  alias p='git push'
+  function push() {
+    ([ ! -d ./orcid_hub ] || flake8 orcid_hub/*.py tests/*.py) && git push
+  }
+  alias p='push'
   function c() {
     git commit -am "$*"
   }

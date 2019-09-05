@@ -259,6 +259,7 @@ augroup FileTypes
   au BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm set ft=jinja
   au BufWritePre *.py,*.c,*.php,*.html :%s/\s+$//ge
   au BufWritePost * call atags#generate()
+  au BufNewFile,BufRead Jenkinsfile setf groovy
   au FileType html setl sw=2 sts=2 et
   au FileType jinja setl sw=2 sts=2 et
   au Filetype python set ts=8 sts=4 sw=4 sr et ai | iabbrev <buffer> iff if:<esc>i
@@ -324,6 +325,7 @@ command! REPLSendSelectedLines call REPLSend(getline("'<", "'>" ))
 map <f6> <esc>:setlocal spell! spelllang=en_uk<cr>
 nmap <f10> :Goyo<cr>
 imap <f10> <c-o>:Goyo<cr>
+nnoremap Q gq
 
 nnoremap <Leader>- ddp
 nnoremap <Leader>_ ddkP
