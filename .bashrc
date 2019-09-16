@@ -134,7 +134,7 @@ if which git &>/dev/null ; then
   alias d='git diff'
   alias pull='git pull'
   function push() {
-    ([ ! -d ./orcid_hub ] || flake8 orcid_hub/*.py tests/*.py) && git push
+    ([ ! -d ./orcid_hub ] || flake8 orcid_hub/*.py tests/*.py) && git push $*
   }
   alias p='push'
   function c() {
