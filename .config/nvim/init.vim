@@ -77,7 +77,7 @@ Plug 'tpope/vim-surround'
 Plug 'fntlnz/atags.vim' " helps you creating and updating your tag files
 Plug 'AndrewRadev/splitjoin.vim'  " gS - split; gJ - join
 Plug 'christoomey/vim-tmux-navigator'
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary' " gc - toggle, gcap - comments out paragraph
 " Plug 'ctrlpvim/ctrlp.vim' " active fork of 'kien/ctrlp.vim'

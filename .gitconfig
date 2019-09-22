@@ -19,3 +19,5 @@
 	status = auto
 [credential]
 	helper = cache
+[branch]
+	autosetupmerge = always
