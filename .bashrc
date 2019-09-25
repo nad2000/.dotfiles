@@ -154,6 +154,12 @@ if which ctags &>/dev/null ; then
   }
 fi
 
+
+man () {
+   /usr/bin/man $* | col -b | view -R -c 'set ft=man nomod nolist' -
+}
+
+
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -259,6 +265,8 @@ export SHIB_METADATA_PROVIDER_URI=https://directory.test.tuakiri.ac.nz/metadata/
 export FLASK_ENV=development
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_DEFAULT_OPS="--extended"
+
 
 # NPM packages in homedir
 NPM_PACKAGES="$HOME/.npm-packages"

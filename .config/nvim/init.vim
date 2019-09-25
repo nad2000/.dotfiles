@@ -1,5 +1,8 @@
 " vim: foldmethod=marker
 
+" it's 'view' not 'vi/vim/...'
+let is_view = (v:progname ==? 'view')
+
 " enter the current millennium
 set nocompatible
 set autoread
@@ -7,8 +10,10 @@ set encoding=utf-8
 set ignorecase
 set smartcase
 " hybrid line number mode
-set relativenumber
-set number
+if !is_view
+  set relativenumber
+  set number
+endif
 
 " Switch between buffers without saving
 set hidden
@@ -63,6 +68,7 @@ if ! filereadable(expand('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+if !is_view  " Disable plugins for 'view'
 " General
 "Plug 'lucc/vim-tip'
 Plug 'scrooloose/nerdtree'
@@ -92,14 +98,6 @@ Plug 'jalvesaq/vimcmdline'
 "Plug 'bling/vim-bufferline' " airline has buffer list feature
 "Plug 'git://git.wincent.com/command-t.git'
 "Plug 'benekastah/neomake'
-
-" Theming and UX
-Plug 'takac/vim-hardtime'  " disable arrow keys and other vim-smells
-Plug 'jnurmine/Zenburn'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'majutsushi/tagbar' " provides an easy way to browse the tags of the current file and get an overview of its structure
-Plug 'junegunn/goyo.vim'
 
 " C
 Plug 'vivien/vim-linux-coding-style'
@@ -158,6 +156,18 @@ Plug 'juliosueiras/vim-terraform-completion'
 
 " LaTex
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+endif
+
+" Theming and UX
+Plug 'takac/vim-hardtime'  " disable arrow keys and other vim-smells
+Plug 'jnurmine/Zenburn'
+if !is_view
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'majutsushi/tagbar' " provides an easy way to browse the tags of the current file and get an overview of its structure
+endif
+Plug 'junegunn/goyo.vim'
+
 call plug#end()            " required
 "let loaded_matchit = 1
 
@@ -198,17 +208,22 @@ set showmatch   " show mattching part of the pair for [] {} and ()
 
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 " Open NERDTree automatically when vim starts up if no files were specified:
-autocmd vimenter * if !argc() | NERDTree | endif
-" Give a shortcut key to NERD Tree
-map <F2> :NERDTreeToggle<CR>
-"Show hidden files in NerdTree
-let NERDTreeShowHidden=1
+
+if !is_view
+  autocmd vimenter * if !argc() | NERDTree | endif
+  " Give a shortcut key to NERD Tree
+  map <F2> :NERDTreeToggle<CR>
+  "Show hidden files in NerdTree
+  let NERDTreeShowHidden=1
+endif
 
 " Folding ----------------------------------------------------------------- {{{
 " from: https://bitbucket.org/sjl/dotfiles
 "
-set foldcolumn=3	" increases gutter width for folding indicator
-set foldlevelstart=0
+if !is_view
+  set foldcolumn=3	" increases gutter width for folding indicator
+  set foldlevelstart=0
+endif
 
 " Space to toggle folds.
 nnoremap <Space> za
