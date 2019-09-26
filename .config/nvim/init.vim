@@ -205,6 +205,7 @@ set nosmd " short for 'showmode'
 syntax enable
 set cursorline
 set showmatch   " show mattching part of the pair for [] {} and ()
+hi Search cterm=NONE ctermfg=black ctermbg=blue
 
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 " Open NERDTree automatically when vim starts up if no files were specified:
