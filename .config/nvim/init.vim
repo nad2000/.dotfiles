@@ -82,7 +82,6 @@ Plug 'honza/vim-snippets' " Snippets are separated from the engine. Add this if 
 Plug 'tpope/vim-surround'
 Plug 'fntlnz/atags.vim' " helps you creating and updating your tag files
 Plug 'AndrewRadev/splitjoin.vim'  " gS - split; gJ - join
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary' " gc - toggle, gcap - comments out paragraph
@@ -167,6 +166,7 @@ if !is_view
   Plug 'majutsushi/tagbar' " provides an easy way to browse the tags of the current file and get an overview of its structure
 endif
 Plug 'junegunn/goyo.vim'
+Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()            " required
 "let loaded_matchit = 1
@@ -367,6 +367,8 @@ let g:go_highlight_build_constraints = 1
 "let g:go_fmt_fail_silently = 1
 let g:go_fmt_autosave = 1
 
+" Rust
+let g:rustfmt_autosave = 1
 
 " Disable mouse (for clipboard support install xsel and/or xclip)
 set mouse=cn
