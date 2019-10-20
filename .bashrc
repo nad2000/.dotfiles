@@ -117,7 +117,7 @@ alias l='ls -CF'
 alias python=python3
 alias py=python3
 alias pp=ptpython
-alias a='source ./venv/bin/activate'
+alias a='[ -d ./venv ] && source ./venv/bin/activate || source ./env/bin/activate'
 alias yt='youtube-dl --add-metadata -ic'  # download video link
 alias yta='youtube-dl --add-metadata -xic'  # download only audio
 alias pt='./pytest.sh'
@@ -281,7 +281,7 @@ fi
 
 # Tell Node about these packages
 NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
-
+[ -d $HOME/node_modules/.bin ] && PATH=$HOME/node_modules/.bin:$PATH
 
 # added by travis gem
 [ -f /home/rcir178/.travis/travis.sh ] && source /home/rcir178/.travis/travis.sh
