@@ -11,6 +11,7 @@
 	name = Rad Cirskis
 [push]
 	default = simple
+	followTags = true
 [merge]
   tool = meld
 [color]
