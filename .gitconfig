@@ -19,6 +19,6 @@
 	diff = auto
 	status = auto
 [credential]
-	helper = cache
+	helper = cache --timeout 3600
 [branch]
 	autosetupmerge = always

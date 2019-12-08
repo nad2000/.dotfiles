@@ -77,8 +77,8 @@ Plug 'ervandew/supertab'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer' }
 " Install nightly build, replace ./install.sh with install.cmd on windows
 " Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
-Plug 'SirVer/ultisnips'  " Track the engine.
-Plug 'honza/vim-snippets' " Snippets are separated from the engine. Add this if you want them
+"Plug 'SirVer/ultisnips'  " Track the engine.
+"Plug 'honza/vim-snippets' " Snippets are separated from the engine. Add this if you want them
 Plug 'tpope/vim-surround'
 Plug 'fntlnz/atags.vim' " helps you creating and updating your tag files
 Plug 'AndrewRadev/splitjoin.vim'  " gS - split; gJ - join
