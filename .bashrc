@@ -154,9 +154,12 @@ if which ctags &>/dev/null ; then
   }
 fi
 
-alias disable-touchpad='xinput set-prop `xinput list | sed -n '/touchpad/I s/.*id=\([0-9]*\).*/\1/p'` "Device Enabled" 0'
-alias enable-touchpad='xinput set-prop `xinput list | sed -n '/touchpad/I s/.*id=\([0-9]*\).*/\1/p'` "Device Enabled" 1'
-
+if which xinput &>/dev/null ; then
+  touchpad_id=$(xinput list | sed -n '/touchpad/I s/.*id=\([0-9]*\).*/\1/p')
+  function disable-touchpad() {xinput set-prop ${touchpad_id} "Device Enabled" 0}
+  function enable-touchpad() {xinput set-prop  ${touchpad_id} "Device Enabled" 1}
+  xinput list | grep -q -i mouse && disable-touchpad
+fi
 
 man () {
    /usr/bin/man $* | col -b | view -R -c 'set ft=man nomod nolist' -
