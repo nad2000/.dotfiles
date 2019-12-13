@@ -9,7 +9,7 @@ export LANG=en_NZ.UTF-8
 
 # Preferred editor for local and remote sessions
 if which nvim &>/dev/null ; then
-  export EDITOR='mvim'
+  export EDITOR='nvim'
 else
   export EDITOR='vim'
 fi
