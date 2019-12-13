@@ -32,7 +32,7 @@ ln -fs ~/dotfiles/.config/Code/User/settings.json ~/.config/Code/User/settings.j
 ```
 sudo apt-get install curl exuberant-ctags ack-grep neovim  ## for Debian based distros
 sudo pacman -Sy curl ctags ack neovim ## For Arch Linux
-pip install -U --user pep8 flake8 pyflakes isort yapf
+pip install -U --user pep8 flake8 pyflakes isort yapf pip
 
 ```
 
