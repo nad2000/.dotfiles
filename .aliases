@@ -1,0 +1,82 @@
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls -hN --color=auto --group-directories-first'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+
+    alias ccat=highlight --out-format=ansi
+fi
+
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+alias python=python3
+alias py=python3
+alias pp=ptpython
+alias a='[ -d ./venv ] && source ./venv/bin/activate || source ./env/bin/activate'
+alias yt='youtube-dl --add-metadata -ic'  # download video link
+alias yta='youtube-dl --add-metadata -xic'  # download only audio
+alias pt='./pytest.sh'
+
+if which nvim &>/dev/null ; then
+  alias vim='nvim'
+  alias vi='nvim'
+  alias v='nvim'
+  alias vimdiff='nvim -d'
+fi
+which emacs &>/dev/null && alias emacs='emacs -nw'
+
+if which git &>/dev/null ; then
+  alias s='git status'
+  alias d='git diff'
+  alias pull='git pull'
+  function push() {
+    ([ ! -d ./orcid_hub ] || flake8 orcid_hub/*.py tests/*.py) && git push $*
+  }
+  alias p='push'
+  function c() {
+    git commit -am "$*"
+  }
+fi
+
+if which ctags &>/dev/null ; then
+  function ta () {
+    #clean older info
+    rm -rf tags
+    rm -rf cscope.files
+    rm -rf cscope.out
+    # generate new info
+    find $PWD | egrep -i "\.(c|h|hpp|cpp)$" > cscope.files
+    ctags -R . *.{c,h,hpp,cpp} --tag-relative=yes ./ &>/dev/null
+  }
+fi
+
+if which xinput &>/dev/null ; then
+  touchpad_id=$(xinput list | sed -n '/touchpad/I s/.*id=\([0-9]*\).*/\1/p')
+  function disable-touchpad() {xinput set-prop ${touchpad_id} "Device Enabled" 0}
+  function enable-touchpad() {xinput set-prop  ${touchpad_id} "Device Enabled" 1}
+  xinput list | grep -q -i mouse && disable-touchpad
+fi
+
+man () {
+   /usr/bin/man $* | col -b | view -R -c 'set ft=man nomod nolist' -
+}
+
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+alias gt=gotest
+alias gb='go build'
+alias gg='go get'

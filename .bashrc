@@ -93,91 +93,7 @@ xterm*|rxvt*)
     ;;
 esac
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls -hN --color=auto --group-directories-first'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-
-    alias ccat=highlight --out-format=ansi
-fi
-
-# colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-alias python=python3
-alias py=python3
-alias pp=ptpython
-alias a='[ -d ./venv ] && source ./venv/bin/activate || source ./env/bin/activate'
-alias yt='youtube-dl --add-metadata -ic'  # download video link
-alias yta='youtube-dl --add-metadata -xic'  # download only audio
-alias pt='./pytest.sh'
-
-if which nvim &>/dev/null ; then
-  alias vim='nvim'
-  alias vi='nvim'
-  alias v='nvim'
-fi
-which emacs &>/dev/null && alias emacs='emacs -nw'
-
-if which git &>/dev/null ; then
-  alias s='git status'
-  alias d='git diff'
-  alias pull='git pull'
-  function push() {
-    ([ ! -d ./orcid_hub ] || flake8 orcid_hub/*.py tests/*.py) && git push $*
-  }
-  alias p='push'
-  function c() {
-    git commit -am "$*"
-  }
-fi 
-
-if which ctags &>/dev/null ; then
-  function ta () {
-    #clean older info
-    rm -rf tags
-    rm -rf cscope.files
-    rm -rf cscope.out
-    # generate new info
-    find $PWD | egrep -i "\.(c|h|hpp|cpp)$" > cscope.files
-    ctags -R . *.{c,h,hpp,cpp} --tag-relative=yes ./ &>/dev/null
-  }
-fi
-
-if which xinput &>/dev/null ; then
-  touchpad_id=$(xinput list | sed -n '/touchpad/I s/.*id=\([0-9]*\).*/\1/p')
-  function disable-touchpad() {xinput set-prop ${touchpad_id} "Device Enabled" 0}
-  function enable-touchpad() {xinput set-prop  ${touchpad_id} "Device Enabled" 1}
-  xinput list | grep -q -i mouse && disable-touchpad
-fi
-
-man () {
-   /usr/bin/man $* | col -b | view -R -c 'set ft=man nomod nolist' -
-}
-
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+[ -f ~/.aliases ] && source ~/.aliases
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -211,9 +127,6 @@ if [ -d $HOME/go ] ; then
 fi
 export PATH=$PATH:$GOPATH/bin
 export GO111MODULE=on
-alias gt=gotest
-alias gb='go build'
-alias gg='go get'
 
 [ -s "/home/nad2000/.dnx/dnvm/dnvm.sh" ] && . "/home/nad2000/.dnx/dnvm/dnvm.sh" # Load dnvm
 
@@ -279,7 +192,7 @@ NPM_PACKAGES="$HOME/.npm-packages"
 
 # Tell our environment about user-installed node tools
 PATH="$NPM_PACKAGES/bin:$PATH"
-  if which manpath &>/dev/null ; then 
+  if which manpath &>/dev/null ; then
   # Unset manpath so we can inherit from /etc/manpath via the `manpath` command
   unset MANPATH  # delete if you already modified MANPATH elsewhere in your configuration
   MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
@@ -295,7 +208,7 @@ NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 # Swap CAPS with ESC:
 #which /usr/bin/setxkbmap &>/dev/null && /usr/bin/setxkbmap -option "caps:swapescape"
 
-if [ -d $HOME/dotnet ] ; then 
-  export DOTNET_ROOT=$HOME/dotnet 
+if [ -d $HOME/dotnet ] ; then
+  export DOTNET_ROOT=$HOME/dotnet
   export PATH=$PATH:$HOME/dotnet
 fi
