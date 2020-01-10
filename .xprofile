@@ -13,8 +13,9 @@ nm-applet &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 gnome-keyring-daemon --start --components=pkcs11 &
 sxhkd -m 1 &
-setxkbmap lv apostrophe &
+# setxkbmap lv apostrophe &
 xset dpms 600 900 1200
 xset r rate 350 60
 $HOME/dotfiles/bin/dwm_status &
 redshift &
+(sleep 5; $HOME/dotfiles/services.sh ) &
