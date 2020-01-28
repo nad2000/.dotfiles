@@ -434,3 +434,8 @@ nmap <Leader>C :ClangFormatAutoToggle<CR>
 noremap Zz <c-w>_ \| <c-w>\|
 " ^w= -- makes all windows the same height & width
 noremap Zo <c-w>=
+
+" Automatically save the session when leaving Vim
+autocmd! VimLeave * mksession! .session.vim
+" " Automatically load the session when entering vim
+" autocmd! VimEnter * source .session.vim

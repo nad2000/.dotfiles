@@ -33,6 +33,7 @@ if which nvim &>/dev/null ; then
   alias vi='nvim'
   alias v='nvim'
   alias vimdiff='nvim -d'
+  alias dev='${PWD}/dev'
 fi
 which emacs &>/dev/null && alias emacs='emacs -nw'
 
