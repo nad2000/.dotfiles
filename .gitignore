@@ -57,3 +57,4 @@ updated.*
 .vim/plugged/
 *.old
 tags.tmp
+.session.vim

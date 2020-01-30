@@ -1,0 +1,8 @@
+:
+# sets up tmux with running server at the top pane; nvim in the middle and a command pane at the bottom..
+if [ -n "$1" ] ;  then
+  cd "$1"
+  tmux send-keys "cd \"$1\"" C-m
+fi
+
+tmux send-keys 'source ./venv/bin/activate ; ./manage.py runserver' C-m \; split-window -v -p 86 'source ./venv/bin/activate ; nvim -S .session.vim' \; split-window -v -p 12 \; send-keys 'source ./venv/bin/activate' C-m \; select-pane -U
