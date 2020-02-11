@@ -5,4 +5,14 @@ if [ -n "$1" ] ;  then
   tmux send-keys "cd \"$1\"" C-m
 fi
 
-tmux send-keys 'source ./venv/bin/activate ; ./manage.py runserver' C-m \; split-window -v -p 86 'source ./venv/bin/activate ; nvim -S .session.vim' \; split-window -v -p 12 \; send-keys 'source ./venv/bin/activate' C-m \; select-pane -U
+if [ -f dev ] ; then
+  exec ./dev
+elif [ -f ddev ] ; then
+  exec ./ddev
+else
+  tmux send-keys 'source ./venv/bin/activate ; ./manage.py runserver' C-m \
+    \; split-window -v -p 86 'source ./venv/bin/activate ; nvim -S .session.vim' \
+    \; split-window -v -p 12 \
+    \; send-keys 'source ./venv/bin/activate' C-m \
+    \; select-pane -U
+fi
