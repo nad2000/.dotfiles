@@ -34,10 +34,15 @@
 (require 'go-mode nil t)
 
 ;;; Rust-mode
-(require 'rust-mode)
 (add-hook 'rust-mode-hook
           (lambda () (setq indent-tabs-mode nil)))
+(add-hook 'rust-mode-hook #'racer-mode)
+(add-hook 'racer-mode-hook #'eldoc-mode)
+(add-hook 'racer-mode-hook #'company-mode)
+(require 'rust-mode)
 (setq rust-format-on-save t)
+(define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common)
+(setq company-tooltip-align-annotations t)
 
 ;;; enable KJ for ESC
 (require 'key-chord)
@@ -63,10 +68,11 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (rust-mode navigate zenburn-theme zenburn use-package powerline-evil key-chord go-mode evil-visual-mark-mode evil-surround))))
+    (company rust-mode navigate zenburn-theme zenburn use-package powerline-evil key-chord go-mode evil-visual-mark-mode evil-surround))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(put 'downcase-region 'disabled nil)
