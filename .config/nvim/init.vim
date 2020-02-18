@@ -443,6 +443,6 @@ noremap Zz <c-w>_ \| <c-w>\|
 noremap Zo <c-w>=
 
 " Automatically save the session when leaving Vim
-autocmd! VimLeave * mksession! .session.vim
+execute "autocmd! VimLeave * mksession!" . getcwd() . "/.session.vim"
 " " Automatically load the session when entering vim
 " autocmd! VimEnter * source .session.vim
