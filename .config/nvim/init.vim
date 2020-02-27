@@ -14,13 +14,18 @@ if !is_view
   set relativenumber
   set number
 endif
+
+" Automatically save the session when leaving Vim
+let vim_started_in_dir = getcwd()
+execute "autocmd! VimLeave * mksession!" . vim_started_in_dir . "/.session.vim"
+
 " set vim to chdir for each file
 " NB! When this option is on some plugins may not work.
 if exists('+autochdir')
-    set autochdir
+  set autochdir
 else
-    autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
-  endif
+  autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
+endif
 
 " Switch between buffers without saving
 set hidden
@@ -122,7 +127,8 @@ Plug 'lepture/vim-jinja'  " Jinja2 template support
 " JavaScript and stuff
 Plug 'ternjs/tern_for_vim', { 'for': 'javascript' }
 Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx' " React JSX support
+Plug 'maxmellon/vim-jsx-pretty'
+" Plug 'mxw/vim-jsx' " React JSX support
 Plug 'maksimr/vim-jsbeautify'
 Plug 'leafgarland/typescript-vim'
 
@@ -141,13 +147,16 @@ Plug 'google/yapf', { 'rtp': 'plugins/vim', 'for': 'python' }
 Plug 'integralist/vim-mypy'
 " Automatically sort python imports
 Plug 'fisadev/vim-isort'
+Plug 'psf/black'
+let g:black_linelength = 99
 
 " Robot Framework
 Plug 'Costallat/robotframework-vim'
 
 " Rust..
 Plug 'rust-lang/rust.vim'
-Plug 'racer-rust/vim-racer'
+"Plug 'racer-rust/vim-racer'
+hi rustMacro ctermfg=magenta
 
 " Generic
 Plug 'editorconfig/editorconfig-vim'
@@ -193,6 +202,7 @@ if exists(':tnoremap')
 endif
 
 let g:atags_build_commands_list = [
+    \"[[ $PWD != $HOME ]] && cd " . vim_started_in_dir,
     \"[[ $PWD != $HOME ]] && ctags --exclude=$HOME --exclude='*.html' --exclude='*.js' --exclude='*.pxd' -R -f tags.tmp",
     \"[[ $PWD != $HOME ]] && awk 'length($0) < 400' tags.tmp > tags",
     \"[[ $PWD != $HOME ]] && rm tags.tmp"
@@ -281,6 +291,7 @@ augroup FileTypes
   au!
   au BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm set ft=jinja
   au BufWritePre *.py,*.c,*.php,*.html :%s/\s+$//ge
+  au BufWritePre *.py execute ':Black'
   au BufWritePost * call atags#generate()
   au BufNewFile,BufRead Jenkinsfile setf groovy
   au FileType html setl sw=2 sts=2 et
@@ -442,7 +453,5 @@ noremap Zz <c-w>_ \| <c-w>\|
 " ^w= -- makes all windows the same height & width
 noremap Zo <c-w>=
 
-" Automatically save the session when leaving Vim
-execute "autocmd! VimLeave * mksession!" . getcwd() . "/.session.vim"
 " " Automatically load the session when entering vim
 " autocmd! VimEnter * source .session.vim
