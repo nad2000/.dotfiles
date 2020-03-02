@@ -76,3 +76,9 @@
  ;; If there is more than one, they won't work right.
  )
 (put 'downcase-region 'disabled nil)
+
+;; highlight line with the cursor, preserving the colours.
+(require 'hl-line)						    ;
+;; (set-face-attribute 'hl-line nil :inherit nil :background "gray80") ;
+(set-face-attribute 'hl-line nil :inherit nil :background "#333333") ;
+(global-hl-line-mode +1)
