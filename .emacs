@@ -82,3 +82,12 @@
 ;; (set-face-attribute 'hl-line nil :inherit nil :background "gray80") ;
 (set-face-attribute 'hl-line nil :inherit nil :background "#333333") ;
 (global-hl-line-mode +1)
+
+
+;; Encoding: UTF-8 Everywhere
+(prefer-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(setq default-buffer-file-coding-system 'utf-8)
+

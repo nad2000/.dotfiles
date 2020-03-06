@@ -5,9 +5,9 @@ if [ -n "$1" ] ;  then
   tmux send-keys "cd \"$1\"" C-m
 fi
 
-if [ -f dev ] ; then
+if [ -x dev ] ; then
   exec ./dev
-elif [ -f ddev ] ; then
+elif [ -x ddev ] ; then
   exec ./ddev
 else
   tmux send-keys 'source ./venv/bin/activate ; ./manage.py runserver' C-m \

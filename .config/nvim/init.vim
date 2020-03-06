@@ -207,7 +207,7 @@ let g:atags_build_commands_list = [
     \"[[ $PWD != $HOME ]] && awk 'length($0) < 400' tags.tmp > tags",
     \"[[ $PWD != $HOME ]] && rm tags.tmp"
     \]
-let g:closetag_filenames = "*.html,*.xhtml,*.phtml" " for 'alvan/vim-closetag'
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.js" " for 'alvan/vim-closetag'
 
 " Turn on powerline fonts:
 """let g:airline_powerline_fonts = 1
