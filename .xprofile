@@ -18,4 +18,5 @@ xset dpms 600 900 1200
 xset r rate 350 60
 $HOME/dotfiles/bin/dwm_status &
 redshift &
+(sleep 1; $BROWSER ; st tmux ) &
 (sleep 5; $HOME/dotfiles/services.sh ) &

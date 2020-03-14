@@ -68,7 +68,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (company rust-mode navigate zenburn-theme zenburn use-package powerline-evil key-chord go-mode evil-visual-mark-mode evil-surround))))
+    (## company rust-mode navigate zenburn-theme zenburn use-package powerline-evil key-chord go-mode evil-visual-mark-mode evil-surround))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -91,3 +91,28 @@
 (set-keyboard-coding-system 'utf-8)
 (setq default-buffer-file-coding-system 'utf-8)
 
+;; Garbage-collect on focus-out, Emacs should feel snappier.
+(add-hook 'focus-out-hook #'garbage-collect)
+
+;; allow y/n
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+;; ~~~~~~~~~~
+;; No Backups
+
+;; disable backup
+(setq backup-inhibited t)
+;; disable auto save
+(setq auto-save-default nil)
+
+(setq backup-directory-alist `(("." . "/tmp/emacs-backup")))
+
+;; show text instead of popups
+(setq use-dialog-box nil)
+
+(setq ispell-personal-dictionary "~/.vim/spell/en.utf-8.add")
+
+;; Always reuse existing compilation window
+(push '("\\*compilation\\*" . (nil (reusable-frames . t))) display-buffer-alist)
+
+(global-set-key "\M- " 'hippie-expand)
