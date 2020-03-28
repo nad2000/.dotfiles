@@ -58,3 +58,4 @@ updated.*
 *.old
 tags.tmp
 .session.vim
+.vim/black
