@@ -147,7 +147,7 @@ Plug 'google/yapf', { 'rtp': 'plugins/vim', 'for': 'python' }
 Plug 'integralist/vim-mypy'
 " Automatically sort python imports
 Plug 'fisadev/vim-isort'
-Plug 'psf/black'
+Plug 'psf/black', { 'tag': '19.10b0' }
 let g:black_linelength = 99
 
 " Robot Framework

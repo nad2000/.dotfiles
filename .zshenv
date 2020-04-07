@@ -49,7 +49,8 @@ export OAUTHLIB_INSECURE_TRANSPORT=1
 export ORCID_CLIENT_ID=APP-6DZOOMOKJCYRY6GE
 export ORCID_CLIENT_SECRET=f7a2d69a-b3f9-4988-8772-160db671d814
 export SHIB_METADATA_PROVIDER_URI=https://directory.test.tuakiri.ac.nz/metadata/tuakiri-test-metadata-signed.xml
-export SENTRY_DSN=https://bec5d4a546aa43e7b01b82d43751990e:ab4cc99df77143718ee9d44d6c19ee5e@sentry.io/226636
+# export SENTRY_DSN=https://bec5d4a546aa43e7b01b82d43751990e:ab4cc99df77143718ee9d44d6c19ee5e@sentry.io/226636
+export SENTRY_DSN="https://ca6ff8cc0e2248068d84643686a763d1@sentry.io/5188371"
 # export DATABASE_URL=postgresql://dev.orcidhub.org.nz:5432/orcidhub
 export DATABASE_URL='mysql://root:p455w0rd@/blocks?parseTime=true'
 export EXTERNAL_SP=https://dev.orcidhub.org.nz/Tuakiri/SP
