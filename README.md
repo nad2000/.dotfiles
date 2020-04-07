@@ -26,8 +26,9 @@ ln -fs ~/dotfiles/.vim ~/.vim
 ln -fs ~/dotfiles/.config/fontconfig/.fonts.conf ~/.config/fontconfig/.fonts.conf
 ln -fs ~/dotfiles/.vim/autoload ~/.local/share/nvim/site/autoload
 ln -fs ~/dotfiles/.config/Code/User/settings.json ~/.config/Code/User/settings.json
-ln -s ~/dotfiles/.xinitrc
-ln -s ~/dotfiles/.xprofile
+ln -fs ~/dotfiles/.config/sxhkd ~/.config/
+ln -f ~/dotfiles/.xinitrc
+ln -f ~/dotfiles/.xprofile
 ```
 3. install stuff:
 
