@@ -291,7 +291,7 @@ augroup FileTypes
   au!
   au BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm set ft=jinja
   au BufWritePre *.py,*.c,*.php,*.html :%s/\s+$//ge
-  au BufWritePre *.py execute ':Black'
+  " au BufWritePre *.py execute ':Black'
   au BufWritePost * call atags#generate()
   au BufNewFile,BufRead Jenkinsfile setf groovy
   au FileType html setl sw=2 sts=2 et
@@ -393,6 +393,11 @@ set mouse=cn
 
 " Why YCM is so user unfiendly:
 let g:ycm_confirm_extra_conf = 0
+let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
+let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
+let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
+let g:ycm_complete_in_comments = 1 " Completion in comments
+let g:ycm_complete_in_strings = 1 " Completion in string
 
 " Cipboard for all operations
 "" set clipboard+=unnamedplus  " better to user '*' or '+' register
