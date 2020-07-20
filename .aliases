@@ -25,7 +25,7 @@ alias py=python3
 alias pp=ptpython
 alias a='[ -d ./venv ] && source ./venv/bin/activate || source ./env/bin/activate'
 alias yt='youtube-dl --add-metadata -ic'  # download video link
-alias yta='youtube-dl --add-metadata -xic'  # download only audio
+alias yta='youtube-dl --add-metadata -xic -f bestaudio/best'  # download only audio
 alias pt='./pytest.sh'
 
 if which nvim &>/dev/null ; then
@@ -82,3 +82,5 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias gt=gotest
 alias gb='go build'
 alias gg='go get'
+
+
