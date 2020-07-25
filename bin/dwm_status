@@ -103,6 +103,7 @@ show_record(){
   echo " $size $(basename $rp)"
 }
 
+SLEEP_PID=''
 while true ; do
 
   # Get new transmitted, received byte number values and current time
@@ -122,6 +123,11 @@ while true ; do
   old_time=$now
 
   # sleep 1
-  sleep 60
+  sleep 60 &
+  SLEEP_PID=$!
+  trap "kill ${SLEEP_PID}" SIGUSR1
+  sleep 60 &
+  wait $SLEEP_PID
+  trap - SIGUSR1
 
 done

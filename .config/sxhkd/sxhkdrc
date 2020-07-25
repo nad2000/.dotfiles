@@ -21,8 +21,8 @@ super + shift + a
 	$TERMINAL -e alsamixer; pkill -RTMIN+10 $STATUSBAR
 super + shift + c
 	mpv --no-osc --no-input-default-bindings --input-conf=/dev/null --title='mpvfloat' /dev/video0
-super + shift + e
-	tutorialvids
+# super + shift + e
+# 	tutorialvids
 super + f
 	nemo
 super + t
@@ -34,8 +34,15 @@ super + shift + w
 	$BROWSER
 super + b
 	$BROWSER
-{super, alt + ctrl } + {l, L}
+alt + ctrl + {l, L}
 	slock
+
+super + shift + {l, L}
+  setxkbmap lv apostrophe ; pkill -SIGUSR1 dwm_status
+super + shift + {r, R}
+  setxkbmap -variant phonetic_winkeys ru ; pkill -SIGUSR1 dwm_status
+super + shift + {e, E}
+  setxkbmap en_US ;  pkill -SIGUSR1 dwm_status
 
 # Et cetera...
 super + grave
