@@ -61,7 +61,6 @@ export FLASK_ENV=development
 export GOPATH=$HOME
 export GOROOT=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-export BROWSER=chromium
 
 # Adds `~/.local/bin` to $PATH
 export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
@@ -75,7 +74,7 @@ export LARBSWM="$(cat ~/.local/share/larbs/wm 2>/dev/null)" &&
 # Default programs:
 export EDITOR="nvim"
 export TERMINAL="st"
-export BROWSER="chromium"
+export BROWSER="/usr/bin/brave"
 # export READER="zathura"
 export FILE="nnn"
 # export STATUSBAR="${LARBSWM}blocks"

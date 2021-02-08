@@ -99,7 +99,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary' " gc - toggle, gcap - comments out paragraph
 " Plug 'ctrlpvim/ctrlp.vim' " active fork of 'kien/ctrlp.vim'
 Plug 'jalvesaq/vimcmdline'
-"Plug 'davidhalter/jedi-vim' " replaced with 'Valloric/YouCompleteMe'
+" Plug 'davidhalter/jedi-vim' " replaced with 'Valloric/YouCompleteMe'
 "Plug 'msanders/snipmate.vim'
 "Plug 'mkitt/tabline.vim'
 "Plug 'tpope/vim-markdown'
@@ -203,7 +203,7 @@ endif
 
 let g:atags_build_commands_list = [
     \"[[ $PWD != $HOME ]] && cd " . vim_started_in_dir,
-    \"[[ $PWD != $HOME ]] && ctags --exclude=$HOME --exclude='*.html' --exclude='*.js' --exclude='*.pxd' -R -f tags.tmp",
+    \"[[ $PWD != $HOME ]] && ctags --exclude='*.sqlite*' --exclude=staticfiles --exclude='private-media' --exclude='*.sqlite*' --exclude=$HOME --exclude='*.html' --exclude='*.js' --exclude='*.pxd' -R -f tags.tmp",
     \"[[ $PWD != $HOME ]] && awk 'length($0) < 400' tags.tmp > tags",
     \"[[ $PWD != $HOME ]] && rm tags.tmp"
     \]
@@ -326,6 +326,17 @@ augroup FileTypes
   au FileType go nmap <Leader>i <Plug>(go-info)
   au Filetype cpp set sts=2 sw=2 sr et cino=:0,g0,(0,Ws,l1
   au Filetype cpp ClangFormatAutoEnable
+  "autocmd FileType tex set autoindent
+  " Set the make program (rubber)
+  au FileType tex set makeprg=rubber\ --inplace\ --maxerr\ 1\ \ --pdf\ --short\ --quiet\ --force\ %
+  " Mappings for compiling Latex file
+  au FileType tex nmap <buffer> <C-T> :!latexmk -pdf %<CR>
+  "autocmd FileType tex nmap <buffer> <C-T> :!rubber --pdf --force --short %<CR>
+  au FileType tex nmap <buffer> T :!open -a Skim %<.pdf %<.pdf<CR><CR>
+  au FileType tex nmap <buffer> C :!rubber --clean<CR>
+  " Skeleton files
+  au! BufNewFile * silent! 0r ~/.vim/skel/template.%:e
+
 augroup END
 let g:ale_fix_on_save = 1
 
@@ -374,6 +385,7 @@ iabbrev ccopy Copyright 2019 Rad Cirskis, all rights reserved.
 iabbrev ssig -- <cr>Rad Cirskis<cr>nad2000@gmail.com
 
 " Golang support (vim-go):
+let g:go_def_mode = "gopls"
 let g:go_fmt_command = "goimports"
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1

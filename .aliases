@@ -70,6 +70,10 @@ if which xinput &>/dev/null ; then
   xinput list | grep -q -i mouse && disable-touchpad
 fi
 
+if which neomutt &>/dev/null ; then
+  alias mutt=neomutt
+fi
+
 man () {
    /usr/bin/man $* | col -b | view -R -c 'set ft=man nomod nolist' -
 }
@@ -82,5 +86,3 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias gt=gotest
 alias gb='go build'
 alias gg='go get'
-
-
