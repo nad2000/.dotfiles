@@ -82,6 +82,7 @@ endif
 call plug#begin('~/.vim/plugged')
 if !is_view  " Disable plugins for 'view'
 " General
+Plug 'rhysd/vim-grammarous' " https://github.com/rhysd/vim-grammarous
 "Plug 'lucc/vim-tip'
 Plug 'scrooloose/nerdtree'
 Plug 'w0rp/ale'  " Syntax Checking
@@ -203,8 +204,8 @@ endif
 
 let g:atags_build_commands_list = [
     \"[[ $PWD != $HOME ]] && cd " . vim_started_in_dir,
-    \"[[ $PWD != $HOME ]] && ctags --exclude='*.sqlite*' --exclude=staticfiles --exclude='private-media' --exclude='*.sqlite*' --exclude=$HOME --exclude='*.html' --exclude='*.js' --exclude='*.pxd' -R -f tags.tmp",
-    \"[[ $PWD != $HOME ]] && awk 'length($0) < 400' tags.tmp > tags",
+    \"[[ $PWD != $HOME ]] && ctags --exclude=static --exclude='*.css' --exclude='.*' --exclude='*.sqlite*' --exclude=staticfiles --exclude='private-media' --exclude='*.sqlite*' --exclude=$HOME --exclude='*.html' --exclude='*.js' --exclude='*.pxd' -R -f tags.tmp",
+    \"[[ $PWD != $HOME ]] && LC_ALL=C awk 'length($0) < 400' tags.tmp > tags",
     \"[[ $PWD != $HOME ]] && rm tags.tmp"
     \]
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.js" " for 'alvan/vim-closetag'
@@ -333,7 +334,7 @@ augroup FileTypes
   au FileType tex nmap <buffer> <C-T> :!latexmk -pdf %<CR>
   "autocmd FileType tex nmap <buffer> <C-T> :!rubber --pdf --force --short %<CR>
   au FileType tex nmap <buffer> T :!open -a Skim %<.pdf %<.pdf<CR><CR>
-  au FileType tex nmap <buffer> C :!rubber --clean<CR>
+  " au FileType tex nmap <buffer> C :!rubber --clean<CR>
   " Skeleton files
   au! BufNewFile * silent! 0r ~/.vim/skel/template.%:e
 

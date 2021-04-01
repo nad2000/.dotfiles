@@ -67,7 +67,7 @@ if which xinput &>/dev/null ; then
   touchpad_id=$(xinput list | sed -n '/touchpad/I s/.*id=\([0-9]*\).*/\1/p')
   function disable-touchpad() {xinput set-prop ${touchpad_id} "Device Enabled" 0}
   function enable-touchpad() {xinput set-prop  ${touchpad_id} "Device Enabled" 1}
-  xinput list | grep -q -i mouse && disable-touchpad
+  xinput list | grep -q -iE 'mouse|logitech' && disable-touchpad
 fi
 
 if which neomutt &>/dev/null ; then
@@ -86,3 +86,8 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias gt=gotest
 alias gb='go build'
 alias gg='go get'
+
+# TexLive:
+if [ -f /usr/share/texmf-dist/scripts/texlive/tlmgr.pl ] ; then
+  alias tlmgr='PERL5LIB=/usr/share/tlpkg/ /usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode'
+fi
