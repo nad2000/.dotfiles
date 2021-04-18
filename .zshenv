@@ -12,6 +12,7 @@ if which nvim &>/dev/null ; then
 else
   export EDITOR='vim'
 fi
+which most &>/dev/null && export PAGER="most"
 
 # Orcid Hub environments:
 ENV=dev0

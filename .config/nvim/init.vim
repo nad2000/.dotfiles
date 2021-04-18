@@ -51,6 +51,12 @@ imap jk <ESC>
 imap JK <ESC>
 cmap jk <ESC>
 cmap JK <ESC>
+vmap jj <ESC>
+vmap JJ <ESC>
+imap jj <ESC>
+imap JJ <ESC>
+cmap jj <ESC>
+cmap JJ <ESC>
 set timeoutlen=400
 
 " stop c, s form yanking
@@ -82,10 +88,10 @@ endif
 call plug#begin('~/.vim/plugged')
 if !is_view  " Disable plugins for 'view'
 " General
-Plug 'rhysd/vim-grammarous' " https://github.com/rhysd/vim-grammarous
+"" Plug 'rhysd/vim-grammarous' " https://github.com/rhysd/vim-grammarous
 "Plug 'lucc/vim-tip'
 Plug 'scrooloose/nerdtree'
-Plug 'w0rp/ale'  " Syntax Checking
+""" Plug 'w0rp/ale'  " Syntax Checking
 Plug 'ervandew/supertab'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer' }
 " Install nightly build, replace ./install.sh with install.cmd on windows
@@ -144,12 +150,12 @@ Plug 'buoto/gotests-vim'
 Plug 'airblade/vim-gitgutter'
 
 " Python
-Plug 'google/yapf', { 'rtp': 'plugins/vim', 'for': 'python' }
-Plug 'integralist/vim-mypy'
+" Plug 'google/yapf', { 'rtp': 'plugins/vim', 'for': 'python' }
 " Automatically sort python imports
 Plug 'fisadev/vim-isort'
 Plug 'psf/black', { 'tag': '19.10b0' }
 let g:black_linelength = 99
+let g:syntastic_python_checkers = ['flake8']
 
 " Robot Framework
 Plug 'Costallat/robotframework-vim'
@@ -177,6 +183,7 @@ endif
 " Theming and UX
 Plug 'takac/vim-hardtime'  " disable arrow keys and other vim-smells
 Plug 'jnurmine/Zenburn'
+
 if !is_view
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
