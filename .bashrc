@@ -94,6 +94,13 @@ xterm*|rxvt*)
 esac
 
 [ -f ~/.aliases ] && source ~/.aliases
+if which nvim &>/dev/null ; then
+  export EDITOR='nvim'
+  export MANPAGER="/bin/sh -c \"col -b | /usr/bin/nvim --cmd 'let is_view=1' -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
+else
+  export EDITOR='vim'
+fi
+which most &>/dev/null && export PAGER="most"
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile

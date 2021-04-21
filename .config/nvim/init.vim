@@ -1,7 +1,9 @@
 " vim: foldmethod=marker
 
 " it's 'view' not 'vi/vim/...'
-let is_view = (v:progname ==? 'view')
+if !exists("is_view")
+  let is_view = (v:progname ==? 'view')
+endif
 
 " enter the current millennium
 set nocompatible
@@ -51,12 +53,6 @@ imap jk <ESC>
 imap JK <ESC>
 cmap jk <ESC>
 cmap JK <ESC>
-vmap jj <ESC>
-vmap JJ <ESC>
-imap jj <ESC>
-imap JJ <ESC>
-cmap jj <ESC>
-cmap JJ <ESC>
 set timeoutlen=400
 
 " stop c, s form yanking

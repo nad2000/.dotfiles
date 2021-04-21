@@ -29,6 +29,7 @@ ln -fs ~/dotfiles/.config/Code/User/settings.json ~/.config/Code/User/settings.j
 ln -fs ~/dotfiles/.config/sxhkd ~/.config/
 ln -f ~/dotfiles/.xinitrc
 ln -f ~/dotfiles/.xprofile
+ln -f ~/dotfiles/.mostrc
 ```
 3. install stuff:
 
