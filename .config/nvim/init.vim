@@ -84,6 +84,8 @@ endif
 call plug#begin('~/.vim/plugged')
 if !is_view  " Disable plugins for 'view'
 " General
+Plug 'pgilad/vim-skeletons'
+let skeletons#skeletonGlob="/template.*"
 "" Plug 'rhysd/vim-grammarous' " https://github.com/rhysd/vim-grammarous
 "Plug 'lucc/vim-tip'
 Plug 'scrooloose/nerdtree'
@@ -92,7 +94,7 @@ Plug 'ervandew/supertab'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer' }
 " Install nightly build, replace ./install.sh with install.cmd on windows
 " Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
-"Plug 'SirVer/ultisnips'  " Track the engine.
+Plug 'SirVer/ultisnips'  " Track the engine.
 "Plug 'honza/vim-snippets' " Snippets are separated from the engine. Add this if you want them
 Plug 'tpope/vim-surround'
 Plug 'fntlnz/atags.vim' " helps you creating and updating your tag files
@@ -339,7 +341,7 @@ augroup FileTypes
   au FileType tex nmap <buffer> T :!open -a Skim %<.pdf %<.pdf<CR><CR>
   " au FileType tex nmap <buffer> C :!rubber --clean<CR>
   " Skeleton files
-  au! BufNewFile * silent! 0r ~/.vim/skel/template.%:e
+  " au! BufNewFile * silent! 0r ~/.vim/skel/template.%
 
 augroup END
 let g:ale_fix_on_save = 1
@@ -414,6 +416,7 @@ let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
 let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
 let g:ycm_complete_in_comments = 1 " Completion in comments
 let g:ycm_complete_in_strings = 1 " Completion in string
+let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_c-c++_conf.py"
 
 " Cipboard for all operations
 "" set clipboard+=unnamedplus  " better to user '*' or '+' register
