@@ -1,0 +1,2 @@
+alias dr with open("response.html", 'wb') as f: f.write(resp.content)
+

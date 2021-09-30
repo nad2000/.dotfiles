@@ -30,6 +30,7 @@ ln -fs ~/dotfiles/.config/sxhkd ~/.config/
 ln -f ~/dotfiles/.xinitrc
 ln -f ~/dotfiles/.xprofile
 ln -f ~/dotfiles/.mostrc
+ln -f ~/dotfiles/.pdbrc
 ```
 3. install stuff:
 
