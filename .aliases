@@ -1,3 +1,6 @@
+alias baroque='mplayer http://69.64.69.158:7061/320\?icy\=https'
+alias classical='mplayer http://51.68.215.9:8000/radio.mp3'
+alias organ='mplayer http://69.64.69.158:7061/320\?icy\=https'
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then

@@ -18,5 +18,11 @@ fi
 [ -r ~/.Xresources ] && xrdb -merge ~/.Xresources
 [ -r ~/.xprofile ] && . ~/.xprofile
 
+# Fcitx: https://wiki.archlinux.org/title/Fcitx#Set_environment_variables_for_IM_modules
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS='@im=fcitx'
+
 # launch the session, commands below this line will be ignored
-exec dwm
+# exec dwm
+exec ssh-agent dwm

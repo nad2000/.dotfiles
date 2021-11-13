@@ -5,6 +5,11 @@
 XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CONFIG_HOME
 
+# Fcitx:
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+
 [ "$PATH" == *"$HOME/bin"* ] || PATH="$HOME/bin:$PATH"
 
 nitrogen --restore &
@@ -17,6 +22,11 @@ sxhkd -m 1 &
 xset dpms 600 900 1200
 xset r rate 350 60
 $HOME/dotfiles/bin/dwm_status &
-redshift &
-(sleep 1; $BROWSER & sleep 1; st tmux ) &
-(sleep 5; $HOME/dotfiles/services.sh ) &
+# See https://github.com/jonls/redshift#faq for more information
+redshift -l -36.87:174.74 -b 1.0:0.8 &
+# See: https://github.com/jonls/redshift/issues/158#issuecomment-71323623
+# redshift -b 0.1:1.0 &
+unclutter &
+( sleep 3; $HOME/dotfiles/services.sh ) &
+( sleep 3; xrandr --listmonitors | grep -q HDMI ) && xrandr --output HDMI1 --auto  --left-of eDP1
+( sleep 1; $BROWSER & sleep 1; st tmux ) &
