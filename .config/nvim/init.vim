@@ -167,7 +167,7 @@ hi rustMacro ctermfg=magenta
 Plug 'editorconfig/editorconfig-vim'
 
 " post install (yarn install | npm install)
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+"" Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 " Terraform
 Plug 'hashivim/vim-terraform'

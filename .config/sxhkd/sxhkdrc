@@ -76,7 +76,8 @@ Print
 	maim $HOME/Pictures/Screenshot_$(date '+%y%m%d-%H:%M:%S').png
 # Pick screenshot type
 shift + Print
-	maimpick
+	screengrab
+	# maimpick
 # Print: Record audio or video; Del: kill recording
 super + Print
 	dmenurecord

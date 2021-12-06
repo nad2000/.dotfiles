@@ -15,7 +15,6 @@ export XMODIFIERS=@im=fcitx
 # nitrogen --restore &
 # Add to your crontab:
 # * * * * * DISPLAY=:0 feh -z --bg-scale  /home/rcir178/.wallpapers
-DISPLAY=:0 feh -z --bg-scale $HOME/.wallpapers &
 volumeicon &
 nm-applet &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
@@ -26,10 +25,10 @@ xset dpms 600 900 1200
 xset r rate 350 60
 $HOME/dotfiles/bin/dwm_status &
 # See https://github.com/jonls/redshift#faq for more information
-redshift -l -36.87:174.74 -b 1.0:0.8 &
 # See: https://github.com/jonls/redshift/issues/158#issuecomment-71323623
-# redshift -b 0.1:1.0 &
 unclutter &
 ( sleep 3; xrandr --listmonitors | grep -q HDMI ) && xrandr --output HDMI1 --auto  --left-of eDP1
+DISPLAY=:0 feh -z --bg-scale $HOME/.wallpapers &
+redshift -l -36.87:174.74 -b 1.0:0.8 &
 ( sleep 3; $HOME/dotfiles/services.sh ) &
 ( sleep 1; $BROWSER & sleep 1; st tmux ) &
