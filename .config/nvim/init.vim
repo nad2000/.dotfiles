@@ -241,6 +241,11 @@ if !is_view
   let NERDTreeShowHidden=1
 endif
 
+if is_view
+  noremap Q :q<CR>
+  autocmd VimEnter * noremap q :q<CR>
+endif
+
 " Folding ----------------------------------------------------------------- {{{
 " from: https://bitbucket.org/sjl/dotfiles
 "
@@ -342,7 +347,6 @@ augroup FileTypes
   " au FileType tex nmap <buffer> C :!rubber --clean<CR>
   " Skeleton files
   " au! BufNewFile * silent! 0r ~/.vim/skel/template.%
-
 augroup END
 let g:ale_fix_on_save = 1
 
@@ -376,7 +380,9 @@ command! REPLSendSelectedLines call REPLSend(getline("'<", "'>" ))
 map <f6> <esc>:setlocal spell! spelllang=en_uk<cr>
 nmap <f10> :Goyo<cr>
 imap <f10> <c-o>:Goyo<cr>
-nnoremap Q gq
+if !is_view
+  nnoremap Q gq
+endif
 
 nnoremap <Leader>- ddp
 nnoremap <Leader>_ ddkP
@@ -387,7 +393,7 @@ iabbrev adn and
 iabbrev waht what
 iabbrev tehn then
 iabbrev @@  nad2000@gmail.com
-iabbrev ccopy Copyright 2019 Rad Cirskis, all rights reserved.
+iabbrev ccopy Copyright 2022 Rad Cirskis, all rights reserved.
 iabbrev ssig -- <cr>Rad Cirskis<cr>nad2000@gmail.com
 
 " Golang support (vim-go):

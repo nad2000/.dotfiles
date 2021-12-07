@@ -96,7 +96,7 @@ esac
 [ -f ~/.aliases ] && source ~/.aliases
 if which nvim &>/dev/null ; then
   export EDITOR='nvim'
-  export MANPAGER="/bin/sh -c \"col -b | /usr/bin/nvim --cmd 'let is_view=1' -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
+  export MANPAGER="nvim --cmd 'let is_view=1' -c 'set ft=man ts=8 nomod nolist nonu noma' +Man!"
 else
   export EDITOR='vim'
 fi

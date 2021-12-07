@@ -36,6 +36,8 @@ super + b
 	$BROWSER
 alt + ctrl + {l, L}
 	slock
+alt + ctrl + {w, W}
+	DISPLAY=:0 feh -z --bg-scale $HOME/.wallpapers
 
 super + shift + {l, L}
   setxkbmap lv apostrophe ; pkill -SIGUSR1 dwm_status
