@@ -184,7 +184,7 @@ endif
 " Theming and UX
 Plug 'takac/vim-hardtime'  " disable arrow keys and other vim-smells
 Plug 'jnurmine/Zenburn'
-Plug 'danilo-augusto/vim-afterglow'
+" Plug 'danilo-augusto/vim-afterglow'
 
 if !is_view
   Plug 'vim-airline/vim-airline'
