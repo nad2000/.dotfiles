@@ -11,6 +11,9 @@ set autoread
 set encoding=utf-8
 set ignorecase
 set smartcase
+set shell=/bin/zsh
+set hlsearch
+set incsearch
 " hybrid line number mode
 if !is_view
   set relativenumber
@@ -116,7 +119,7 @@ Plug 'jalvesaq/vimcmdline'
 "Plug 'benekastah/neomake'
 
 " C
-Plug 'vivien/vim-linux-coding-style'
+""" Plug 'vivien/vim-linux-coding-style'
 
 " C++/clang
 Plug 'rhysd/vim-clang-format'
@@ -181,6 +184,7 @@ endif
 " Theming and UX
 Plug 'takac/vim-hardtime'  " disable arrow keys and other vim-smells
 Plug 'jnurmine/Zenburn'
+Plug 'danilo-augusto/vim-afterglow'
 
 if !is_view
   Plug 'vim-airline/vim-airline'
@@ -189,6 +193,11 @@ if !is_view
 endif
 Plug 'junegunn/goyo.vim'
 Plug 'christoomey/vim-tmux-navigator'
+
+" Copilot
+if !is_view
+  Plug 'github/copilot.vim'
+endif
 
 call plug#end()            " required
 "let loaded_matchit = 1
@@ -335,8 +344,8 @@ augroup FileTypes
   au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
   au FileType go nmap <Leader>s <Plug>(go-implements)
   au FileType go nmap <Leader>i <Plug>(go-info)
-  au Filetype cpp set sts=2 sw=2 sr et cino=:0,g0,(0,Ws,l1
-  au Filetype cpp ClangFormatAutoEnable
+  """ au Filetype cpp set sts=2 sw=2 sr et cino=:0,g0,(0,Ws,l1
+  """ au Filetype cpp ClangFormatAutoEnable
   "autocmd FileType tex set autoindent
   " Set the make program (rubber)
   au FileType tex set makeprg=rubber\ --inplace\ --maxerr\ 1\ \ --pdf\ --short\ --quiet\ --force\ %
