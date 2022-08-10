@@ -68,9 +68,11 @@ fi
 
 if which xinput &>/dev/null ; then
   touchpad_id=$(xinput list | sed -n '/touchpad/I s/.*id=\([0-9]*\).*/\1/p')
-  function disable-touchpad() {xinput set-prop ${touchpad_id} "Device Enabled" 0}
-  function enable-touchpad() {xinput set-prop  ${touchpad_id} "Device Enabled" 1}
-  xinput list | grep -q -iE '(logitech wireless mouse)|{logitech m350)' && disable-touchpad
+  if [ ! -z "$touchpad_id" ] ; then
+    function disable-touchpad() {xinput set-prop ${touchpad_id} "Device Enabled" 0}
+    function enable-touchpad() {xinput set-prop  ${touchpad_id} "Device Enabled" 1}
+    xinput list | grep -q -iE '(logitech wireless mouse)|(logitech m350)' && disable-touchpad
+  fi
 fi
 
 if which neomutt &>/dev/null ; then
