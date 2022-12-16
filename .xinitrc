@@ -22,6 +22,7 @@ fi
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS='@im=fcitx'
+export XIM_PROGRAM=/usr/bin/fcitx5
 
 # launch the session, commands below this line will be ignored
 # exec dwm

@@ -22,3 +22,5 @@
 	helper = cache --timeout 3600
 [branch]
 	autosetupmerge = always
+[init]
+	defaultBranch = main
