@@ -344,6 +344,7 @@ augroup FileTypes
   au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
   au FileType go nmap <Leader>s <Plug>(go-implements)
   au FileType go nmap <Leader>i <Plug>(go-info)
+  au FileType sql call SqlFormatter()
   """ au Filetype cpp set sts=2 sw=2 sr et cino=:0,g0,(0,Ws,l1
   """ au Filetype cpp ClangFormatAutoEnable
   "autocmd FileType tex set autoindent
@@ -357,6 +358,12 @@ augroup FileTypes
   " Skeleton files
   " au! BufNewFile * silent! 0r ~/.vim/skel/template.%
 augroup END
+function SqlFormatter()
+  set noai
+  " set mappings...
+  " make sure 'sqlparse' is installed: pip install sqlparse
+  map ,pt  :%!sqlformat --reindent --keywords upper --identifiers lower -<CR>
+endfunction
 let g:ale_fix_on_save = 1
 
 " Jump to the last cursor position in the file:
