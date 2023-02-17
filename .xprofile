@@ -36,7 +36,8 @@ $HOME/dotfiles/bin/dwm_status &
 # See: https://github.com/jonls/redshift/issues/158#issuecomment-71323623
 unclutter &
 ( sleep 3; xrandr --listmonitors | grep -q HDMI1 ) && xrandr --output HDMI1 --auto --left-of eDP1
-( xrandr --listmonitors | grep -q HDMI-A-0 ) && xrandr --output HDMI-A-0 --auto --left-of eDP
+# ( xrandr --listmonitors | grep -q HDMI-A-0 ) && xrandr --output HDMI-A-0 --auto --left-of eDP
+( xrandr --listmonitors | grep -q HDMI-A-0 ) && xrandr --output HDMI-A-0 --auto --right-of eDP
 DISPLAY=:0 feh -z --bg-scale $HOME/.wallpapers &
 redshift -l -36.87:174.74 -b 1.0:0.8 &
 ( sleep 3; $HOME/dotfiles/services.sh ) &

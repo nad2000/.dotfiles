@@ -8,6 +8,9 @@ export ZSH="/home/rcir178/.oh-my-zsh"
 ## Rust:
 [ -d $HOME/.cargo/bin ] && PATH=$HOME/.cargo/bin:$PATH
 
+## Ruby:
+[ -d $HOME/.local/share/gem/ruby/3.0.0/bin ] && PATH=$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
