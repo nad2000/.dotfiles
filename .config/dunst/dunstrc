@@ -233,7 +233,8 @@
     sticky_history = yes
 
     # Maximum amount of notifications kept in history
-    history_length = 20
+    # history_length = 20
+    history_length = 100
 
     ### Misc/Advanced ###
 
@@ -473,7 +474,7 @@
 #
 [slack]
     appname = "Slack"
-    summary = "[Rr]oshan|[Gg]ush"
+    summary = "[Gg]ush"
     urgency = critical
     background = "#900000"
     foreground = "#ffffff"
