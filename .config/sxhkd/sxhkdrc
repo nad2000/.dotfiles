@@ -25,6 +25,9 @@ super + shift + c
 	mpv --no-osc --no-input-default-bindings --input-conf=/dev/null --title='mpvfloat' /dev/video0
 # super + shift + e
 # 	tutorialvids
+super + s
+  tabbed -c surf -e
+	nemo
 super + f
 	nemo
 super + t
