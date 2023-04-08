@@ -89,7 +89,7 @@ if !is_view  " Disable plugins for 'view'
 " General
 Plug 'pgilad/vim-skeletons'
 let skeletons#skeletonGlob="/template.*"
-"" Plug 'rhysd/vim-grammarous' " https://github.com/rhysd/vim-grammarous
+Plug 'rhysd/vim-grammarous' " https://github.com/rhysd/vim-grammarous
 "Plug 'lucc/vim-tip'
 Plug 'scrooloose/nerdtree'
 """ Plug 'w0rp/ale'  " Syntax Checking
@@ -218,7 +218,7 @@ endif
 
 let g:atags_build_commands_list = [
     \"[[ $PWD != $HOME ]] && cd " . vim_started_in_dir,
-    \"[[ $PWD != $HOME ]] && ctags --exclude=static --exclude='*.css' --exclude='.*' --exclude='*.sqlite*' --exclude=staticfiles --exclude='private-media' --exclude='*.sqlite*' --exclude=$HOME --exclude='*.html' --exclude='*.js' --exclude='*.pxd' -R -f tags.tmp",
+    \"[[ $PWD != $HOME ]] && ctags --exclude=pgdata --exclude=static --exclude='*.css' --exclude='.*' --exclude='*.sqlite*' --exclude=staticfiles --exclude='private-media' --exclude='*.sqlite*' --exclude=$HOME --exclude='*.html' --exclude='*.js' --exclude='*.pxd' -R -f tags.tmp",
     \"[[ $PWD != $HOME ]] && LC_ALL=C awk 'length($0) < 400' tags.tmp > tags",
     \"[[ $PWD != $HOME ]] && rm tags.tmp"
     \]
@@ -314,6 +314,8 @@ augroup FileTypes
   " au BufWritePre *.py execute ':Black'
   au BufWritePost * call atags#generate()
   au BufNewFile,BufRead Jenkinsfile setf groovy
+  au BufNewFile,BufRead *.slide call SetVimPresentationMode()
+  
   au FileType html setl sw=2 sts=2 et
   au FileType jinja setl sw=2 sts=2 et
   au Filetype python set ts=8 sts=4 sw=4 sr et ai | iabbrev <buffer> iff if:<esc>i
@@ -358,6 +360,13 @@ augroup FileTypes
   " Skeleton files
   " au! BufNewFile * silent! 0r ~/.vim/skel/template.%
 augroup END
+function SetVimPresentationMode()
+  nnoremap <buffer> <Right> :n<CR>
+  nnoremap <buffer> <Left> :N<CR>
+  if !exists('#goyo')
+    Goyo
+  endif
+endfunction
 function SqlFormatter()
   set noai
   " set mappings...
