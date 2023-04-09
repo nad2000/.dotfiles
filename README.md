@@ -12,6 +12,7 @@ mkdir -p ~/.config/nvim/ ~/.local/share/nvim/site/ ~/.config/Code/User/
 ln -fs ~/dotfiles/.gitconfig
 [ -f ~/.bashrc ] && mv ~/.bashrc ~/.bashrc.bak
 ln -f ~/dotfiles/.bashrc
+ln -f ~/dotfiles/.muttrc
 ln -f ~/dotfiles/.zshrc ~/.zshrc.pre-oh-my-zsh
 ln -f ~/dotfiles/.zshrc.oh-my-zsh ~/.zshrcgt
 ln -f ~/dotfiles/.zshenv
