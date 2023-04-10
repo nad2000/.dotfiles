@@ -1,7 +1,8 @@
 # vim: filetype=neomuttrc
 
 # protect imap and sendmail passwords with GPG
-source "gpg -d ~/.mutt/passwords.gpg |"
+# encripted fragment of the configuration
+## source "gpg -d ~/.mutt/passwords.gpg |"
 
 # Ensure TLS is enforced
 set ssl_starttls = yes
@@ -16,21 +17,23 @@ set sort_aux=last-date-received
 set signature = "~/.mutt/signature"
 set copy = no
 
-
+set my_gmail_pass = "`gpg --use-agent --quiet --batch -d ~/.passwd/nad2000.gpg`"
 # Smtp settings
 # set smtp_url = "smtps://nad2000@smtp.gmail.com"
-set smtp_url = "smtps://nad2000@gmail.com@smtp.gmail.com"
+# set smtp_url = "smtps://nad2000@gmail.com@smtp.gmail.com"
+set smtp_url = "smtps://nad2000@gmail.com:$my_gmail_pass@smtp.gmail.com:465/"
 
 # IMAP settings
 set imap_user = "nad2000@gmail.com"
+set imap_pass = $my_gmail_pass
 
 # Remote gmail folders
 set folder = "imaps://imap.gmail.com/"
 set spoolfile = "+INBOX"
-mailboxes = +INBOX \
-  "+[Gmail]/Drafts" \
-  "+[Gmail]/Sent Mail" \
-  "+[Gmail]/All Mail"
+# mailboxes = +INBOX \
+#   "+[Gmail]/Drafts" \
+#   "+[Gmail]/Sent Mail"
+set imap_check_subscribed
 set record = "+INBOX"
 # folder-hook . 'set record="^"'
 set postponed = "+[Gmail]/Drafts"
@@ -38,6 +41,7 @@ set postponed = "+[Gmail]/Drafts"
 # set trash = "+[Gmail]/Trash"
 set trash = "+[Gmail]/Bin"
 # Gmail-style keyboard shortcuts
+bind index g noop
 macro index ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
 macro index gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
 macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
@@ -107,7 +111,6 @@ auto_view text/html		# automatically show html (mailcap uses w3m)
 auto_view application/pgp-encrypted
 alternative_order text/plain text/enriched text/html
 bind index,pager i noop
-bind index,pager g noop
 bind index \Cf noop
 
 # General rebindings
