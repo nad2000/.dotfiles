@@ -90,6 +90,7 @@ if !is_view  " Disable plugins for 'view'
 Plug 'pgilad/vim-skeletons'
 let skeletons#skeletonGlob="/template.*"
 Plug 'rhysd/vim-grammarous' " https://github.com/rhysd/vim-grammarous
+Plug 'vim-scripts/loremipsum'
 "Plug 'lucc/vim-tip'
 Plug 'scrooloose/nerdtree'
 """ Plug 'w0rp/ale'  " Syntax Checking
@@ -98,8 +99,9 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-
 " Install nightly build, replace ./install.sh with install.cmd on windows
 " Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
 Plug 'SirVer/ultisnips'  " Track the engine.
-"Plug 'honza/vim-snippets' " Snippets are separated from the engine. Add this if you want them
+Plug 'honza/vim-snippets' " Snippets are separated from the engine. Add this if you want them
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-dispatch'
 Plug 'fntlnz/atags.vim' " helps you creating and updating your tag files
 Plug 'AndrewRadev/splitjoin.vim'  " gS - split; gJ - join
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -154,6 +156,7 @@ Plug 'airblade/vim-gitgutter'
 " Plug 'google/yapf', { 'rtp': 'plugins/vim', 'for': 'python' }
 " Automatically sort python imports
 Plug 'fisadev/vim-isort'
+let g:vim_isort_map = ''
 Plug 'psf/black', { 'tag': '19.10b0' }
 let g:black_linelength = 99
 let g:syntastic_python_checkers = ['flake8']
@@ -177,8 +180,9 @@ Plug 'hashivim/vim-terraform'
 Plug 'vim-syntastic/syntastic'
 Plug 'juliosueiras/vim-terraform-completion'
 
-" LaTex
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+" TeX/LaTex
+" Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+Plug 'lervag/vimtex'
 endif
 
 " Theming and UX
@@ -465,8 +469,11 @@ set path+=**
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 " let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME."/.vim/snippets/UltiSnips"]
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
