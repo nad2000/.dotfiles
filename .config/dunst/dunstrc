@@ -474,7 +474,7 @@
 #
 [slack]
     appname = "Slack"
-    summary = "[Gg]ush"
+    summary = "*([Gg]ush)|([Mm]ark)|([Aa]lex)|([Aa]bby)*"
     urgency = critical
     background = "#900000"
     foreground = "#ffffff"
