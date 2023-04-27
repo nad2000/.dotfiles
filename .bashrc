@@ -128,11 +128,11 @@ which most &>/dev/null && export PAGER="most"
 
 ## GO:
 export GOPATH=$HOME
-if [ -d $HOME/go ] ; then
+if ! which go &>/dev/null && [ -d $HOME/go ] ; then
   export GOROOT=$HOME/go
-  export PATH=$PATH:$GOROOT/bin
+  PATH="$PATH:$GOROOT/bin"
 fi
-export PATH=$PATH:$GOPATH/bin
+export PATH="$PATH:$GOPATH/bin"
 export GO111MODULE=on
 
 [ -s "/home/nad2000/.dnx/dnvm/dnvm.sh" ] && . "/home/nad2000/.dnx/dnvm/dnvm.sh" # Load dnvm
