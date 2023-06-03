@@ -26,7 +26,7 @@ alias l='ls -CF'
 alias python=python3
 alias py=python3
 alias pp=ptpython
-alias a='[ -d ./venv ] && source ./venv/bin/activate || source ./env/bin/activate'
+alias a='[ -d ./venv311 ] && source ./venv311/bin/activate || [ -d ./venv310 ] && source ./venv310/bin/activate || [ -d ./venv11 ] && source ./venv11/bin/activate || [ -d ./venv10 ] && source ./venv10/bin/activate || [ -d ./venv ] && source ./venv/bin/activate || source ./env/bin/activate'
 alias yt='youtube-dl --add-metadata -ic'  # download video link
 alias yta='youtube-dl --add-metadata -xic -f bestaudio/best'  # download only audio
 alias pt='./pytest.sh'
@@ -91,3 +91,12 @@ alias gg='go get'
 if [ -f /usr/share/texmf-dist/scripts/texlive/tlmgr.pl ] ; then
   alias tlmgr='PERL5LIB=/usr/share/tlpkg/ /usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode'
 fi
+
+if which xinput &>/dev/null && [ -f $HOME/.wine/drive_c/Program\ Files\ \(x85\)/mp3DirectCut/mp3DirectCut.exe ] ; then
+  alias mp3DirectCut='wine $HOME/.wine/drive_c/Program\ Files\ \(x86\)/mp3DirectCut/mp3DirectCut.exe'
+fi
+
+# Battery settings for Modern 15:
+alias battery-balanced='sudo isw -s 0xef 208' # Mode "Balanced" (Charge the battery when under 70%, stop at 80%)
+alias battery-mobility='sudo isw -s 0xef 228' # Mode "Best for Mobility" (Charge the battery to 100% all the time)
+alias battery-best='sudo isw -s 0xef 188' # Mode "Best for Battery" (Charge the battery when under 50%, stop at 60%)
