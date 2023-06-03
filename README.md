@@ -11,6 +11,7 @@ mkdir -p ~/.config/nvim/ ~/.local/share/nvim/site/ ~/.config/Code/User/
 [ -f .gitconfig ] && mv ~/.gitconfig ~/.gitconfig.bak
 ln -fs ~/dotfiles/.gitconfig
 [ -f ~/.bashrc ] && mv ~/.bashrc ~/.bashrc.bak
+ln -f /home/rcir178/dotfiles/.aliases
 ln -f ~/dotfiles/.bashrc
 ln -f ~/dotfiles/.muttrc
 ln -f ~/dotfiles/.zshrc ~/.zshrc.pre-oh-my-zsh
