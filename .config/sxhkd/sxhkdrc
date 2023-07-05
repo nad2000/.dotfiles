@@ -44,12 +44,14 @@ alt + ctrl + {l, L}
 alt + ctrl + {w, W}
 	DISPLAY=:0 feh -z --bg-scale $HOME/.wallpapers
 
+# The list of layouts: localectl list-x11-keymap-layouts
 super + shift + {l, L}
   setxkbmap lv apostrophe ; pkill -SIGUSR1 dwm_status
 super + shift + {r, R}
   setxkbmap -variant phonetic_winkeys ru ; pkill -SIGUSR1 dwm_status
 super + shift + {e, E}
-  setxkbmap en_US ;  pkill -SIGUSR1 dwm_status
+  # setxkbmap en_US ;  pkill -SIGUSR1 dwm_status
+  setxkbmap us ;  pkill -SIGUSR1 dwm_status
 
 # Et cetera...
 super + grave
