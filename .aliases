@@ -66,7 +66,7 @@ if which ctags &>/dev/null ; then
   }
 fi
 
-if which xinput &>/dev/null ; then
+if which xinput &>/dev/null && (xinput list | grep -iq touchpad ) ; then
   touchpad_id=$(xinput list | sed -n '/touchpad/I s/.*id=\([0-9]*\).*/\1/p')
   if [ ! -z "$touchpad_id" ] ; then
     function disable-touchpad() {xinput set-prop ${touchpad_id} "Device Enabled" 0}
