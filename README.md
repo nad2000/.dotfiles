@@ -41,13 +41,15 @@ ln -f ~/dotfiles/.pdbrc
 sudo apt-get install curl exuberant-ctags ack-grep neovim  ## for Debian based distros
 sudo pacman -Sy curl ctags ack neovim ## For Arch Linux
 pip install -U --user pep8 flake8 pyflakes isort yapf pip
-
+curl -o ~/.git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+curl -o ~/.git-prompt.sh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
 ```
+
+
 
 4. install vim-plug[https://github.com/junegunn/vim-plug]:
 ```
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
-
 

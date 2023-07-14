@@ -199,9 +199,9 @@ Plug 'junegunn/goyo.vim'
 Plug 'christoomey/vim-tmux-navigator'
 
 " Copilot
-if !is_view
-  Plug 'github/copilot.vim'
-endif
+" if !is_view
+"   Plug 'github/copilot.vim'
+" endif
 
 call plug#end()            " required
 "let loaded_matchit = 1
@@ -257,6 +257,7 @@ endif
 if is_view
   noremap Q :q<CR>
   autocmd VimEnter * noremap q :q<CR>
+  autocmd VimEnter * noremap <space> <C-D>
 endif
 
 " Folding ----------------------------------------------------------------- {{{

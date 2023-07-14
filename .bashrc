@@ -219,10 +219,13 @@ if [ -d $HOME/dotnet ] ; then
   export DOTNET_ROOT=$HOME/dotnet
   export PATH=$PATH:$HOME/dotnet
 fi
-source "$HOME/.cargo/env"
 
-# IBus support:
-export GTK_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
-export QT_IM_MODULE=ibus
-. "$HOME/.cargo/env"
+# # IBus support:
+# export GTK_IM_MODULE=ibus
+# export XMODIFIERS=@im=ibus
+# export QT_IM_MODULE=ibus
+# Fcitx: https://wiki.archlinux.org/title/Fcitx#Set_environment_variables_for_IM_modules
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS='@im=fcitx'
+[ -f ~/.cargo/env ] && source ~/.cargo/env
