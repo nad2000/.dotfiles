@@ -1,5 +1,5 @@
 trayer --edge top &
 sleep 1
-dropbox &
+# dropbox &
 slack &
 fcitx-autostar

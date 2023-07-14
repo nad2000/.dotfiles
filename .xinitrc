@@ -24,6 +24,7 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS='@im=fcitx'
 export XIM_PROGRAM=/usr/bin/fcitx5
 
+xcompmgr &
 # launch the session, commands below this line will be ignored
 # exec dwm
 exec ssh-agent dwm
