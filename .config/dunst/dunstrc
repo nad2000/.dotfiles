@@ -473,19 +473,19 @@
 #
 #
 [slack]
-    appname = "Slack"
-    summary = "*([Gg]ush)|([Mm]ark)|([Aa]lex)|([Aa]bby)*"
+    # appname = "Slack"
+    summary = ".*([Gg]ush)|([Mm]ark)|([Aa]lex)|([Aa]my)|([Aa]bby).*"
     urgency = critical
-    background = "#900000"
+    background = "#600000"
     foreground = "#ffffff"
     frame_color = "#ff0000"
     timeout = 0
 
 [PMSP]
-    summary = *PMSP*
+    summary = ".*(PMSP)|(pmsp)|(puanga).*"
     urgency = critical
-    desktop_entry = "brave-browser"
-    background = "#900000"
+    # desktop_entry = "brave-browser"
+    background = "#600000"
     foreground = "#ffffff"
     frame_color = "#ff0000"
     timeout = 0
