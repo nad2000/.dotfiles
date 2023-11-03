@@ -16,7 +16,7 @@ xmodmap -e 'keycode 108 = Hangul'
 xmodmap -e 'remove control = Control_R'
 xmodmap -e 'keycode 105 = Hangul_Hanja'
 
-[ -f /usr/bin/fcitx5 ] && /usr/bin/fcitx5 -d
+# [ -f /usr/bin/fcitx5 ] && /usr/bin/fcitx5 -d
 
 [ "$PATH" == *"$HOME/bin"* ] || PATH="$HOME/bin:$PATH"
 

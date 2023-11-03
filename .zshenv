@@ -60,9 +60,11 @@ export FLASK_APP=orcid_hub
 export FLASK_ENV=development
 
 ## GO:
-export GOPATH=$HOME
-export GOROOT=$HOME/go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+if [ -d ~/go ] ; then
+	export GOPATH=$HOME
+	export GOROOT=$HOME/go
+	export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+fi
 
 # Adds `~/.local/bin` to $PATH
 export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"

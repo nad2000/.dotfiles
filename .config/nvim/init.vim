@@ -1,5 +1,3 @@
-" vim: foldmethod=marker
-
 " it's 'view' not 'vi/vim/...'
 if !exists("is_view")
   let is_view = (v:progname ==? 'view')
@@ -87,6 +85,7 @@ endif
 call plug#begin('~/.vim/plugged')
 if !is_view  " Disable plugins for 'view'
 " General
+Plug 'motemen/vim-help-random'
 Plug 'pgilad/vim-skeletons'
 let skeletons#skeletonGlob="/template.*"
 Plug 'rhysd/vim-grammarous' " https://github.com/rhysd/vim-grammarous
@@ -242,6 +241,7 @@ syntax enable
 set cursorline
 set showmatch   " show mattching part of the pair for [] {} and ()
 hi Search cterm=NONE ctermfg=black ctermbg=blue
+hi Comment gui=italic cterm=italic
 
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 " Open NERDTree automatically when vim starts up if no files were specified:
@@ -518,3 +518,4 @@ noremap Zo <c-w>=
 
 " " Automatically load the session when entering vim
 " autocmd! VimEnter * source .session.vim
+" vim:tw=78:ts=8:sw=2:et:ft=help:norl:foldmethod=marker
