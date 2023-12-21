@@ -243,6 +243,23 @@ set showmatch   " show mattching part of the pair for [] {} and ()
 hi Search cterm=NONE ctermfg=black ctermbg=blue
 hi Comment gui=italic cterm=italic
 
+function! ToggleHiddenAll()
+    if &laststatus ==  0 || &cmdheight == 0
+        " set showmode
+        set ruler
+        set laststatus=2
+        set cmdheight=1
+        set showcmd
+    else
+        " set noshowmode
+        set noruler
+        set laststatus=0
+        set cmdheight=0
+        set noshowcmd
+    endif
+endfunction
+nnoremap <S-h> :call ToggleHiddenAll()<CR>
+
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 " Open NERDTree automatically when vim starts up if no files were specified:
 
@@ -328,6 +345,8 @@ augroup FileTypes
   au FileType python nnoremap <LocalLeader>= :0,$!yapf<CR>  " Code formating with YAPF (https://github.com/google/yapf)
   au FileType python vmap <c-s-y> :call yapf#YAPF()<cr>
   au FileType python imap <c-s-y> <c-o>:call yapf#YAPF()<cr>
+  au FileType python nmap <c-s-b> <c-o>:keepmarks Black<cr>
+  au FileType python imap <c-s-b> <c-o>:keepmarks Black<cr>
   au FileType python let g:ale_linters = {'python': ['flake8']}
   au FileType javascript setlocal sw=2 | iabbrev <buffer> iff if ()<esc>i
   au FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
@@ -518,4 +537,4 @@ noremap Zo <c-w>=
 
 " " Automatically load the session when entering vim
 " autocmd! VimEnter * source .session.vim
-" vim:tw=78:ts=8:sw=2:et:ft=help:norl:foldmethod=marker
+" vim:tw=78:ts=8:sw=2:et:ft=vim:norl:foldmethod=marker
