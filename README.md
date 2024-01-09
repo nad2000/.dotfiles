@@ -45,11 +45,10 @@ curl -o ~/.git-completion.bash https://raw.githubusercontent.com/git/git/master/
 curl -o ~/.git-prompt.sh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
 ```
 
-
-
 4. install vim-plug[https://github.com/junegunn/vim-plug]:
 ```
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 
+5. generate the locale: `sudo locale-gen ru_RU.UTF-8`
