@@ -55,6 +55,7 @@ imap JK <ESC>
 cmap jk <ESC>
 cmap JK <ESC>
 set timeoutlen=400
+set ttimeoutlen=80
 
 " stop c, s form yanking
 nnoremap c "_c
@@ -85,6 +86,7 @@ endif
 call plug#begin('~/.vim/plugged')
 if !is_view  " Disable plugins for 'view'
 " General
+Plug 'tpope/vim-sensible'
 Plug 'motemen/vim-help-random'
 Plug 'pgilad/vim-skeletons'
 let skeletons#skeletonGlob="/template.*"
@@ -100,6 +102,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-
 Plug 'SirVer/ultisnips'  " Track the engine.
 Plug 'honza/vim-snippets' " Snippets are separated from the engine. Add this if you want them
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-dispatch'
 Plug 'fntlnz/atags.vim' " helps you creating and updating your tag files
 Plug 'AndrewRadev/splitjoin.vim'  " gS - split; gJ - join
@@ -221,7 +224,7 @@ endif
 
 let g:atags_build_commands_list = [
     \"[[ $PWD != $HOME ]] && cd " . vim_started_in_dir,
-    \"[[ $PWD != $HOME ]] && ctags --exclude=pgdata --exclude=static --exclude='*.css' --exclude='.*' --exclude='*.sqlite*' --exclude=staticfiles --exclude='private-media' --exclude='*.sqlite*' --exclude=$HOME --exclude='*.html' --exclude='*.js' --exclude='*.pxd' -R -f tags.tmp",
+    \"[[ $PWD != $HOME ]] && ctags --exclude=pgdata --exclude=static --exclude='*.css' --exclude='.pyx'  --exclude='.*' --exclude='*.sqlite*' --exclude=staticfiles --exclude='private-media' --exclude='*.sqlite*' --exclude=$HOME --exclude='*.html' --exclude='*.js' --exclude='*.pxd' -R -f tags.tmp",
     \"[[ $PWD != $HOME ]] && LC_ALL=C awk 'length($0) < 400' tags.tmp > tags",
     \"[[ $PWD != $HOME ]] && rm tags.tmp"
     \]
@@ -339,7 +342,7 @@ augroup FileTypes
   au BufNewFile,BufRead *.slide call SetVimPresentationMode()
   
   au FileType html setl sw=2 sts=2 et
-  au FileType jinja setl sw=2 sts=2 et
+  au FileType jinja,html setl sw=2 sts=2 et | vmap <Leader>i S<i> | vmap <Leader>b S<b> | vmap <Leader>u S<u> | nmap <Leader>i ysiw<i> | nmap <Leader>b ysiw<b> | nmap <Leader>u ysiw<u>
   au Filetype python set ts=8 sts=4 sw=4 sr et ai | iabbrev <buffer> iff if:<esc>i
   au Filetype python nnoremap <LocalLeader>i :!isort %<CR><CR>  " Import re-sorting (https://github.com/timothycrosley/isort)
   au FileType python nnoremap <LocalLeader>= :0,$!yapf<CR>  " Code formating with YAPF (https://github.com/google/yapf)
