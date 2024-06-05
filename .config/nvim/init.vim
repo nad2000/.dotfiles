@@ -87,6 +87,7 @@ endif
 call plug#begin('~/.vim/plugged')
 if !is_view  " Disable plugins for 'view'
 " General
+Plug 'motemen/vim-help-random'
 Plug 'pgilad/vim-skeletons'
 let skeletons#skeletonGlob="/template.*"
 Plug 'rhysd/vim-grammarous' " https://github.com/rhysd/vim-grammarous
