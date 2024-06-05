@@ -8,13 +8,6 @@
 [ -n "$BASH_VERSION" -a -n "$PS1" -a  -f ~/.bashrc ] && . ~/.bashrc
 alias please=sudo
 
-# Source the git bash completion file
-if [ -f ~/.git-completion.bash ]; then
-    source ~/.git-completion.bash
-    # GIT_PS1_SHOWDIRTYSTATE=true
-    # GIT_PS1_SHOWSTASHSTATE=true
-    # GIT_PS1_SHOWUPSTREAM="auto"
-    # PS1='\t:\[\033[32m\]$(__git_ps1 " (%s)")\[\033[00m\] \W$ '
+if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+  exec startx
 fi
-
-[ -f ~/.git-prompt.sh ] && source ~/.git-prompt.sh

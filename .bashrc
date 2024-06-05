@@ -58,6 +58,16 @@ case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
 
+# Source the git bash completion file
+if [ -f ~/.git-completion.bash ]; then
+    source ~/.git-completion.bash
+    # GIT_PS1_SHOWDIRTYSTATE=true
+    # GIT_PS1_SHOWSTASHSTATE=true
+    # GIT_PS1_SHOWUPSTREAM="auto"
+    # PS1='\t:\[\033[32m\]$(__git_ps1 " (%s)")\[\033[00m\] \W$ '
+fi
+
+[ -f ~/.git-prompt.sh ] && source ~/.git-prompt.sh
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
