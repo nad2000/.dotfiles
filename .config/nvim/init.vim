@@ -92,6 +92,8 @@ Plug 'pgilad/vim-skeletons'
 let skeletons#skeletonGlob="/template.*"
 Plug 'rhysd/vim-grammarous' " https://github.com/rhysd/vim-grammarous
 Plug 'vim-scripts/loremipsum'
+Plug 'tpope/vim-sensible'
+Plug 'fourjay/w3m.vim'
 "Plug 'lucc/vim-tip'
 Plug 'scrooloose/nerdtree'
 """ Plug 'w0rp/ale'  " Syntax Checking
@@ -224,7 +226,7 @@ endif
 
 let g:atags_build_commands_list = [
     \"[[ $PWD != $HOME ]] && cd " . vim_started_in_dir,
-    \"[[ $PWD != $HOME ]] && ctags --exclude=pgdata --exclude=static --exclude='*.css' --exclude='.pyx'  --exclude='.*' --exclude='*.sqlite*' --exclude=staticfiles --exclude='private-media' --exclude='*.sqlite*' --exclude=$HOME --exclude='*.html' --exclude='*.js' --exclude='*.pxd' -R -f tags.tmp",
+    \"[[ $PWD != $HOME ]] && ctags --exclude=pgdata --exclude=static --exclude='*.css' --exclude='*.pyx'  --exclude='.*' --exclude='*.sqlite*' --exclude=staticfiles --exclude='private-media' --exclude='*.sqlite*' --exclude=$HOME --exclude='*.html' --exclude='*.js' --exclude='*.pxd' --exclude='*.pxi' -R -f tags.tmp",
     \"[[ $PWD != $HOME ]] && LC_ALL=C awk 'length($0) < 400' tags.tmp > tags",
     \"[[ $PWD != $HOME ]] && rm tags.tmp"
     \]
@@ -478,6 +480,18 @@ let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_c-c++_conf.py"
 
 " Cipboard for all operations
 "" set clipboard+=unnamedplus  " better to user '*' or '+' register
+let g:clipboard = {
+      \   'name': 'myClipboard',
+      \   'copy': {
+      \      '+': ['tmux', 'load-buffer', '-'],
+      \      '*': ['tmux', 'load-buffer', '-'],
+      \    },
+      \   'paste': {
+      \      '+': ['tmux', 'save-buffer', '-'],
+      \      '*': ['tmux', 'save-buffer', '-'],
+      \   },
+      \   'cache_enabled': 1,
+      \ }
 
 " CTRL-S for saveing:
 noremap <silent> <C-S>          :update<CR>

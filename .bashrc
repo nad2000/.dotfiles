@@ -183,20 +183,13 @@ export TOKEN_PASSWORD_SALT=testsalt
 export TOKEN_SECRET_KEY=testsecret
 export FLASK_APP=orcid_hub
 
-#export MAIL_DEFAULT_SENDER=no-reply@orcidhub.org.nz
-#export MAIL_PASSWORD=AgPDjD2UUs7O7Qg7YZxYXnMyl5Rjg6j0/6mgHz4NOQkr
-#export MAIL_SERVER=email-smtp.us-east-1.amazonaws.com
-#export MAIL_USERNAME=AKIAISUVN4HBEQK6VRIA
 
 export MAIL_SERVER=dev.orcidhub.org.nz
 export MAIL_PORT=2525
 
 export UID USER_GID=$(id -g)
-export BACKUP_DATABASE_URL=postgresql://orcidhub:p455w0rd@backup.orcidhub.org.nz:5432/orcidhub
-export SECRET_KEY=f5e95a2e69e61e0891d58c831125533ab514ef58590b1c52bd5cb7d1
 export OAUTHLIB_INSECURE_TRANSPORT=1
 export ORCID_CLIENT_ID=APP-6DZOOMOKJCYRY6GE
-export ORCID_CLIENT_SECRET=f7a2d69a-b3f9-4988-8772-160db671d814
 export SHIB_METADATA_PROVIDER_URI=https://directory.test.tuakiri.ac.nz/metadata/tuakiri-test-metadata-signed.xml
 export FLASK_ENV=development
 
