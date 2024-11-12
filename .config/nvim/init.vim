@@ -135,7 +135,10 @@ Plug 'OmniSharp/omnisharp-vim'
 
 " HTML
 Plug 'alvan/vim-closetag'
-Plug 'lepture/vim-jinja'  " Jinja2 template support
+"Plug 'hiphish/jinja.vim'
+"Plug 'https://gitlab.com/HiPhish/jinja.vim.git' 
+"Plug  'lepture/vim-jinja'  " Jinja2 template support
+Plug 'hansemschnokeloch/vim-jinja'
 "Plug 'vim-scripts/matchit.zip'
 
 " JavaScript and stuff
