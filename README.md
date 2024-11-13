@@ -29,6 +29,7 @@ ln -fs ~/dotfiles/.config/fontconfig/.fonts.conf ~/.config/fontconfig/.fonts.con
 ln -fs ~/dotfiles/.vim/autoload ~/.local/share/nvim/site/autoload
 ln -fs ~/dotfiles/.config/Code/User/settings.json ~/.config/Code/User/settings.json
 ln -fs ~/dotfiles/.config/sxhkd ~/.config/
+ln -fs ~/dotfiles/.config/ptpython ~/.config/ptpython
 ln -fs ~/dotfiles/.passwd
 ln -f ~/dotfiles/.xinitrc
 ln -f ~/dotfiles/.xprofile
