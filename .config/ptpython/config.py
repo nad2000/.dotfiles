@@ -168,19 +168,19 @@ def configure(repl):
         "pritn": "print",
     }
 
-    # @repl.add_key_binding(" ")
-    # def _(event):
-    #     " When a space is pressed. Check & correct word before cursor. "
-    #     b = event.cli.current_buffer
-    #     w = b.document.get_word_before_cursor()
+    @repl.add_key_binding(" ")
+    def _(event):
+        " When a space is pressed. Check & correct word before cursor. "
+        b = event.cli.current_buffer
+        w = b.document.get_word_before_cursor()
 
-    #     if w is not None:
-    #         if w in corrections:
-    #             b.delete_before_cursor(count=len(w))
-    #             b.insert_text(corrections[w])
+        if w is not None:
+            if w in corrections:
+                b.delete_before_cursor(count=len(w))
+                b.insert_text(corrections[w])
 
-    #     b.insert_text(" ")
-    # """
+        b.insert_text(" ")
+    """
 
     # # Add a custom title to the status bar. This is useful when ptpython is
     # # embedded in other applications.

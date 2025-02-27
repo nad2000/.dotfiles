@@ -69,6 +69,9 @@ fi
 # Adds `~/.local/bin` to $PATH
 export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
 
+# $HOME/.local/share/gem/ruby/3.0.0/bin
+[ -d $HOME/.local/share/gem/ruby/3.0.0/bin ] && export PATH=$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin
+
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 
 # Get default LARBS WM from ~/.local/share/larbs/wm

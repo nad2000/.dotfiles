@@ -206,9 +206,9 @@ Plug 'junegunn/goyo.vim'
 Plug 'christoomey/vim-tmux-navigator'
 
 " Copilot
-" if !is_view
-"   Plug 'github/copilot.vim'
-" endif
+if !is_view
+ Plug 'github/copilot.vim'
+endif
 
 call plug#end()            " required
 "let loaded_matchit = 1
@@ -250,6 +250,7 @@ set cursorline
 set showmatch   " show mattching part of the pair for [] {} and ()
 hi Search cterm=NONE ctermfg=black ctermbg=blue
 hi Comment gui=italic cterm=italic
+hi SpellBad cterm=underline
 
 function! ToggleHiddenAll()
     if &laststatus ==  0 || &cmdheight == 0
