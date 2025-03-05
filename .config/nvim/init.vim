@@ -92,6 +92,8 @@ Plug 'pgilad/vim-skeletons'
 let skeletons#skeletonGlob="/template.*"
 Plug 'rhysd/vim-grammarous' " https://github.com/rhysd/vim-grammarous
 Plug 'vim-scripts/loremipsum'
+Plug 'tpope/vim-sensible'
+Plug 'fourjay/w3m.vim'
 "Plug 'lucc/vim-tip'
 Plug 'scrooloose/nerdtree'
 """ Plug 'w0rp/ale'  " Syntax Checking
@@ -133,7 +135,10 @@ Plug 'OmniSharp/omnisharp-vim'
 
 " HTML
 Plug 'alvan/vim-closetag'
-Plug 'lepture/vim-jinja'  " Jinja2 template support
+"Plug 'hiphish/jinja.vim'
+"Plug 'https://gitlab.com/HiPhish/jinja.vim.git' 
+"Plug  'lepture/vim-jinja'  " Jinja2 template support
+Plug 'hansemschnokeloch/vim-jinja'
 "Plug 'vim-scripts/matchit.zip'
 
 " JavaScript and stuff
@@ -201,9 +206,9 @@ Plug 'junegunn/goyo.vim'
 Plug 'christoomey/vim-tmux-navigator'
 
 " Copilot
-" if !is_view
-"   Plug 'github/copilot.vim'
-" endif
+if !is_view
+ Plug 'github/copilot.vim'
+endif
 
 call plug#end()            " required
 "let loaded_matchit = 1
@@ -224,7 +229,7 @@ endif
 
 let g:atags_build_commands_list = [
     \"[[ $PWD != $HOME ]] && cd " . vim_started_in_dir,
-    \"[[ $PWD != $HOME ]] && ctags --exclude=pgdata --exclude=static --exclude='*.css' --exclude='.pyx'  --exclude='.*' --exclude='*.sqlite*' --exclude=staticfiles --exclude='private-media' --exclude='*.sqlite*' --exclude=$HOME --exclude='*.html' --exclude='*.js' --exclude='*.pxd' -R -f tags.tmp",
+    \"[[ $PWD != $HOME ]] && ctags --exclude=pgdata --exclude=static --exclude='*.css' --exclude='*.pyx'  --exclude='.*' --exclude='*.sqlite*' --exclude=staticfiles --exclude='private-media' --exclude='*.sqlite*' --exclude=$HOME --exclude='*.html' --exclude='*.js' --exclude='*.pxd' --exclude='*.pxi' -R -f tags.tmp",
     \"[[ $PWD != $HOME ]] && LC_ALL=C awk 'length($0) < 400' tags.tmp > tags",
     \"[[ $PWD != $HOME ]] && rm tags.tmp"
     \]
@@ -245,6 +250,7 @@ set cursorline
 set showmatch   " show mattching part of the pair for [] {} and ()
 hi Search cterm=NONE ctermfg=black ctermbg=blue
 hi Comment gui=italic cterm=italic
+hi SpellBad cterm=underline
 
 function! ToggleHiddenAll()
     if &laststatus ==  0 || &cmdheight == 0
@@ -478,6 +484,18 @@ let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_c-c++_conf.py"
 
 " Cipboard for all operations
 "" set clipboard+=unnamedplus  " better to user '*' or '+' register
+let g:clipboard = {
+      \   'name': 'myClipboard',
+      \   'copy': {
+      \      '+': ['tmux', 'load-buffer', '-'],
+      \      '*': ['tmux', 'load-buffer', '-'],
+      \    },
+      \   'paste': {
+      \      '+': ['tmux', 'save-buffer', '-'],
+      \      '*': ['tmux', 'save-buffer', '-'],
+      \   },
+      \   'cache_enabled': 1,
+      \ }
 
 " CTRL-S for saveing:
 noremap <silent> <C-S>          :update<CR>

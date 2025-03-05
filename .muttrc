@@ -17,11 +17,16 @@ set sort_aux=last-date-received
 set signature = "~/.mutt/signature"
 set copy = no
 
+# gpg -r nad2000@gmail.com  --use-agent --quiet --batch -e  -o ~/.passwd/nad2000.gpg <<<"[PASSWORD]"
+# OR find the keys: gpg --list-secret-keys
+# and  encrypt
+# gpg --user [KEY ID]  --use-agent --quiet --batch -e  -o ~/.passwd/nad2000.gpg <<<"[PASSWORD]"
 set my_gmail_pass = "`gpg --use-agent --quiet --batch -d ~/.passwd/nad2000.gpg`"
 # Smtp settings
 # set smtp_url = "smtps://nad2000@smtp.gmail.com"
 # set smtp_url = "smtps://nad2000@gmail.com@smtp.gmail.com"
-set smtp_url = "smtps://nad2000@gmail.com:$my_gmail_pass@smtp.gmail.com:465/"
+# set smtp_url = "smtps://nad2000@gmail.com:$my_gmail_pass@smtp.gmail.com:465/"
+# set smtp_url = "smtp://mail.prodata.nz:25/
 
 # IMAP settings
 set imap_user = "nad2000@gmail.com"
@@ -54,12 +59,27 @@ macro index,pager A "<save-message>=[Gmail]/All Mail<enter><enter>" "Archive"
 
 #
 ## force envelope and sender
-set use_from
-set envelope_from
+set use_from=yes
+set envelope_from = yes
+set sendmail = "/usr/bin/msmtp"
 # set hostname="example.com"
 set realname = "Rad C."
-set from = "nad2000@gmail.com"
+## set from = "nad2000@gmail.com"
+set from = "rad@prodata.nz"
 set mbox_type=Maildir
+
+# set sendmail="/path/to/msmtp --host=mailhub -f me@example.com --tls --tls-trust-file=trust.crt"
+
+macro generic "<esc>1" ":set from=rad@prodata.nz"
+macro generic "<esc>3" ":set from=nad2000@gmail.com"
+macro generic "<esc>2" ":set from=rad@prodata.co.nz"
+
+alias gmail    Rad C. <nad2000@gmail.com>
+alias prodata  Rad C. <rad@prodata.nz>
+alias f__1    Rad C. <nad2000@gmail.com>
+alias f__2  Rad C. <rad@prodata.nz>
+# macro compose v "<edit-from>^Uidentity\_<tab>" "Select from"
+# macro compose <esc>f "<edit-from><kill-line>f__<tab><search>rad@prodata.nz<enter>"
 # set folder=~/Maildir
 ### set folder = "~/.mail/"
 # set spoolfile=~/Maildir/INBOX
@@ -79,7 +99,11 @@ set mbox_type=Maildir
 
 # Activate caching, as it can greatly improve speed
 set header_cache = "~/.mutt/cache/headers/"
+## LMDB is still faster
 set header_cache_backend = "lmdb"
+# set header_cache_backend = "bdb"
+# set header_cache_compress_method = 'zstd'
+# set header_cache_compress_level = 10
 set message_cachedir = "~/.mutt/cache/bodies"
 
 # Disable saving outgoing mail since Gmail saves them by default.
@@ -90,7 +114,7 @@ set record = ""
 set date_format="%y/%m/%d %I:%M%p"
 set index_format="%2C %Z %?X?A& ? %D %-15.15F %s (%-4.4c)"
 set sort = 'reverse-date'
-set smtp_authenticators = 'gssapi:login'
+# set smtp_authenticators = 'gssapi:login'
 set query_command = "abook --mutt-query '%s'"
 set rfc2047_parameters = yes
 set sleep_time = 0		# Pause 0 seconds for informational messages
@@ -105,6 +129,7 @@ set forward_quote		# include message in forwards
 set reverse_name		# reply as whomever it was to
 set include			# include message in replies
 set mail_check=60 # to avoid lags using IMAP with some email providers (yahoo for example)
+set editor="vim +13 -c 'set nobackup' -c 'set noswapfile' -c 'set nowritebackup' -c 'set tw=72 ft=mail noautoindent'"
 ## set new_mail_command="notify-send -a neomutt --icon='~/.mutt/neomutt.png' 'New Email' '%n new messages, %u unread.' &"
 # set implicit_autoview = yes
 auto_view text/html		# automatically show html (mailcap uses w3m)
@@ -251,15 +276,19 @@ color body red default "([a-z][a-z0-9+-]*://(((([a-z0-9_.!~*'();:&=+$,-]|%[0-9a-
 
 
 # GPG
-source ~/.mutt/gpg.rc
+## source ~/.mutt/gpg.rc
+source /etc/neomuttrc.d/gpg.rc
+set pgp_encrypt_only_command="/usr/libexec/neomutt/pgpewrap gpg --throw-keys --batch --quiet --no-verbose --output - --textmode --armor --encrypt -- --recipient %r -- %f"
+set pgp_encrypt_sign_command="/usr/libexec/neomutt/pgpewrap gpg %?p?--pinentry-mode loopback --passphrase-fd 0? --throw-keys --batch --quiet --no-verbose --textmode --output - %?a?--local-user %a? --armor --sign --encrypt -- --recipient %r -- %f"
+
 # Signatures:
-# Don't sign!
 # set pgp_autosign=yes
-set pgp_autosign=yes
+# Don't sign!
+set pgp_autosign = no
 # set pgp_sign_as = 0xDEADBEEF
 set pgp_sign_as = 0x8CA9B70CAFB335D3E1C6A4A483501B7AC2BD3B51
 # Encrypt replies to PGP mails by default
-set pgp_replyencrypt=yes
-set pgp_replysign=yes
+set pgp_replyencrypt = yes
+set pgp_replysign = yes
 # Set this to something comfortable
-set pgp_timeout=1800
+set pgp_timeout =1800
