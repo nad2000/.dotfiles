@@ -66,6 +66,11 @@ if [ -d ~/go ] ; then
 	export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 fi
 
+## Local NVIM build:
+if [ -d ~/nvim-linux-x86_64/bin ] ; then
+	export PATH=$PATH:$HOME/nvim-linux-x86_64/bin
+fi 
+
 # Adds `~/.local/bin` to $PATH
 export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
 
@@ -118,3 +123,4 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS='@im=fcitx'
 [ -f ~/.cargo/env ] && source ~/.cargo/env
 
+. "$HOME/.cargo/env"

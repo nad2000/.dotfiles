@@ -166,7 +166,13 @@ Plug 'fisadev/vim-isort'
 let g:vim_isort_map = ''
 Plug 'psf/black', { 'tag': '19.10b0' }
 let g:black_linelength = 99
+
+" Python syntax checking
 let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " Robot Framework
 Plug 'Costallat/robotframework-vim'
@@ -208,6 +214,8 @@ Plug 'christoomey/vim-tmux-navigator'
 " Copilot
 if !is_view
  Plug 'github/copilot.vim'
+ Plug 'nvim-lua/plenary.nvim'
+ Plug 'CopilotC-Nvim/CopilotChat.nvim'
 endif
 
 call plug#end()            " required
@@ -263,7 +271,7 @@ function! ToggleHiddenAll()
         " set noshowmode
         set noruler
         set laststatus=0
-        set cmdheight=0
+        set cmdheight=1
         set noshowcmd
     endif
 endfunction
