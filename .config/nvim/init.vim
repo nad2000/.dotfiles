@@ -230,7 +230,7 @@ if exists(':tnoremap')
   tnoremap <silent> <c-k> <c-\><c-n>:TmuxNavigateUp<cr>
   tnoremap <silent> <c-l> <c-\><c-n>:TmuxNavigateRight<cr>
   " tnoremap <silent> <c-\> <c-\><c-n>:TmuxNavigatePrevious<cr>
-  tnoremap jk <c-\><c-n> 
+  tnoremap jk <c-\><c-n>
   tnoremap <c-s-PageDown> <c-\><c-n>:bn<cr>
   tnoremap <c-s-PageUp> <c-\><c-n>:bp<cr>
 endif
@@ -354,7 +354,7 @@ augroup FileTypes
   au BufWritePost * call atags#generate()
   au BufNewFile,BufRead Jenkinsfile setf groovy
   au BufNewFile,BufRead *.slide call SetVimPresentationMode()
-  
+
   au FileType html setl sw=2 sts=2 et
   au FileType jinja,html setl sw=2 sts=2 et | vmap <Leader>i S<i> | vmap <Leader>b S<b> | vmap <Leader>u S<u> | nmap <Leader>i ysiw<i> | nmap <Leader>b ysiw<b> | nmap <Leader>u ysiw<u>
   au Filetype python set ts=8 sts=4 sw=4 sr et ai | iabbrev <buffer> iff if:<esc>i
