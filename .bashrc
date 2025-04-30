@@ -156,7 +156,7 @@ if [ -d $ANDROID_HOME ] ; then
 fi
 [ -d ~/android-studio/jre/bin ] && PATH=~/android-studio/jre/bin:$PATH
 [ -d ~/spark-2.0.1-bin-hadoop2.7 ] && PATH=~/spark-2.0.1-bin-hadoop2.7/bin:$PATH
-[ -d $HOME/.cargo/bin ] && PATH=$HOME/.cargo/bin:$PATH
+## [ -d $HOME/.cargo/bin ] && PATH=$HOME/.cargo/bin:$PATH
 [ -d /snap ] && PATH=/snap/bin:$PATH
 
 which kubectl &>/dev/null && source <(kubectl completion bash)
@@ -231,4 +231,4 @@ fi
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS='@im=fcitx'
-[ -f ~/.cargo/env ] && source ~/.cargo/env
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"

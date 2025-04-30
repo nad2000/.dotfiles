@@ -12,6 +12,7 @@ mkdir -p ~/.config/nvim/ ~/.local/share/nvim/site/ ~/.config/Code/User/
 ln -fs ~/dotfiles/.gitconfig
 [ -f ~/.bashrc ] && mv ~/.bashrc ~/.bashrc.bak
 ln -f /home/rcir178/dotfiles/.aliases
+ln -f ~/dotfiles/.profile
 ln -f ~/dotfiles/.bashrc
 ln -f ~/dotfiles/.muttrc
 ln -f ~/dotfiles/.zshrc ~/.zshrc.pre-oh-my-zsh
@@ -30,6 +31,7 @@ ln -fs ~/dotfiles/.vim/autoload ~/.local/share/nvim/site/autoload
 ln -fs ~/dotfiles/.config/Code/User/settings.json ~/.config/Code/User/settings.json
 ln -fs ~/dotfiles/.config/sxhkd ~/.config/
 ln -fs ~/dotfiles/.config/ptpython ~/.config/ptpython
+ln -fs ~/dotfiles/.config/rofi ~/.config/rofi
 ln -fs ~/dotfiles/.passwd
 ln -f ~/dotfiles/.xinitrc
 ln -f ~/dotfiles/.xprofile
