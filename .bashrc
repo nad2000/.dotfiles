@@ -165,15 +165,14 @@ which kubectl &>/dev/null && source <(kubectl completion bash)
 [ -f aws_bash_completer ] && . aws_bash_completer
 
 # Orcid Hub environments:
-ENV=dev
-#ENV=test
-POSTGRES_PASSWORD=p455w0rd
-POSTGRES_USER=orcidhub
-PGPASSWORD=p455w0rd
-PGUSER=orcidhub
-#PGHOST=
-PGDATABASE=orcidhub
-export POSTGRES_PASSWORD POSTGRES_USER PGPASSWORD PGDATABASE PGUSER ENV
+export ENV=dev
+# export ENV=test
+# export POSTGRES_PASSWORD=<...>
+# export POSTGRES_USER=<...>
+# export PGPASSWORD=<...>
+# export PGUSER=<...>
+# export PGHOST=
+# export PGDATABASE=<...>
 
 export P12_PASSWORD=p455w0rd
 export SHIB_SP_DOMAINNAME=${ENV}.orcidhub.org.nz
@@ -182,7 +181,6 @@ export METADATA_CERT_FILE=tuakiri-test-metadata-cert.pem
 export TOKEN_PASSWORD_SALT=testsalt
 export TOKEN_SECRET_KEY=testsecret
 export FLASK_APP=orcid_hub
-
 
 export MAIL_SERVER=dev.orcidhub.org.nz
 export MAIL_PORT=2525

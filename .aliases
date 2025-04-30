@@ -38,7 +38,7 @@ if which nvim &>/dev/null ; then
   alias nv='nvim'
   alias vimdiff='nvim -d'
   alias dev='${PWD}/dev'
-  alias ddev='${HOME}/dotfiles/bin/ddev'
+  alias ddev='${HOME}/.dotfiles/bin/ddev'
 fi
 which emacs &>/dev/null && alias emacs='emacs -nw'
 which helix &>/dev/null && alias hl='helix'
