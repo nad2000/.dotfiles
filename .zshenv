@@ -68,8 +68,8 @@ fi
 
 ## Local NVIM build:
 if [ -d ~/nvim-linux-x86_64/bin ] ; then
-	export PATH=$PATH:$HOME/nvim-linux-x86_64/bin
-fi 
+	export PATH=$HOME/nvim-linux-x86_64/bin:$PATH
+fi
 
 # Adds `~/.local/bin` to $PATH
 export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
@@ -121,6 +121,9 @@ export FILE="nnn"
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS='@im=fcitx'
-[ -f ~/.cargo/env ] && source ~/.cargo/env
 
-. "$HOME/.cargo/env"
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+
+[ -d '/var/lib/flatpak/exports/share' ] && XDG_DATA_DIRS="/var/lib/flatpak/exports/share:$XDG_DATA_DIRS"
+[ -d "$HOME/.local/share/flatpak/exports/share" ] && XDG_DATA_DIRS="$HOME/.local/share/flatpak/exports/share:$XDG_DATA_DIRS"
+export XDG_DATA_DIRS
