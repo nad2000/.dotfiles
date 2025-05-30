@@ -37,6 +37,11 @@ ln -f ~/.dotfiles/.xinitrc
 ln -f ~/.dotfiles/.xprofile
 ln -f ~/.dotfiles/.mostrc
 ln -f ~/.dotfiles/.pdbrc
+ln -f ~/.dotfiles/bibliography.bib
+ln -sf ~/.dotfiles/.config/dunst ~/.config/dunst
+ln -sf ~/.dotfiles/.config/kitty ~/.config/kitty
+ln -f ~/.dotfiles/.config/redshift.conf ~/.config/redshift.conf
+
 ```
 3. install stuff:
 

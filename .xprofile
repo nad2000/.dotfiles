@@ -31,7 +31,7 @@ sxhkd -m 1 &
 # setxkbmap lv apostrophe &
 xset dpms 600 900 1200
 xset r rate 350 60
-nohup $HOME/dotfiles/bin/dwm_status &>/dev/null &
+nohup $HOME/.dotfiles/bin/dwm_status &>/dev/null &
 # See https://github.com/jonls/redshift#faq for more information
 # See: https://github.com/jonls/redshift/issues/158#issuecomment-71323623
 unclutter &
@@ -40,5 +40,5 @@ unclutter &
 ## ( xrandr --listmonitors | grep -q HDMI-A-0 ) && xrandr --output HDMI-A-0 --auto --right-of eDP
 DISPLAY=:0 feh -z --bg-scale $HOME/.wallpapers &
 redshift -l -36.87:174.74 -b 1.0:0.8 &
-( sleep 3; $HOME/dotfiles/services.sh ) &
+( sleep 3; $HOME/.dotfiles/services.sh ) &
 ( sleep 1; $BROWSER & sleep 1; st tmux ) &
