@@ -18,15 +18,15 @@ which most &>/dev/null && export PAGER="most"
 # Orcid Hub environments:
 ENV=dev0
 #ENV=test
-POSTGRES_PASSWORD=p455w0rd
-POSTGRES_USER=orcidhub
-PGPASSWORD=p455w0rd
-PGUSER=orcidhub
+# POSTGRES_PASSWORD=<...>
+# POSTGRES_USER=<...>
+# PGPASSWORD=<...>
+# PGUSER=<...>
 #PGHOST=
 PGDATABASE=orcidhub
 export POSTGRES_PASSWORD POSTGRES_USER PGPASSWORD PGDATABASE PGUSER ENV
 
-export P12_PASSWORD=p455w0rd
+# export P12_PASSWORD=<...>
 export SHIB_SP_DOMAINNAME=${ENV}.orcidhub.org.nz
 export SHIB_IDP_DOMAINNAME=directory.test.tuakiri.ac.nz
 export METADATA_CERT_FILE=tuakiri-test-metadata-cert.pem
@@ -34,7 +34,7 @@ export TOKEN_PASSWORD_SALT=testsalt
 export TOKEN_SECRET_KEY=testsecret
 
 #export MAIL_DEFAULT_SENDER=no-reply@orcidhub.org.nz
-#export MAIL_PASSWORD=AgPDjD2UUs7O7Qg7YZxYXnMyl5Rjg6j0/6mgHz4NOQkr
+#export MAIL_PASSWORD=<...>
 #export MAIL_SERVER=email-smtp.us-east-1.amazonaws.com
 #export MAIL_USERNAME=AKIAISUVN4HBEQK6VRIA
 
