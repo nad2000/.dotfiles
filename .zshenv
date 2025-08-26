@@ -1,4 +1,18 @@
-export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH
+[ -d "$HOME/bin" ] && [[ "$PATH" == *"$HOME/bin"* ]] || PATH="$HOME/bin:$PATH"
+[ -d "$HOME/.local/bin" ] && [[ "$PATH" == *"$HOME/.local/bin"* ]] || PATH="$HOME/.local/bin:$PATH"
+[ -d /usr/local/bin ] && [[ "$PATH" == *"/usr/local/bin"* ]] || PATH="/usr/local/bin:$PATH"
+
+## Local NVIM build:
+if [ -d "$HOME/nvim-linux-x86_64/bin" ] && [[ "$PATH" == *"$HOME/nvim-linux-x86_64/bin"* ]] ; then
+	PATH="$HOME/nvim-linux-x86_64/bin:$PATH"
+fi
+
+if [ -z "$NVM_DIR" ] ; then
+	export NVM_DIR="$HOME/.nvm"
+	[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"  # This loads nvm
+	[ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+fi
+
 SH_THEME="robbyrussell"
 # ZSH_THEME="agnoster"
 # ZSH_THEME="zenburn"
@@ -8,10 +22,10 @@ export LANG=en_NZ.UTF-8
 
 # Preferred editor for local and remote sessions
 if which nvim &>/dev/null ; then
-  export EDITOR='nvim'
-  export MANPAGER="nvim --cmd 'let is_view=1' -c 'set ft=man ts=8 nomod nolist nonu noma' +Man!"
+	export EDITOR='nvim'
+	export MANPAGER="nvim --cmd 'let is_view=1' -c 'set ft=man ts=8 nomod nolist nonu noma' +Man!"
 else
-  export EDITOR='vim'
+	export EDITOR='vim'
 fi
 which most &>/dev/null && export PAGER="most"
 
@@ -60,15 +74,10 @@ export FLASK_APP=orcid_hub
 export FLASK_ENV=development
 
 ## GO:
-if [ -d ~/go ] ; then
+if [ -d ~/go -a -z "$GOPATH" ] ; then
 	export GOPATH=$HOME
 	export GOROOT=$HOME/go
 	export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-fi
-
-## Local NVIM build:
-if [ -d ~/nvim-linux-x86_64/bin ] ; then
-	export PATH=$HOME/nvim-linux-x86_64/bin:$PATH
 fi
 
 # Adds `~/.local/bin` to $PATH
@@ -121,6 +130,8 @@ export FILE="nnn"
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS='@im=fcitx'
+
+[ -f "$HOME/.luarocks/bin" ] && export PATH=$HOME/.luarocks/bin:$PATH
 
 [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
