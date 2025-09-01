@@ -3,7 +3,7 @@
 [ -d /usr/local/bin ] && [[ "$PATH" == *"/usr/local/bin"* ]] || PATH="/usr/local/bin:$PATH"
 
 ## Local NVIM build:
-if [ -d "$HOME/nvim-linux-x86_64/bin" ] && [[ "$PATH" == *"$HOME/nvim-linux-x86_64/bin"* ]] ; then
+if [ -d "$HOME/nvim-linux-x86_64/bin" ] && [[ "$PATH" != *"$HOME/nvim-linux-x86_64/bin"* ]] ; then
 	PATH="$HOME/nvim-linux-x86_64/bin:$PATH"
 fi
 

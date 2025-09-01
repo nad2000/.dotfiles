@@ -290,5 +290,16 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   end,
 })
 
+--[[
+Zoom-in/out:
+^w_ -- increases the hight to the max
+^w| -- increases the width to the max
+]]
+-- noremap Zz <c-w>_ \| <c-w>\|
+vim.keymap.set({"n", "o", "s", "v"}, "Zz", "<c-w>_ | <c-w>|")
+-- ^w= -- makes all windows the same height & width
+-- noremap Zo <c-w>=
+vim.keymap.set({"n", "o", "s", "v"}, "Zo", " <c-w>=")
+
 require('hardline').setup {}
 -- require("CopilotChat").setup()
