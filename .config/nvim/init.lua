@@ -200,8 +200,7 @@ augroup FileTypes
   au BufWritePost * call atags#generate()
   au BufNewFile,BufRead Jenkinsfile setf groovy
   au BufNewFile,BufRead *.slide call SetVimPresentationMode()
-
-  au FileType html setl sw=2 sts=2 et
+  au FileType html setl sw=2 sts=2 et | command HtmlBeautify :%!html-beautify --indent-size 2 --wrap-line-length 0 --unformatted pre,code,span --extra-liners pre,code,span --indent-with-tabs=false --preserve-newlines=true --max-preserve-newlines=10 --brace-style=collapse --end-with-newline --indent-inner-html=true --indent-scripts=normal --space-in-empty-paren=true --space-in-tag=true --wrap-attributes=auto --wrap-attributes-indent-size=2 --e4x=false --jslint-happy=false --keep-array-indentation=false --break-chained-methods=false --comma-first=false --operator-position=before-newline --indent-level=2 --indent-char=' ' --extra-liners=pre,code,span | command Paginate %s/\ \{10,\}\(\d\+\)\S*$/<!-- Page: \1 -->\r<a id="page-\1" title="Page \1"><\/a>\r<span role="doc-pagebreak" id="pg\1" aria-label="\1" title="Page \1" \/>\r<span xml:id="page\1" epub:type="pagebreak" aria-label="\1" title="Page \1" \/>/ | command BreakIntoParagraphs %s/^  /<\/p>\r\r<p>\r    /gc
   au FileType jinja,html setl sw=2 sts=2 et | vmap <Leader>i S<i> | vmap <Leader>b S<b> | vmap <Leader>u S<u> | nmap <Leader>i ysiw<i> | nmap <Leader>b ysiw<b> | nmap <Leader>u ysiw<u>
   au Filetype python set ts=8 sts=4 sw=4 sr et ai | iabbrev <buffer> iff if:<esc>i
   au Filetype python nnoremap <LocalLeader>i :!isort %<CR><CR>  " Import re-sorting (https://github.com/timothycrosley/isort)
