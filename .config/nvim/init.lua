@@ -30,6 +30,11 @@ vim_started_in_dir = vim.fn.getcwd()
 -- execute "autocmd! VimLeave * mksession!" . vim_started_in_dir . "/.session.vim"
 vim.cmd("autocmd! VimLeave * mksession!" .. vim_started_in_dir .. "/.session.vim")
 
+-- map key to dismiss search highlightedness
+vim.keymap.set("n", "<bs>", ':noh<cr>')
+-- Up, Down:
+vim.keymap.set("n", "k", "gk", { noremap = true, silent = true, desc = 'Up' })
+vim.keymap.set("n", "j", "gj", { noremap = true, silent = true, desc = 'Down' })
 
 -- Switch between buffers with C-S-PageUp/PageDown:
 vim.keymap.set({"i", "n"},  "<C-S-PageDown>", "<esc>:bn<cr>")

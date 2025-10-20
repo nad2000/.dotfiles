@@ -1,1 +1,19 @@
+TAB: menu-complete
+set colored-completion-prefix on
+set colored-stats on
+set completion-ignore-case on
+set completion-map-case on
+set completion-prefix-display-length 2
+# set completion-query-items 9001
+set menu-complete-display-prefix on
+set mark-directories on
+set mark-symlinked-directories on
+set page-completions off
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+set visible-stats on
 set editing-mode vi
+set show-mode-in-prompt on
+set vi-cmd-mode-string "\1\e[1;32;7m\2:\e[0m"
+set vi-ins-mode-string "\1\e[1;34;7m\2+\e[0m"
+$include /etc/inputrc
