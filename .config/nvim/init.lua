@@ -74,6 +74,7 @@ if not is_view then
   Plug 'fntlnz/atags.vim' -- helps you creating and updating your tag files
   Plug 'AndrewRadev/splitjoin.vim'  -- gS - split; gJ - join
   Plug('junegunn/fzf', { dir = '~/.fzf', [ 'do' ] = './install --all' })
+  Plug 'ibhagwan/fzf-lua'
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-commentary' -- gc - toggle, gcap - comments out paragraph
   -- Plug 'ctrlpvim/ctrlp.vim' -- active fork of 'kien/ctrlp.vim'
@@ -118,6 +119,11 @@ Plug 'junegunn/goyo.vim'
 -- Plug 'nvim-lualine/lualine.nvim'
 -- If you want to have icons in your statusline choose one of these
 -- Plug 'nvim-tree/nvim-web-devicons'
+
+-- Makrddonw support:
+Plug('iamcco/markdown-preview.nvim', { ['do'] = 'cd app && npx --yes yarn install' })
+-- Plug 'brianhuster/live-preview.nvim'
+-- Plug 'MeanderingProgrammer/render-markdown.nvim:'
 vim.call('plug#end')
 
 vim.g.atags_build_commands_list = {
