@@ -67,6 +67,10 @@ if which ctags &>/dev/null ; then
     ctags -R . *.{c,h,hpp,cpp} --tag-relative=yes ./ &>/dev/null
   }
 fi
+if which batcat &>/dev/null ; then
+  alias bat="batcat"
+  export BAT_THEME="zenburn"
+fi
 
 if which xinput &>/dev/null ; then
   touchpad_id=$(xinput list | sed -n '/touchpad/I s/.*id=\([0-9]*\).*/\1/p')

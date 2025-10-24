@@ -191,7 +191,6 @@ export ORCID_CLIENT_ID=APP-6DZOOMOKJCYRY6GE
 export SHIB_METADATA_PROVIDER_URI=https://directory.test.tuakiri.ac.nz/metadata/tuakiri-test-metadata-signed.xml
 export FLASK_ENV=development
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_OPS="--extended"
 
 
@@ -230,3 +229,5 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS='@im=fcitx'
 [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

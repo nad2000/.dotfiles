@@ -23,25 +23,27 @@ ln -f ~/.dotfiles/.emacs
 ln -f ~/.dotfiles/.tmux.conf
 ln -f ~/.dotfiles/.clang-format
 ln -fs ~/.dotfiles/.config/nvim/init.vim ~/.vimrc
-ln -fs ~/.dotfiles/.config/nvim/init.vim ~/.nvimrc
-ln -fs ~/.dotfiles/.config/nvim/init.vim ~/.config/nvim/init.vim
+ln -fs ~/.dotfiles/.config/nvim/init.lua ~/.config/nvim/init.lua
 ln -fs ~/.dotfiles/.vim ~/.vim
-ln -fs ~/.dotfiles/.config/fontconfig/.fonts.conf ~/.config/fontconfig/.fonts.conf
 ln -fs ~/.dotfiles/.vim/autoload ~/.local/share/nvim/site/autoload
-ln -fs ~/.dotfiles/.config/Code/User/settings.json ~/.config/Code/User/settings.json
-ln -fs ~/.dotfiles/.config/sxhkd ~/.config/
-ln -fs ~/.dotfiles/.config/ptpython ~/.config/ptpython
-ln -fs ~/.dotfiles/.config/rofi ~/.config/rofi
+
 ln -fs ~/.dotfiles/.passwd
 ln -f ~/.dotfiles/.xinitrc
 ln -f ~/.dotfiles/.xprofile
 ln -f ~/.dotfiles/.mostrc
 ln -f ~/.dotfiles/.pdbrc
 ln -f ~/.dotfiles/bibliography.bib
-ln -sf ~/.dotfiles/.config/dunst ~/.config/dunst
-ln -sf ~/.dotfiles/.config/kitty ~/.config/kitty
-ln -f ~/.dotfiles/.config/redshift.conf ~/.config/redshift.conf
-
+# ln -sf ~/.dotfiles/.config/dunst ~/.config/dunst
+# ln -sf ~/.dotfiles/.config/kitty ~/.config/kitty
+# ln -sf ~/.dotfiles/.config/redshift.conf ~/.config/redshift.conf
+# ln -sf ~/.dotfiles/.config/fontconfig/.fonts.conf ~/.config/fontconfig/.fonts.conf
+# ln -sf ~/.dotfiles/.config/Code/User/settings.json ~/.config/Code/User/settings.json
+# ln -sf ~/.dotfiles/.config/sxhkd ~/.config/
+# ln -sf ~/.dotfiles/.config/ptpython ~/.config/ptpython
+# ln -sf ~/.dotfiles/.config/rofi ~/.config/rofi
+for file in $(ls -1 ~/.dotfiles/.config | grep -v nvim); do
+    ln -fs "~/.dotfiles/.config/$file" "~/.config/$file"
+done
 ```
 3. install stuff:
 

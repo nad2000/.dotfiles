@@ -1,4 +1,4 @@
-if is_view ~= nil and vim.v.progname ==  "view" then
+if is_view ~= nil and vim.v.progname ==  "view" or is_view == 1 then
   is_view = true
 end
 
@@ -58,9 +58,6 @@ vim.keymap.set({"n", "x"}, "s", '"_s')
 
 vim.keymap.set("n", "<f10>", ":Goyo<cr>")
 vim.keymap.set("i", "<f10>", "<c-o>:Goyo<cr>")
--- if ~is_view then
---   vim.keymap.set("n", "Q", "gq")
--- end
 
 local vim = vim
 local Plug = vim.fn['plug#']
@@ -265,14 +262,28 @@ nmap <F8> :TagbarToggle<CR>
 vim.g.mapleader = ","
 vim.g.maplocalleader = "\\"
 
--- Why YCM is so user unfiendly:
-vim.g.ycm_confirm_extra_conf = 0
-vim.g.ycm_collect_identifiers_from_tags_files = 1 -- Let YCM read tags from Ctags file
-vim.g.ycm_use_ultisnips_completer = 1 -- Default 1, just ensure
-vim.g.ycm_seed_identifiers_with_syntax = 1 -- Completion for programming language's keyword
-vim.g.ycm_complete_in_comments = 1 -- Completion in comments
-vim.g.ycm_complete_in_strings = 1 -- Completion in string
-vim.g.ycm_global_ycm_extra_conf = "~/.vim/.ycm_c-c++_conf.py"
+
+if is_view then
+  vim.keymap.set("n", "Q", "gq")
+  vim.keymap.set("n", "q", "gq")
+  -- vim.keymap.set("n", " ", "<c-d>", { noremap = true, silent = true })
+  vim.keymap.set("n", " ", "<c-d>")
+  vim.o.showmode = false
+  vim.o.number = false
+  vim.o.list = false
+  vim.o.modifiable = false
+else
+  require('hardline').setup {}
+  -- require("CopilotChat").setup()
+  -- Why YCM is so user unfiendly:
+  vim.g.ycm_confirm_extra_conf = 0
+  vim.g.ycm_collect_identifiers_from_tags_files = 1 -- Let YCM read tags from Ctags file
+  vim.g.ycm_use_ultisnips_completer = 1 -- Default 1, just ensure
+  vim.g.ycm_seed_identifiers_with_syntax = 1 -- Completion for programming language's keyword
+  vim.g.ycm_complete_in_comments = 1 -- Completion in comments
+  vim.g.ycm_complete_in_strings = 1 -- Completion in string
+  vim.g.ycm_global_ycm_extra_conf = "~/.vim/.ycm_c-c++_conf.py"
+end
 
 -- Cipboard for all operations
 -- set clipboard+=unnamedplus  " better to user '*' or '+' register
@@ -310,6 +321,3 @@ vim.keymap.set({"n", "o", "s", "v"}, "Zz", "<c-w>_ | <c-w>|")
 -- ^w= -- makes all windows the same height & width
 -- noremap Zo <c-w>=
 vim.keymap.set({"n", "o", "s", "v"}, "Zo", " <c-w>=")
-
-require('hardline').setup {}
--- require("CopilotChat").setup()

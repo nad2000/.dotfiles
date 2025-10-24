@@ -23,11 +23,14 @@ export LANG=en_NZ.UTF-8
 # Preferred editor for local and remote sessions
 if which nvim &>/dev/null ; then
 	export EDITOR='nvim'
-	export MANPAGER="nvim --cmd 'let is_view=1' -c 'set ft=man ts=8 nomod nolist nonu noma' +Man!"
+	export MANPAGER="nvim --cmd 'let is_view=1' -c 'set ft=man ts=8 nomod nolist nonu noma' -c 'map <space> <c-d>' +Man!"
 else
 	export EDITOR='vim'
+	if which batcat &>/dev/null ; then
+		export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
+	fi
 fi
-which most &>/dev/null && export PAGER="most"
+which most &>/dev/null && export PAGER="most" || export PAGER="less"
 
 # Orcid Hub environments:
 ENV=dev0

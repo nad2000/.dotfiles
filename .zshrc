@@ -125,7 +125,6 @@ export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 # added by travis gem
 [ -f /home/rcir178/.travis/travis.sh ] && source /home/rcir178/.travis/travis.sh
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.aliases ] && source ~/.aliases
 
 export NVM_DIR="$HOME/.nvm"
@@ -135,3 +134,11 @@ export NVM_DIR="$HOME/.nvm"
 # VI mode
 export KEYTIMEOUT=1
 bindkey -v
+
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if [ -d ~/.fzf ] ; then
+  if [[ ! "$PATH" == */home/rcir178/.fzf/bin* ]]; then
+    PATH="$HOME/.fzf/bin:${PATH}"
+  fi
+  source <($HOME/.fzf/bin/fzf --zsh)
+fi
