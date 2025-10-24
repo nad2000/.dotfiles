@@ -61,3 +61,4 @@ tags.tmp
 .session.vim
 .vim/black
 nohup.out
+$HOME
