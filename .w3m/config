@@ -1,0 +1,13 @@
+editor vim
+color 1
+# basic_color terminal
+basic_color b_green
+anchor_color blue
+image_color green
+form_color red
+mark_color cyan
+bg_color terminal
+active_style 0
+active_color cyan
+visited_anchor 0
+visited_color magenta

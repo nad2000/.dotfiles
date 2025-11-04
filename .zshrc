@@ -135,6 +135,10 @@ export NVM_DIR="$HOME/.nvm"
 export KEYTIMEOUT=1
 bindkey -v
 
+# wikiman binding:
+[ -f /usr/share/wikiman ] && source /usr/share/wikiman/widgets/widget.zsh
+
+# FZF
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 if [ -d ~/.fzf ] ; then
   if [[ ! "$PATH" == */home/rcir178/.fzf/bin* ]]; then

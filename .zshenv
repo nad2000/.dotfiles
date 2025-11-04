@@ -30,7 +30,10 @@ else
 		export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
 	fi
 fi
-which most &>/dev/null && export PAGER="most" || export PAGER="less"
+
+which batcat &>/dev/null && export PAGER="batcat --paging=always" || \
+  which bat &>/dev/null && export PAGER="bat --paging=always" || \
+  which most &>/dev/null && export PAGER="most" || export PAGER="less"
 
 # Orcid Hub environments:
 ENV=dev0

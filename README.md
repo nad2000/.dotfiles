@@ -7,7 +7,7 @@
 
 ```
 cd
-mkdir -p ~/.config/nvim/ ~/.local/share/nvim/site/ ~/.config/Code/User/
+mkdir -p ~/.config/nvim/ ~/.local/share/nvim/site/ ~/.config/Code/User/ ~/.w3m
 [ -f .gitconfig ] && mv ~/.gitconfig ~/.gitconfig.bak
 [ -f ~/.bashrc ] && mv ~/.bashrc ~/.bashrc.bak
 ln -fs ~/.dotfiles/.gitconfig
@@ -44,6 +44,8 @@ ln -f ~/.dotfiles/bibliography.bib
 for file in $(ls -1 ~/.dotfiles/.config | grep -v nvim); do
     ln -fs "~/.dotfiles/.config/$file" "~/.config/$file"
 done
+ln -sf ~/.dotfiles/.w3m/config -t ~/.w3m
+ln -sf ~/.dotfiles/.w3m/keymap -t ~/.w3m
 ```
 3. install stuff:
 
