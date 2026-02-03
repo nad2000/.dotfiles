@@ -5,6 +5,7 @@
 ## Local NVIM build:
 if [ -d "$HOME/nvim-linux-x86_64/bin" ] && [[ "$PATH" != *"$HOME/nvim-linux-x86_64/bin"* ]] ; then
 	PATH="$HOME/nvim-linux-x86_64/bin:$PATH"
+	export VIMRUNTIME="$HOME/nvim-linux-x86_64/share/nvim/runtime"
 fi
 
 if [ -z "$NVM_DIR" ] ; then
