@@ -146,3 +146,5 @@ if [ -d ~/.fzf ] ; then
   fi
   source <($HOME/.fzf/bin/fzf --zsh)
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -14,16 +14,27 @@ vim.o.incsearch = true
 vim.o.autochdir = true
 -- Switch between buffers without saving
 -- vim.o.hidden = true
+vim.opt.path:append("**")
+vim.opt.scrolloff = 3
+vim.opt.sidescrolloff = 3
+vim.opt.wrapscan = true
+vim.opt.encoding = "UTF-8"
+vim.opt.splitbelow = true
+vim.opt.clipboard:append("unnamedplus")
 
 -- hybrid line number mode
 if not is_view then
   vim.o.relativenumber = true
-  vim.o.number= true
-  vim.o.undofile= true
-  vim.o.undodir='$HOME/.vim/undo'
-  vim.o.undolevels=1000
-  vim.o.undoreload=10000
+  vim.o.number = true
+  vim.o.undofile = true
+  vim.o.undodir = vim.env.HOME .. '/.vim/undo'  -- '$HOME/.vim/undo'
+  vim.o.undolevels = 1000
+  vim.o.undoreload = 10000
 end
+--
+-- Leaders:
+vim.g.mapleader = " " -- ","
+-- vim.g.maplocalleader = "\\"
 
 -- Automatically save the session when leaving Vim
 vim_started_in_dir = vim.fn.getcwd()
@@ -58,6 +69,31 @@ vim.keymap.set({"n", "x"}, "s", '"_s')
 
 vim.keymap.set("n", "<f10>", ":Goyo<cr>")
 vim.keymap.set("i", "<f10>", "<c-o>:Goyo<cr>")
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+vim.keymap.set("n", "<c-d>", "<c-d>zz", { remap = false})
+vim.keymap.set("n", "<c-u>", "<c-u>zz", { remap = false})
+vim.keymap.set("n", "<pagedown>", "<c-d>zz", { remap = false})
+vim.keymap.set("n", "<pageup>", "<c-u>zz", { remap = false})
+vim.keymap.set("n", "<s-down>", "<s-down>zz", { remap = false})
+vim.keymap.set("n", "<s-up>", "<s-up>zz", { remap = false})
+-- vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+-- vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("n", "<leader>bn", ":bn<cr>")
+vim.keymap.set("n", "<leader>bp", ":bp<cr>")
+vim.keymap.set("n", "<leader>sv", ":vsplit<cr>")
+vim.keymap.set("n", "<leader>sh", ":split<cr>")
+vim.keymap.set("n", "<Leader>e", ":Vex<cr>", { desc = "Open **netrw** file explorer" })
+vim.keymap.set("n", "<Leader>ff", ":find ", { desc = "Find file in 'path'" })
+-- vim.keymap.set("n", "<Leader>fg", ":Files<cr>", { desc = "FZF file finder" })
+-- vim.keymap.set("n", "<Leader>fb", ":Buffers<cr>", { desc = "FZF buffer finder" })
+-- vim.keymap.set("n", "<Leader>fl", ":BLines<cr>", { desc = "FZF lines in current buffer" })
+-- vim.keymap.set("n", "<Leader>ft", ":Tags<cr>", { desc = "FZF tags in current project" })
+vim.keymap.set("n", "<leader>pa", function() 
+	local path = vim.fn.expand("%:p")
+	vim.fn.setreg("+", path)
+	print("file: " .. path)
+end, { desc = "Copy current file path to clipboard and print it out..." })
 
 local vim = vim
 local Plug = vim.fn['plug#']
@@ -146,7 +182,19 @@ vim.cmd [[
 ]]
 
 -- Styling:
+-- vim.g.zenburn_transparent = 0
+vim.g.zenburn_color_also_Ignore = 1
+vim.g.zenburn_unified_CursorColumn = 1
+vim.g.zenburn_italic_Comment = 1
+vim.g.zenburn_subdued_LineNr = 1
+vim.g.zenburn_enable_TagHighlight = 1
 vim.cmd.colorscheme("zenburn")
+if not is_view then
+  vim.o.colorcolumn = "80"
+  -- vim.cmd "hi ColorColumn cterm=none ctermbg=darkgrey guibg=darkgrey"
+  -- vim.cmd "hi ColorColumn cterm=none ctermbg=darkgrey guibg=darkgrey"
+  vim.cmd "hi ColorColumn guibg=#434443 ctermbg=238 cterm=none"
+end
 vim.o.showcmd = false
 vim.o.cursorline = true
 vim.o.showmatch = true  -- show mattching part of the pair for [] {} and ()
@@ -213,8 +261,8 @@ augroup FileTypes
   au Filetype python set ts=8 sts=4 sw=4 sr et ai | iabbrev <buffer> iff if:<esc>i
   au Filetype python nnoremap <LocalLeader>i :!isort %<CR><CR>  " Import re-sorting (https://github.com/timothycrosley/isort)
   au FileType python nnoremap <LocalLeader>= :0,$!yapf<CR>  " Code formating with YAPF (https://github.com/google/yapf)
-  au FileType python vmap <c-s-y> :call yapf#YAPF()<cr>
-  au FileType python imap <c-s-y> <c-o>:call yapf#YAPF()<cr>
+  " au FileType python vmap <c-s-y> :call yapf#YAPF()<cr>
+  " au FileType python imap <c-s-y> <c-o>:call yapf#YAPF()<cr>
   au FileType python nmap <c-s-b> <c-o>:keepmarks Black<cr>
   au FileType python imap <c-s-b> <c-o>:keepmarks Black<cr>
   au FileType python let g:ale_linters = {'python': ['flake8']}
@@ -230,9 +278,10 @@ augroup FileTypes
   au FileType html vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
   au FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr>
   au Filetype sh set ts=8 sts=2 sw=2 sr et ai nowrap
-  au Filetype vim set ts=8 sts=2 sw=2 sr et ai nowrap
-  au Filetype go set ts=4 sts=4 sw=4 sr noet
-  au FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+  au Filetype vim setlocal ts=8 sts=2 sw=2 sr et ai nowrap
+  au Filetype go setlocal ts=4 sts=4 sw=4 sr noet
+  au FileType yaml setlocal ts=2 sts=2 sw=2 et ai
+  au FileType lua setlocal ts=2 sts=2 sw=2 et ai
   au FileType go nmap <Leader>r <Plug>(go-run)
   au FileType go nmap <Leader>b <Plug>(go-build)
   au FileType go nmap <Leader>t <Plug>(go-test)
@@ -257,10 +306,6 @@ augroup END
 let g:ale_fix_on_save = 1
 nmap <F8> :TagbarToggle<CR>
 ]]
-
--- Leaders:
-vim.g.mapleader = ","
-vim.g.maplocalleader = "\\"
 
 
 if is_view then
@@ -321,3 +366,4 @@ vim.keymap.set({"n", "o", "s", "v"}, "Zz", "<c-w>_ | <c-w>|")
 -- ^w= -- makes all windows the same height & width
 -- noremap Zo <c-w>=
 vim.keymap.set({"n", "o", "s", "v"}, "Zo", " <c-w>=")
+-- vim: set ts=8 sts=2 sw=2 et ai:
