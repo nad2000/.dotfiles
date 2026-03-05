@@ -27,11 +27,11 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS='@im=fcitx'
 export XIM_PROGRAM=/usr/bin/fcitx5
 
-# twm &
-# xclock -geometry 50x50-1+1 &
-# xterm -geometry 80x50+494+51 &
-# xterm -geometry 80x20+494-0 &
-# exec xterm -geometry 80x66+0+0 -name login
+# # twm &
+# # xclock -geometry 50x50-1+1 &
+# # xterm -geometry 80x50+494+51 &
+# # xterm -geometry 80x20+494-0 &
+# # exec xterm -geometry 80x66+0+0 -name login
 
 xcompmgr &
 # launch the session, commands below this line will be ignored
