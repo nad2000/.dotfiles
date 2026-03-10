@@ -100,6 +100,9 @@ local Plug = vim.fn['plug#']
 vim.call('plug#begin', "~/.vim/plugged")
 if not is_view then
   Plug 'tpope/vim-sensible'
+  Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
+  Plug 'neovim/nvim-lspconfig' -- Collection of configurations for built-in
+  Plug 'vim-syntastic/syntastic'
   Plug 'motemen/vim-help-random'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-repeat'
@@ -140,6 +143,7 @@ if not is_view then
   Plug 'nvim-lua/plenary.nvim'
   Plug 'github/copilot.vim'
   -- Plug 'CopilotC-Nvim/CopilotChat.nvim'
+  -- Plug 'devinceble/Tortoise-Typing'
 
 end
 
