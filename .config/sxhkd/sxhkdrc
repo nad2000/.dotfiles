@@ -1,3 +1,4 @@
+# To capture the keys use: xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'
 # Basic binds
 super + Return
 	st -e tmux
@@ -39,6 +40,8 @@ super + shift + w
 	$BROWSER
 super + b
 	$BROWSER
+super + shift + b
+  blueman-manager
 alt + ctrl + {l, L}
 	slock
 alt + ctrl + {w, W}
@@ -87,6 +90,8 @@ Print
 shift + Print
 	screengrab
 	# maimpick
+super + shift + s
+	screengrab
 # Print: Record audio or video; Del: kill recording
 super + Print
 	dmenurecord

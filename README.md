@@ -42,7 +42,8 @@ ln -f ~/.dotfiles/bibliography.bib
 # ln -sf ~/.dotfiles/.config/ptpython ~/.config/ptpython
 # ln -sf ~/.dotfiles/.config/rofi ~/.config/rofi
 for file in $(ls -1 ~/.dotfiles/.config | grep -v nvim); do
-    ln -fs "~/.dotfiles/.config/$file" "~/.config/$file"
+  test ! -L "~/.config/$file" && rm -fr "~/.config/$file"
+  ln -fs "~/.dotfiles/.config/$file" "~/.config/$file"
 done
 ln -sf ~/.dotfiles/.w3m/config -t ~/.w3m
 ln -sf ~/.dotfiles/.w3m/keymap -t ~/.w3m

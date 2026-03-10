@@ -20,7 +20,8 @@ vim.opt.sidescrolloff = 3
 vim.opt.wrapscan = true
 vim.opt.encoding = "UTF-8"
 vim.opt.splitbelow = true
-vim.opt.clipboard:append("unnamedplus")
+-- vim.opt.clipboard:append("unnamedplus")
+vim.opt.clipboard = "unnamedplus"
 
 -- hybrid line number mode
 if not is_view then
@@ -336,6 +337,7 @@ end
 
 -- Cipboard for all operations
 -- set clipboard+=unnamedplus  " better to user '*' or '+' register
+--[[
 vim.g.clipboard = {
   name = 'myClipboard',
   copy = {
@@ -348,6 +350,7 @@ vim.g.clipboard = {
   },
   cache_enabled = 1,
 }
+]]
 
 -- Go to the last cursor location when a file is opened
 vim.api.nvim_create_autocmd("BufReadPost", {
