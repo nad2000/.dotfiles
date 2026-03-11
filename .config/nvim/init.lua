@@ -324,6 +324,25 @@ if is_view then
   vim.o.modifiable = false
 else
   require('hardline').setup {}
+  require 'nvim-treesitter'.setup {
+    -- Directory to install parsers and queries to (prepended to `runtimepath` to have priority)
+    install_dir = vim.fn.stdpath('data') .. '/site',
+
+    -- -- Install parsers synchronously (only applied to `ensure_installed`)
+    -- sync_install = false,
+    
+    -- -- Automatically install missing parsers when entering buffer
+    -- auto_install = true,
+
+    -- highlight = {
+    --   enable = true, -- false will disable the whole extension
+    --   additional_vim_regex_highlighting = false,
+    -- },
+    
+    -- -- Optional: Enable indentation
+    -- indent = { enable = true },
+  }
+
   -- require("CopilotChat").setup()
   -- Why YCM is so user unfiendly:
   vim.g.ycm_confirm_extra_conf = 0
@@ -337,20 +356,48 @@ end
 
 -- Cipboard for all operations
 -- set clipboard+=unnamedplus  " better to user '*' or '+' register
---[[
-vim.g.clipboard = {
-  name = 'myClipboard',
-  copy = {
-      ['+'] = {'tmux', 'load-buffer', '-'},
-      ['*'] = {'tmux', 'load-buffer', '-'},
-    },
-  paste = {
-      ['+'] = {'tmux', 'save-buffer', '-'},
-      ['*'] = {'tmux', 'save-buffer', '-'},
-  },
-  cache_enabled = 1,
-}
-]]
+if vim.fn.has('wsl') == 1 then
+  if vim.fn.executable('clip.exe') then
+    vim.g.clipboard = {
+      name = 'clip-wsl',
+      copy = {
+        ['+'] = 'clip.exe',
+        ['*'] = 'clip.exe',
+      },
+      paste = {
+        ['+'] = 'powershell.exe -c Get-Clipboard -Raw',
+        ['*'] = 'powershell.exe -c Get-Clipboard -Raw',
+      },
+      cache_enabled = 0,
+    }
+  elseif vim.fn.executable('win32yank.exe') then
+    vim.g.clipboard = {
+      name = 'win32yank-wsl',
+      copy = {
+        ['+'] = 'win32yank.exe -i --crlf',
+        ['*'] = 'win32yank.exe -i --crlf',
+      },
+      paste = {
+        ['+'] = 'win32yank.exe -o --lf',
+        ['*'] = 'win32yank.exe -o --lf',
+      },
+      cache_enabled = 0,
+    }
+  else
+    vim.g.clipboard = {
+      name = 'myClipboard',
+      copy = {
+          ['+'] = {'tmux', 'load-buffer', '-'},
+          ['*'] = {'tmux', 'load-buffer', '-'},
+        },
+      paste = {
+          ['+'] = {'tmux', 'save-buffer', '-'},
+          ['*'] = {'tmux', 'save-buffer', '-'},
+      },
+      cache_enabled = 1,
+    }
+  end
+end
 
 -- Go to the last cursor location when a file is opened
 vim.api.nvim_create_autocmd("BufReadPost", {
