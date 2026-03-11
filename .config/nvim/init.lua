@@ -328,19 +328,21 @@ else
     -- Directory to install parsers and queries to (prepended to `runtimepath` to have priority)
     install_dir = vim.fn.stdpath('data') .. '/site',
 
-    -- -- Install parsers synchronously (only applied to `ensure_installed`)
-    -- sync_install = false,
-    
-    -- -- Automatically install missing parsers when entering buffer
-    -- auto_install = true,
+    ensure_installed = { "c", "cpp", "python", "lua", "javascript", "html", "htmldjango", "css", "json", "yaml", "go" },
 
-    -- highlight = {
-    --   enable = true, -- false will disable the whole extension
-    --   additional_vim_regex_highlighting = false,
-    -- },
+    -- Install parsers synchronously (only applied to `ensure_installed`)
+    sync_install = false,
     
-    -- -- Optional: Enable indentation
-    -- indent = { enable = true },
+    -- Automatically install missing parsers when entering buffer
+    auto_install = true,
+
+    highlight = {
+      enable = true, -- false will disable the whole extension
+      additional_vim_regex_highlighting = false,
+    },
+    
+    -- Optional: Enable indentation
+    indent = { enable = true },
   }
 
   -- require("CopilotChat").setup()
