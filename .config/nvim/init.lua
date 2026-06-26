@@ -12,6 +12,7 @@ vim.o.shell='/bin/zsh'
 -- vim.o.hlsearch = true
 vim.o.incsearch = true
 vim.o.autochdir = true
+vim.o.termguicolors = true
 -- Switch between buffers without saving
 -- vim.o.hidden = true
 vim.opt.path:append("**")

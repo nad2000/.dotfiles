@@ -78,13 +78,16 @@ set mbox_type=Maildir
 # set sendmail="/path/to/msmtp --host=mailhub -f me@example.com --tls --tls-trust-file=trust.crt"
 
 macro generic "<esc>1" ":set from=rad@prodata.nz"
+macro generic "<esc>2" ":set from=damien@prodata.nz"
 macro generic "<esc>3" ":set from=nad2000@gmail.com"
-macro generic "<esc>2" ":set from=rad@prodata.co.nz"
+macro generic "<esc>4" ":set from=rad@prodata.co.nz"
 
 alias gmail    Rad C. <nad2000@gmail.com>
 alias prodata  Rad C. <rad@prodata.nz>
+alias damien  Damien F. <damien@prodata.nz>
 alias f__1    Rad C. <nad2000@gmail.com>
 alias f__2  Rad C. <rad@prodata.nz>
+alias f__3  Damien F. <damien@prodata.nz>
 # macro compose v "<edit-from>^Uidentity\_<tab>" "Select from"
 # macro compose <esc>f "<edit-from><kill-line>f__<tab><search>rad@prodata.nz<enter>"
 # set folder=~/Maildir
