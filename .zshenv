@@ -5,7 +5,6 @@
 ## Local NVIM build:
 if [ -d "$HOME/nvim-linux-x86_64/bin" ] && [[ "$PATH" != *"$HOME/nvim-linux-x86_64/bin"* ]] ; then
 	PATH="$HOME/nvim-linux-x86_64/bin:$PATH"
-	export VIMRUNTIME="$HOME/nvim-linux-x86_64/share/nvim/runtime"
 fi
 
 if [ -z "$NVM_DIR" ] ; then
@@ -81,9 +80,11 @@ export FLASK_APP=orcid_hub
 export FLASK_ENV=development
 
 ## GO:
-if [ -d ~/go -a -z "$GOPATH" ] ; then
-	export GOPATH=$HOME
-	export GOROOT=$HOME/go
+# To install Go inside your user home directory on Linux (which is ideal if you do not have root/sudo privileges or want to keep the installation isolated), you need to extract it into a custom folder like $HOME/.local/go or $HOME/go-dist.
+# Avoid extracting it directly to $HOME/go, as that is the default workspace location where Go downloads third-party packages (GOPATH), and nesting them will cause errors.
+if [ -d ~/.local/go -a -z "$GOPATH" ] ; then
+	export GOROOT=$HOME/.local/go
+	export GOPATH=$HOME/go
 	export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 fi
 

@@ -77,7 +77,7 @@ if which xinput &>/dev/null ; then
   if [ -n "$touchpad_id" ] ; then
     function disable-touchpad() { xinput set-prop ${touchpad_id} "Device Enabled" 0; }
     function enable-touchpad() { xinput set-prop  ${touchpad_id} "Device Enabled" 1; }
-    xinput list | grep -q -iE '(logitech wireless mouse)|(logitech m350)' && disable-touchpad
+    xinput list | grep -q -iE '(logitech wireless mouse)|(logitech m350)|(Logi POP Mouse)' && disable-touchpad
   fi
 fi
 

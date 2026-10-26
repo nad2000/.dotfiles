@@ -151,6 +151,7 @@ if not is_view then
   -- Plug 'CopilotC-Nvim/CopilotChat.nvim'
   -- Plug 'devinceble/Tortoise-Typing'
 
+  Plug 'rust-lang/rust.vim'
 end
 
 Plug 'jnurmine/Zenburn'
