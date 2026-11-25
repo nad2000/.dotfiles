@@ -1,3 +1,4 @@
+
 if is_view ~= nil and vim.v.progname ==  "view" or is_view == 1 then
   is_view = true
 end
@@ -103,9 +104,23 @@ local vim = vim
 local Plug = vim.fn['plug#']
 vim.call('plug#begin', "~/.vim/plugged")
 if not is_view then
-  Plug 'tpope/vim-sensible'
+  Plug 'nvim-lua/plenary.nvim'
   Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
+
+  -- LSP Configuration and Installer
   Plug 'neovim/nvim-lspconfig' -- Collection of configurations for built-in
+  Plug 'williamboman/mason.nvim'
+  Plug 'williamboman/mason-lspconfig.nvim'
+
+  -- Autocompletion Engine & Sources
+  Plug 'hrsh7th/nvim-cmp'
+  Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/cmp-path'
+  -- Formatting
+  Plug 'stevearc/conform.nvim'
+
+  Plug 'tpope/vim-sensible'
   Plug 'vim-syntastic/syntastic'
   Plug 'motemen/vim-help-random'
   Plug 'tpope/vim-surround'
@@ -146,10 +161,13 @@ if not is_view then
   -- Git
   Plug 'airblade/vim-gitgutter'
 
-  Plug 'nvim-lua/plenary.nvim'
   Plug 'github/copilot.vim'
   -- Plug 'CopilotC-Nvim/CopilotChat.nvim'
   -- Plug 'devinceble/Tortoise-Typing'
+
+  -- Local AI Plugins
+  Plug 'milanglacier/minuet-ai.nvim'
+  Plug 'olimorris/codecompanion.nvim'
 
   Plug 'rust-lang/rust.vim'
 end
@@ -169,6 +187,75 @@ Plug('iamcco/markdown-preview.nvim', { ['do'] = 'cd app && npx --yes yarn instal
 -- Plug 'brianhuster/live-preview.nvim'
 -- Plug 'MeanderingProgrammer/render-markdown.nvim:'
 vim.call('plug#end')
+
+-- 1. Initialize Mason to automatically manage clangd
+require('mason').setup()
+require('mason-lspconfig').setup({
+  ensure_installed = { 'clangd' }
+})
+-- 2. Configure the Autocompletion Engine (nvim-cmp)
+local cmp = require('cmp')
+cmp.setup({
+  mapping = cmp.mapping.preset.insert({
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept completion item
+  }),
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+  }, {
+    { name = 'buffer' },
+    { name = 'path' },
+  })
+})
+-- 3. Define the Clangd configuration settings
+vim.lsp.config('clangd', {
+  cmd = {
+    "clangd",
+    "--background-index",
+    "--clang-tidy",
+    "--header-insertion=iwyu",
+    "--completion-style=detailed",
+    "--function-arg-placeholders",
+    "--fallback-style=llvm",
+  },
+  init_options = {
+    fallbackFlags = { "-std=c23" }
+  },
+  -- Pass autocomplete capabilities to the native config framework
+  capabilities = require('cmp_nvim_lsp').default_capabilities()
+})
+
+-- 4. Automatically start and attach clangd to C/C++ filetypes
+vim.lsp.enable('clangd')
+-- 5. Establish global keyboard shortcuts for code navigation
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    local opts = { buffer = ev.buf }
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts) -- Go to definition
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)        -- Show hover details
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts) -- Rename variable
+    vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts) -- Code actions
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+  end,
+})
+
+-- 6. Setup auto-formatting on save via clang-format
+require('conform').setup({
+  formatters_by_ft = {
+    c = { "clang-format" },
+    cpp = { "clang-format" },
+  },
+  format_on_save = {
+    timeout_ms = 500,
+    lsp_fallback = true,
+  },
+})
 
 vim.g.atags_build_commands_list = {
   "[[ $PWD != $HOME ]] && cd " .. vim_started_in_dir,
@@ -237,6 +324,29 @@ vim.keymap.set("i", "<C-J>", 'copilot#Accept("\\<CR>")', {
     replace_keycodes = false
 })
 vim.g.copilot_no_tab_map = true
+
+-- Setup for Ollama
+require("minuet").setup({
+  provider = "openai_fim_compatible",
+  provider_options = {
+    openai_fim_compatible = {
+      api_key = "TERM",
+      name = "Ollama",
+      end_point = "http://localhost:11434/v1/completions",
+      model = "qwen2.5-coder:7b",
+      optional = { max_tokens = 128, top_p = 0.9 },
+    },
+  },
+  virtualtext = {
+    -- Set to {} if you only want local completions when pressing a shortcut
+    auto_trigger_ft = {}, 
+    keymap = {
+      accept = "<M-y>", -- Alt+y accepts local Ollama suggestion (leaves <Tab> for Copilot)
+      next = "<M-]>",
+      prev = "<M-[>",
+    },
+  },
+})
 
 
 -- TODO: migrate to vim.api.nvim_create_autocmd
@@ -329,6 +439,16 @@ vim.g.ale_lint_on_save = 1
 vim.g.ale_python_flake8_executable = ''
 vim.g.ale_python_pylint_executable = ''
 vim.g.ale_python_pycodestyle_executable = ''
+-- C23 complient:
+vim.g.ale_c_gcc_options = '-std=c23 -Wall'
+vim.g.ale_c_cc_options = '-std=c23 -Wall'
+vim.g.ale_c_clang_options = '-std=c23 -Wall'
+vim.g.ale_c_cppcheck_options = '--std=c23'
+vim.g.ale_linters_ignore = {
+  c = { 'clangcheck' },
+  cpp = { 'clangcheck' },
+}
+
 
 if is_view then
   vim.keymap.set("n", "Q", "gq")
